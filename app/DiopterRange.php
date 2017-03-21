@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class DiopterRange extends Model
 {
     //
     protected $primaryKey = 'id';
-    protected $table = 'materials';
+    protected $table = 'diopter_ranges';
 
-    protected $fillable = [ 'name' ];
+    protected $fillable = [ 'range' ];
 
     public function crystals() {
 

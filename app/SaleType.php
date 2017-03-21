@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MacAddress extends Model
+class SaleType extends Model
 {
     //
     protected $primaryKey = 'id';
-    protected $table = 'mac_addresses';
+    protected $table = 'sale_types';
 
+    protected $fillable = [ 'name' ];
 }

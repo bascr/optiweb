@@ -7,4 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     //
+    protected $primaryKey = 'id';
+    protected $table = 'brands';
+
+    protected $fillable = [ 'name' ];
+
+    public function products() {
+
+        return $this->hasMany('App\Product');
+    }
 }

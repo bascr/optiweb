@@ -7,4 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     //
+    protected $primaryKey = 'id';
+    protected $table = 'inventories';
+
+    public function user() {
+
+        return $this->belongsTo('App\User', 'user_username', 'username');
+    }
+
+    public function product() {
+
+        return $this->belongsTo('App\Product', 'productable_id');
+    }
 }

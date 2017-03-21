@@ -12,7 +12,7 @@ class CreateSaleTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sale__types', function (Blueprint $table) {
+        Schema::create('sale_types', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name', 45);
         });
@@ -25,6 +25,6 @@ class CreateSaleTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sale__types');
+        Schema::drop('sale_types');
     }
 }
