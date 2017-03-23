@@ -49,9 +49,23 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+
+            'username' => 'required|max:45|unique:users',
             'password' => 'required|min:6|confirmed',
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'second_last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'run' => 'required|numeric|min:6',
+            'digit' => 'required|max:1|regex:/^[0-9Kk]$/',
+            'address' => 'required|max:255',
+            'district' => 'required|not_in:0',
+            'email' => 'required|email|max:255|unique:users',
+            'phone' => 'required|numeric|min:9',
+            'contract_state' => 'required',
+            'base_wage' => 'required|numeric',
+            'overtime_value' => 'required|numeric',
+            'user_type' => 'required|not_in:0',
+
         ]);
     }
 
@@ -64,9 +78,24 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
+
+            'username' => $data['username'],
             'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'second_last_name' => $data['second_last_name'],
+            'run' => $data['run'],
+            'digit' => $data['digit'],
+            'address' => $data['address'],
+            'district_id' => $data['district'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
+            'contract_state' => $data['contract_state'],
+            'base_wage' => $data['base_wage'],
+            'overtime_value' => $data['overtime_value'],
+            'user_type_id' => $data['user_type'],
+            'branch_office_id' => 1,
+
         ]);
     }
 }

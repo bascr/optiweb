@@ -92,9 +92,90 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+
+        'username' => [
+            'required' => 'Este campo es requerido.',
+            'max' => 'Este campo no debe sobrepasar los 45 caracteres.',
+            'unique' => 'El nombre de usuario ya se encuentra registrado.',
         ],
+
+        'password' => [
+            'required' => 'Este campo es requerido.',
+            'min' => 'Debe ingresar mínimo 6 caracteres.',
+            'confirmed' => 'La confirmación de la contraseña no coincide.',
+        ],
+
+        'name' => [
+            'required' => 'Este campo es requerido.',
+            'max' => 'Este campo no debe sobrepasar los 45 caracteres.',
+            'regex' => 'El formato ingresado es inválido (solo letras).',
+        ],
+
+        'last_name' => [
+            'required' => 'Este campo es requerido.',
+            'max' => 'Este campo no debe sobrepasar los 45 caracteres.',
+            'regex' => 'El formato ingresado es inválido (solo letras).',
+        ],
+
+        'second_last_name' => [
+            'required' => 'Este campo es requerido.',
+            'max' => 'Este campo no debe sobrepasar los 45 caracteres.',
+            'regex' => 'El formato ingresado es inválido (solo letras).',
+        ],
+
+        'run' => [
+            'required' => 'Este campo es requerido.',
+            'min' => 'Debe ingresar mínimo 6 caracteres.',
+            'numeric' => 'El formato ingresado es inválido (solo números).',
+        ],
+
+        'digit' => [
+            'required' => 'Este campo es requerido.',
+            'max' => 'Ingrese código verificador válido.',
+            'regex' => 'El formato ingresado es inválido',
+        ],
+
+        'address' => [
+            'required' => 'Este campo es requerido.',
+            'max' => 'Este campo no debe sobrepasar los 255 caracteres.',
+        ],
+
+        'district' => [
+            'required' => 'Este campo es requerido.',
+            'not_in' => 'Seleccione una comuna.',
+        ],
+
+        'email' => [
+            'required' => 'Este campo es requerido.',
+            'email' => 'Ingrese un email válido.',
+            'regex' => 'El formato ingresado es inválido',
+        ],
+
+        'phone' => [
+            'required' => 'Este campo es requerido.',
+            'min' => 'Debe ingresar mínimo 9 caracteres.',
+            'numeric' => 'El formato ingresado es inválido (solo números)',
+        ],
+
+        'contract_state' => [
+            'required' => 'Este campo es requerido.',
+        ],
+
+        'base_wage' => [
+            'required' => 'Este campo es requerido.',
+            'numeric' => 'El formato ingresado es inválido (solo números)',
+        ],
+
+        'overtime_value' => [
+            'required' => 'Este campo es requerido.',
+            'numeric' => 'El formato ingresado es inválido (solo números)',
+        ],
+
+        'user_type' => [
+            'required' => 'Este campo es requerido.',
+            'not_in' => 'Seleccione los privilegios de la cuenta.',
+        ],
+
     ],
 
     /*

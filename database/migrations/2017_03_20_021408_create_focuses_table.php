@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFociTable extends Migration
+class CreateFocusesTable extends Migration
 {
     /**
      * Run the migrations.
