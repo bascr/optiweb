@@ -32,10 +32,10 @@ trait RegistersUsers
             return view($this->registerView);
         }
 
-        $districts = District::all();
-        $type_users = UserType::all();
+        $districts = District::orderBy('name', 'asc')->get();
+        $user_types = UserType::all();
 
-        return view('auth.register', compact(['districts', 'type_users']));
+        return view('auth.register', compact(['districts', 'user_types']));
     }
 
     /**

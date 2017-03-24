@@ -7,9 +7,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Registro de usuario</div>
                     <div class="panel-body">
+<!-- Inicio formulario -->
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}
-
+<!-- Campo nombre -->
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Nombre</label>
 
@@ -23,7 +24,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo apellido paterno -->
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
                                 <label for="last_name" class="col-md-4 control-label">Apellido paterno</label>
 
@@ -37,7 +38,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo apellido materno -->
                             <div class="form-group{{ $errors->has('second_last_name') ? ' has-error' : '' }}">
                                 <label for="second_last_name" class="col-md-4 control-label">Apellido materno</label>
 
@@ -51,7 +52,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo run -->
                             <div class="form-group{{ $errors->has('run') ? ' has-error' : '' }} {{ $errors->has('digit') ? ' has-error' : '' }}">
                                 <label for="run" class="col-md-4 control-label">Run</label>
 
@@ -64,6 +65,7 @@
                                     </span>
                                     @endif
                                 </div>
+<!-- Campo dígito -->
                                 <div class="col-md-1">
 
                                     <input id="digit" type="text" class="form-control" name="digit" value="{{ old('digit') }}">
@@ -74,7 +76,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo dirección -->
                             <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                                 <label for="address" class="col-md-4 control-label">Dirección</label>
 
@@ -88,7 +90,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Droplist comuna -->
                             <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
                                 <label for="district" class="col-md-4 control-label">Comuna</label>
 
@@ -108,7 +110,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo email -->
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">E-Mail</label>
 
@@ -122,7 +124,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo teléfono -->
                             <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                                 <label for="phone" class="col-md-4 control-label">Teléfono</label>
 
@@ -136,7 +138,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo nombre de usuario -->
                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                 <label for="username" class="col-md-4 control-label">Nombre de usuario</label>
 
@@ -150,7 +152,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo contraseña -->
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-md-4 control-label">Contraseña</label>
 
@@ -164,7 +166,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo confirmar contraseña -->
                             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                 <label for="password-confirm" class="col-md-4 control-label">Confirmar contraseña</label>
 
@@ -178,7 +180,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo contrato -->
                             <div class="form-group">
                                 <label for="contract_state" class="col-md-4 control-label">Contrato</label>
 
@@ -188,19 +190,19 @@
                                         <option value="1">Vigente</option>
                                     </select>
 
-                                    @if ($errors->has('password_confirmation'))
+                                    @if ($errors->has('contract_state'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong>{{ $errors->first('contract_state') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo sueldo base -->
                             <div class="form-group{{ $errors->has('base_wage') ? ' has-error' : '' }}">
                                 <label for="base_wage" class="col-md-4 control-label">Sueldo base</label>
 
                                 <div class="col-md-6">
-                                    <input id="base_wage" type="text" class="form-control" name="base_wage">
+                                    <input id="base_wage" type="text" class="form-control" name="base_wage" value="{{ old('base_wage') }}">
 
                                     @if ($errors->has('base_wage'))
                                         <span class="help-block">
@@ -209,12 +211,12 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Campo valor hora extra -->
                             <div class="form-group{{ $errors->has('overtime_value') ? ' has-error' : '' }}">
                                 <label for="overtime_value" class="col-md-4 control-label">Valor hora extra</label>
 
                                 <div class="col-md-6">
-                                    <input id="overtime_value" type="text" class="form-control" name="overtime_value">
+                                    <input id="overtime_value" type="text" class="form-control" name="overtime_value" value="{{ old('overtime_value') }}">
 
                                     @if ($errors->has('overtime_value'))
                                         <span class="help-block">
@@ -223,14 +225,14 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Droplist privilegios -->
                             <div class="form-group">
                                 <label for="user_type" class="col-md-4 control-label">Privilegios</label>
 
                                 <div class="col-md-6">
                                     <select id="user_type" class="form-control" name="user_type">
-                                        @foreach($type_users as $type_user)
-                                            <option value="{{ $type_user->id }}">{{ $type_user->name }}</option>
+                                        @foreach($user_types as $user_type)
+                                            <option value="{{ $user_type->id }}">{{ $user_type->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -241,7 +243,7 @@
                                     @endif
                                 </div>
                             </div>
-
+<!-- Botón registrar -->
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
@@ -249,6 +251,7 @@
                                     </button>
                                 </div>
                             </div>
+<!-- cierre formulario -->
                         </form>
                     </div>
                 </div>
