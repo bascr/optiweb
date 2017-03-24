@@ -9,4 +9,8 @@ use App\Http\Requests;
 class ClientController extends Controller
 {
     //
+    public function index() {
+
+        return view('client.register');
+    }
 }
