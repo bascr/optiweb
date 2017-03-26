@@ -23,4 +23,9 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/messages', function(){
+
+    return view('client.messages');
+});
+
 

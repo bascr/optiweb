@@ -11,6 +11,7 @@ class Client extends Model
     public $incrementing = false;
     public $keyType = 'string';
     protected $table = 'clients';
+    public $timestamps = false;
 
     public function district() {
 

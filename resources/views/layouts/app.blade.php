@@ -8,6 +8,7 @@
         <title>OptiWeb</title>
 <!-- Style and Fonts -->
 <!-- Bootstrap 3.3.6 -->
+        {!! Html::style('bootstrap/css/bootstrap-theme.css') !!}
         {!! Html::style('bootstrap/css/bootstrap.min.css') !!}
 
 <!-- Font Awesome -->
@@ -44,9 +45,7 @@
         {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.ttf') !!}
         {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.woff') !!}
         {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.woff2') !!}
-
-        {!! Html::style('bootstrap/css/bootstrap-theme.css') !!}
-
+<!-- style to set some css issues -->
         <style>
             body {
                 font-family: 'Lato';
@@ -55,12 +54,24 @@
             .fa-btn {
                 margin-right: 6px;
             }
+
+            #dropdownMenu {
+                width: 225px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                text-align: left;
+            }
+
+            #dropdownLogout {
+                color:#0c0c0c;
+            }
+
         </style>
+<!-- script to print the date -->
         <Script Language="JavaScript">
             function date() {
                 var hoy = new Date();
-                var m = new Array();
-                var d = new Array();
+                var m = [];
+                var d = [];
                 var an = hoy.getUTCFullYear();
                 var day = hoy.getDay();
                 d[1]="Lunes";d[2]="Martes";d[3]="Miercoles";d[4]="Jueves";d[5]="Viernes";d[6]="Sábado";d[0]="Domingo";
@@ -79,193 +90,193 @@
     </head>
     <body id="app-layout" class="hold-transition skin-blue-light sidebar-mini">
 <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< inicio >>>>>>>>>>>>>>>>>>> -->
-    @if(Auth::check())
+        @if(Auth::check())
         <div class="wrapper">
-            <header class="main-header">
+                <header class="main-header">
 <!-- Logo -->
-                <a class="logo">
+                    <a class="logo">
 <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>O</b>W</span>
+                        <span class="logo-mini"><b>O</b>W</span>
 <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Opti</b>Web</span>
-                </a>
-<!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-<!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
+                        <span class="logo-lg"><b>Opti</b>Web</span>
                     </a>
-                    <ul class="nav navbar-left" style="padding-top: 15px;">
+<!-- Header Navbar: style can be found in header.less -->
+                    <nav class="navbar navbar-static-top">
+<!-- Sidebar toggle button-->
+                        <a id="bla" href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="position: relative; z-index: 1;">
+                            <span class="sr-only">Toggle navigation</span>
+                        </a>
+                        <div class="hidden-xs nav navbar-left" style="padding-top: 15px;">
+                                <li>
+                                    <span class="text-bold" style="color: #fff"><script>date(); </script></span>
+                                </li>
+                        </div>
+                        <ul class="nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 15px; padding-right: 60px;">
+                                    Bienvenido(a), {{ Auth::user()->name }}
+                                    <span class="caret"></span></a>
+                                <ul id="dropdownMenu" class="dropdown-menu drop-menu-left" role="menu">
+                                    <li><a id="dropdownLogout" href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+<!-- Left side column. contains the logo and sidebar -->
+                <aside class="main-sidebar">
+<!-- sidebar: style can be found in sidebar.less -->
+                    <section class="sidebar">
+<!-- sidebar menu: : style can be found in sidebar.less -->
+                        <ul class="sidebar-menu">
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-sunglasses"></i> <span>Recetas</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="glyphicon glyphicon-file"></i> Ingresar receta</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-usd"></i> <span>Ventas</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="glyphicon glyphicon-file"></i> Nueva venta</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-wrench"></i> <span>Reparaciones</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out"></i> Entregar reparación</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>Clientes</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url('/client') }}"><i class="fa fa-plus"></i> Ingresar cliente</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar cliente</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-archive"></i> <span>Inventario</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-plus"></i> Ingresar artículo</a></li>
+                                    <li><a href="#"><i class="fa fa-plus"></i> Ingresar marco</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar especie</a></li>
+                                    <li><a href="#"><i class="fa fa-file"></i> Registro inventario</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-clock-o"></i> <span>Control de acceso</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-arrow-right"></i> Entrada</a></li>
+                                    <li><a href="#"><i class="fa fa-arrow-left"></i> Salida</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-envelope"></i> <span>Correo</span>
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-yellow">12</small>
+                                        <small class="label pull-right bg-green">16</small>
+                                        <small class="label pull-right bg-red">5</small>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+<!-- /.sidebar -->
+                </aside>
+<!-- Content Wrapper. Contains page content -->
+              <div class="content-wrapper">
+<!-- Content Header (Page header) -->
+                    <section class="content-header">
+
+                   </section>
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Main content >>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+                    <section class="content">
+                        @yield('content')
+                    </section>
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</.content >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+                </div>
+<!-- /.content-wrapper -->
+            </div>
+<!-- Footer -->
+            <footer class="main-footer">
+                <strong>Todos los derechos reservados &copy; 2017 <a href="http://www.mohfetcorp.cl">Equipo de Desarrollo MohfetCorp</a>.</strong>
+            </footer>
+        @else
+            <div class="wrapper">
+                <header class="main-header">
+                <!-- Logo -->
+                    <a class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                        <span class="logo-mini"><b>O</b>W</span>
+<!-- logo for regular state and mobile devices -->
+                        <span class="logo-lg"><b>Opti</b>Web</span>
+                    </a>
+<!-- Header Navbar: style can be found in header.less -->
+                    <nav class="navbar navbar-static-top">
+                        <ul class="nav navbar-left" style="padding-top: 15px;">
                             <li>
                                 <span class="text-bold" style="color: #fff"><script>date(); </script></span>
                             </li>
-                    </ul>
-                    <ul class="nav navbar-right " style="padding-top: 4px; margin-right: 40px">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url('/logout') }}">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-<!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
-<!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-<!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-sunglasses"></i> <span>Recetas</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="glyphicon glyphicon-file"></i> Ingresar receta</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-usd"></i> <span>Ventas</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="glyphicon glyphicon-file"></i> Nueva venta</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-wrench"></i> <span>Reparaciones</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación</a></li>
-                                <li><a href="#"><i class="fa fa-sign-out"></i> Entregar reparación</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-users"></i> <span>Clientes</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Ingresar cliente</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar cliente</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-archive"></i> <span>Inventario</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Ingresar artículo</a></li>
-                                <li><a href="#"><i class="fa fa-plus"></i> Ingresar marco</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar especie</a></li>
-                                <li><a href="#"><i class="fa fa-file"></i> Registro inventario</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-clock-o"></i> <span>Control de acceso</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-arrow-right"></i> Entrada</a></li>
-                                <li><a href="#"><i class="fa fa-arrow-left"></i> Salida</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-envelope"></i> <span>Correo</span>
-                                <span class="pull-right-container">
-                                    <small class="label pull-right bg-yellow">12</small>
-                                    <small class="label pull-right bg-green">16</small>
-                                    <small class="label pull-right bg-red">5</small>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-<!-- /.sidebar -->
-            </aside>
+                        </ul>
+                        <ul class="nav navbar-right ">
+                            <li><a href="{{ url('/login') }}" style="padding: 15px; padding-right: 60px; padding-left: 50px;">Login</a></li>
+                        </ul>
+                    </nav>
+                </header>
 <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-<!-- Content Header (Page header) -->
-                <section class="content-header">
-
-                </section>
-<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Main content >>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <section class="content">
-                    @yield('content')
-                </section>
-<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</.content >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-            </div>
-<!-- /.content-wrapper -->
-        </div>
-<!-- Footer -->
-        <footer class="main-footer">
-            <strong>Todos los derechos reservados &copy; 2017 <a href="http://www.mohfetcorp.cl">Equipo de Desarrollo MohfetCorp</a>.</strong>
-        </footer>
-    @else
-        <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a class="logo">
-                    <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>O</b>W</span>
-                    <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Opti</b>Web</span>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <ul class="nav navbar-left" style="padding-top: 15px;">
-                        <li>
-                            <span class="text-bold" style="color: #fff"><script>date(); </script></span>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-right " style="padding-top: 4px; margin-right: 40px">
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                    </ul>
-                </nav>
-            </header>
-<!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="margin-left: 0px">
+                <div class="content-wrapper" style="margin-left: 0px">
  <!-- Content Header (Page header) -->
-                <section class="content-header">
+                    <section class="content-header">
 
-                </section>
+                    </section>
 <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Main content >>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <section class="content">
-                    @yield('content')
-                </section>
-<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<</.content >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+                    <section class="content">
+                        @yield('content')
+                    </section>
+                </div>
             </div>
-        </div>
-<!-- /.content-wrapper -->
 <!-- Footer -->
-        <footer class="main-footer" style="margin-left:0px; text-align:center;">
-            <strong>Todos los derechos reservados &copy; 2017 <a href="http://www.mohfetcorp.cl">Equipo de Desarrollo MohfetCorp</a>.</strong>
-        </footer>
-    @endif
+         <footer class="main-footer" style="margin-left:0px; text-align:center;">
+                <strong>Todos los derechos reservados &copy; 2017 <a href="http://www.mohfetcorp.cl">Equipo de Desarrollo MohfetCorp</a>.</strong>
+            </footer>
+        @endif
 
 <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+        <div class="control-sidebar-bg"></div>
 
 <!-- Scripts -->
 <!-- JavaScripts -->
