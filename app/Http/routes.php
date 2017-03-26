@@ -19,6 +19,14 @@ Route::get('/client', 'ClientController@index');
 
 Route::post('/client/create', 'ClientController@create');
 
+/* recetario */
+Route::get('/prescription', 'PrescriptionController@index');
+
+Route::post('/prescription/find', 'PrescriptionController@find');
+
+Route::post('/prescription/register', 'PrescriptionController@register');
+/* fin recetario */
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

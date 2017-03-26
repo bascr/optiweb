@@ -31,4 +31,5 @@ class Client extends Model
 
         return $this->hasMany('App\Sale');
     }
+
 }
