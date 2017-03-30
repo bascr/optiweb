@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="box-header">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Registro de usuario</div>
+                <div class="panel">
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de usuario</div>
                     <div class="panel-body">
 <!-- Inicio formulario -->
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
@@ -54,9 +54,10 @@
                             </div>
 <!-- Campo run -->
                             <div class="form-group{{ $errors->has('run') ? ' has-error' : '' }} {{ $errors->has('digit') ? ' has-error' : '' }}">
-                                <label for="run" class="col-md-4 control-label">Run</label>
-
-                                <div class="col-md-3">
+                                <div>
+                                    <label for="run" class="col-md-4 control-label">Run</label>
+                                </div>
+                                <div class="col-xs-6 col-md-4">
                                     <input id="run" type="text" class="form-control" name="run" value="{{ old('run') }}">
 
                                     @if ($errors->has('run'))
@@ -66,9 +67,8 @@
                                     @endif
                                 </div>
 <!-- Campo dígito -->
-                                <div class="col-md-1">
-
-                                    <input id="digit" type="text" class="form-control" name="digit" value="{{ old('digit') }}">
+                                <div class="col-xs-4 col-md-2">
+                                    <input id="digit" type="text" class="form-control" name="digit" value="{{ old('digit') }}" style="width: 40px;">
 
                                     @if ($errors->has('digit'))
                                         <span class="help-block"><strong>{{ $errors->first('digit') }}</strong>

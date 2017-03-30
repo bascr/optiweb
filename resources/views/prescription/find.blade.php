@@ -4,8 +4,8 @@
     <body class="box-header">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Buscar cliente</div>
+            <div class="panel">
+                <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Buscar cliente</div>
                 <div class="panel-body">
 <!-- Inicio formulario -->
                 {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@find', 'class' => 'form-horizontal']) !!}
@@ -15,7 +15,7 @@
                     <div class="form-group {{$errors->has('run') ? 'has_error' : ''}}">
                         {!! Form::label('run', 'Run', [ 'class' => 'col-md-4 control-label']) !!}
                         <div class="col-md-3">
-                            {!! Form::text('run', old('run'), [ 'class' => 'form-control']) !!}
+                            {!! Form::text('run', old('run'), [ 'class' => 'form-control', 'placeholder' => '12345678']) !!}
                             @if ($errors->has('run'))
                                 <span class="help-block">
                                      <strong>{{ $errors->first('run') }}</strong>

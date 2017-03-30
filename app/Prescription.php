@@ -9,6 +9,7 @@ class Prescription extends Model
     //
     protected $primaryKey = 'id';
     protected $table = 'prescriptions';
+    public $timestamps = false;
 
     protected $fillable = [
         'client_run',

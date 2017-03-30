@@ -125,8 +125,8 @@ return [
 
         'run' => [
             'required' => 'Este campo es requerido.',
-            'min' => 'Debe ingresar mínimo 6 caracteres.',
             'numeric' => 'El formato ingresado es inválido (solo números).',
+            'unique' => 'Este run ya ha sido ingresado',
         ],
 
         'digit' => [
@@ -149,11 +149,12 @@ return [
             'required' => 'Este campo es requerido.',
             'email' => 'Ingrese un email válido.',
             'regex' => 'El formato ingresado es inválido',
+            'unique' => 'Este email ya ha sido ingresado',
         ],
 
         'phone' => [
             'required' => 'Este campo es requerido.',
-            'min' => 'Debe ingresar mínimo 9 caracteres.',
+            'digits_between' => 'Debe ingresar un número telefónico válido.',
             'numeric' => 'El formato ingresado es inválido (solo números)',
         ],
 

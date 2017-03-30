@@ -24,11 +24,31 @@ Route::get('/prescription', 'PrescriptionController@index');
 
 Route::post('/prescription/find', 'PrescriptionController@find');
 
-Route::post('/prescription/register', 'PrescriptionController@register');
+Route::post('/prescription/register', 'PrescriptionController@create');
+
+Route::get('/messages', function(){
+
+    return view('prescription.messages');
+});
+
+Route::get('/prescription', function(){
+
+    return view('prescription.find');
+});
+
 /* fin recetario */
+
+Route::get('/marcaje', 'MarcajeController@index');
+
+//Route::post('/marcaje/marcar', 'MarcajeController@index');
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/messages', function(){
+
+    return view('client.messages');
+});
 
 
