@@ -16,6 +16,7 @@ trait RegistersUsers
      *
      * @return \Illuminate\Http\Response
      */
+
     public function getRegister()
     {
         return $this->showRegistrationForm();

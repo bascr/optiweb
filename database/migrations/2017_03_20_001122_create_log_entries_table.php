@@ -14,9 +14,9 @@ class CreateLogEntriesTable extends Migration
     {
         Schema::create('log_entries', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('user_username');
-            $table->date('entry_date');
-            $table->date('out_date');
+            $table->string('user_username');
+            $table->dateTime('entry_date');
+            $table->dateTime('out_date');
         });
     }
 

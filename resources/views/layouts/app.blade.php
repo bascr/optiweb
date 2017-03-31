@@ -45,6 +45,8 @@
         {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.ttf') !!}
         {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.woff') !!}
         {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.woff2') !!}
+<!-- Style sweetAlert -->
+        {!! Html::style('sweetalert/css/sweetalert.css') !!}
 <!-- style to set some css issues -->
         <style>
             body {
@@ -203,7 +205,21 @@
                                     <li><a href="#"><i class="fa fa-arrow-left"></i> Salida</a></li>
                                 </ul>
                             </li>
-                            <li>
+                        @if(Auth::user()->user_type_id == 2)
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-user-plus"></i> <span>Administrar usuarios</span>
+                                    <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url('/register') }}"><i class="fa fa-plus"></i>Ingresar usuario</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i>Buscar usuario</a></li>
+                                </ul>
+                            </li>
+                        @endif
+                        <!--    <li>
                                 <a href="#">
                                     <i class="fa fa-envelope"></i> <span>Correo</span>
                                     <span class="pull-right-container">
@@ -212,7 +228,7 @@
                                         <small class="label pull-right bg-red">5</small>
                                     </span>
                                 </a>
-                            </li>
+                            </li>   -->
                         </ul>
                     </section>
 <!-- /.sidebar -->
@@ -316,5 +332,7 @@
         {!! Html::script('dist/js/pages/dashboard.js') !!}
 <!-- AdminLTE for demo purposes -->
         {!! Html::script('dist/js/demo.js') !!}
+<!-- SweetAler script -->
+        {!! Html::script('sweetalert/js/sweetalert.min.js') !!}
     </body>
 </html>

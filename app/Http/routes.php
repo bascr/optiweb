@@ -11,16 +11,34 @@
 |
 */
 
+
+/*
+|--------------------------------------------------------------------------
+|   Rutas Raíz
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+|--------------------------------------------------------------------------
+|   Rutas Cliente
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/client', 'ClientController@index');
 
 Route::post('/client/create', 'ClientController@create');
 
-<<<<<<< HEAD
-/* recetario */
+
+/*
+|--------------------------------------------------------------------------
+|   Rutas Recetario
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/prescription', 'PrescriptionController@index');
 
 Route::post('/prescription/find', 'PrescriptionController@find');
@@ -37,12 +55,24 @@ Route::get('/prescription', function(){
     return view('prescription.find');
 });
 
-/* fin recetario */
+
+/*
+|--------------------------------------------------------------------------
+|   Rutas Marcaje
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/marcaje', 'MarcajeController@index');
 
 //Route::post('/marcaje/marcar', 'MarcajeController@index');
-=======
+
+
+/*
+|--------------------------------------------------------------------------
+|   Rutas Inventario y productos
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/product/frame', 'ProductController@showFrameForm');
 
 Route::get('/product/article', 'ProductController@showArticleForm');
@@ -50,15 +80,29 @@ Route::get('/product/article', 'ProductController@showArticleForm');
 Route::post('/product/create_article', 'ProductController@createArticle');
 
 Route::post('/product/create_frame', 'ProductController@createFrame');
->>>>>>> 2d869cbcddd27e152d3f93f322709778d3434d86
+
+
+/*
+|--------------------------------------------------------------------------
+|   Rutas Home y Auth (Login)
+|--------------------------------------------------------------------------
+*/
+
 
 Route::auth();
 
+Route::get('register', 'UserController@index');
+Route::post('register', 'UserController@register');
+
+
 Route::get('/home', 'HomeController@index');
 
-Route::get('/messages', function(){
 
-    return view('client.messages');
-});
+
+
+
+
+
+
 
 
