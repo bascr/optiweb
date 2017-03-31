@@ -38,6 +38,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
     // Relationships
     public function userType() {
 

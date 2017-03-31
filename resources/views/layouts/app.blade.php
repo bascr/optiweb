@@ -185,8 +185,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-plus"></i> Ingresar artículo</a></li>
-                                    <li><a href="#"><i class="fa fa-plus"></i> Ingresar marco</a></li>
+                                    <li><a href="{{url('/product/article')}}"><i class="fa fa-plus"></i> Ingresar artículo</a></li>
+                                    <li><a href="{{ url('/product/frame') }}"><i class="fa fa-plus"></i> Ingresar marco</a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar especie</a></li>
                                     <li><a href="#"><i class="fa fa-file"></i> Registro inventario</a></li>
                                 </ul>

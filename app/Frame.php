@@ -9,6 +9,8 @@ class Frame extends Model
     //
     protected $primaryKey = 'id';
     protected $table = 'frames';
+    public $timestamps = false;
+
 
     public function model() {
 

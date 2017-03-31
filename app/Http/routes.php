@@ -19,6 +19,14 @@ Route::get('/client', 'ClientController@index');
 
 Route::post('/client/create', 'ClientController@create');
 
+Route::get('/product/frame', 'ProductController@showFrameForm');
+
+Route::get('/product/article', 'ProductController@showArticleForm');
+
+Route::post('/product/create_article', 'ProductController@createArticle');
+
+Route::post('/product/create_frame', 'ProductController@createFrame');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
