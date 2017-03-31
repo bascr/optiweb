@@ -10,6 +10,8 @@ class Product extends Model
     protected $primaryKey = 'productable_id';
     protected $morphClass = 'Product';
     protected $table = 'products';
+    public $timestamps = false;
+
 
     public function productSale() {
 

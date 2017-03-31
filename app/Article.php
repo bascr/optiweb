@@ -9,6 +9,8 @@ class Article extends Model
     //
     protected $primaryKey = 'id';
     protected $table = 'articles';
+    public $timestamps = false;
+
 
     public function category() {
 

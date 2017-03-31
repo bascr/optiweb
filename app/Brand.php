@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Brand extends Model
+class Brand extends Eloquent
 {
     //
     protected $primaryKey = 'id';

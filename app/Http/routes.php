@@ -19,6 +19,7 @@ Route::get('/client', 'ClientController@index');
 
 Route::post('/client/create', 'ClientController@create');
 
+<<<<<<< HEAD
 /* recetario */
 Route::get('/prescription', 'PrescriptionController@index');
 
@@ -41,6 +42,15 @@ Route::get('/prescription', function(){
 Route::get('/marcaje', 'MarcajeController@index');
 
 //Route::post('/marcaje/marcar', 'MarcajeController@index');
+=======
+Route::get('/product/frame', 'ProductController@showFrameForm');
+
+Route::get('/product/article', 'ProductController@showArticleForm');
+
+Route::post('/product/create_article', 'ProductController@createArticle');
+
+Route::post('/product/create_frame', 'ProductController@createFrame');
+>>>>>>> 2d869cbcddd27e152d3f93f322709778d3434d86
 
 Route::auth();
 
