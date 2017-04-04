@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-   <div class="jumbotron" style="background-image: url('/images/glassesbackground.jpg'); opacity: 0.8;">
+   <div class="jumbotron" style="background-image: url('images/glassesbackground.jpg'); opacity: 0.8;">
       <h1 class="logo-lg"><b>Opti</b>Web</h1>
       <p>Una solución que se ajusta a tus necesidades</p>
 

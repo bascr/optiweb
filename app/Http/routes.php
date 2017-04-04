@@ -63,7 +63,7 @@ Route::get('/prescription', function(){
 */
 
 Route::get('/marcaje', 'MarcajeController@index');
-
+Route::post('/marcar', 'MarcajeController@log_entry');
 //Route::post('/marcaje/marcar', 'MarcajeController@index');
 
 

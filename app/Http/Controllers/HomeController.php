@@ -35,7 +35,13 @@ class HomeController extends Controller
             $month = "0" . $month;
         }
 
-        $toDay = $year . "-" . $month . "-" . $day;
+        if($day < 10){
+
+            $toDay = $year . "-" . $month . "-" . "0" . $day;
+        }else{
+            $toDay = $year . "-" . $month . "-" . $day;
+        }
+
 
         $cantidad = Prescription::all()->where('created_at', $toDay)->count();
 
@@ -45,25 +51,6 @@ class HomeController extends Controller
 
         return view('home', compact('array'));
     }
-/*
-    function prescription_of_day(){
 
-        $date = getdate();
-        $year = $date['year'];
-        $month = $date['mon'];
-        $day = $date['mday'];
-        if($month != 10 || $month != 11 || $month != 12 ) {
-            $month = "0" . $month;
-        }
-
-        $toDay = $year . "-" . $month . "-" . $day;
-
-        $cantidad = Prescription::all()->where('created_at', $toDay)->count();
-
-        //return view('home', compact('cantidad'));
-        dd($cant[0]);
-    }
-
-*/
 
 }
