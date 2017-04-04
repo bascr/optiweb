@@ -9,6 +9,7 @@ class LogEntry extends Model
     //
     protected $primaryKey = 'id';
     protected $table = 'log_entries';
+    public $timestamps = false;
 
     // Relationships
     public function user() {

@@ -96,7 +96,7 @@
         <div class="wrapper">
                 <header class="main-header">
 <!-- Logo -->
-                    <a class="logo">
+                    <a class="logo" href="{!! url('/home') !!}">
 <!-- mini logo for sidebar mini 50x50 pixels -->
                         <span class="logo-mini"><b>O</b>W</span>
 <!-- logo for regular state and mobile devices -->
@@ -194,15 +194,14 @@
                                 </ul>
                             </li>
                             <li class="treeview">
-                                <a href="#">
+                                <a href="">
                                     <i class="fa fa-clock-o"></i> <span>Control de acceso</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-arrow-right"></i> Entrada</a></li>
-                                    <li><a href="#"><i class="fa fa-arrow-left"></i> Salida</a></li>
+                                    <li><a href="{{ url('/marcaje') }}"><i class="fa fa-arrow-right"></i>Marcar</a></li>
                                 </ul>
                             </li>
                         @if(Auth::user()->user_type_id == 2)

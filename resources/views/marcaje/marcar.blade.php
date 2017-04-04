@@ -12,7 +12,7 @@
                     {!! Form::token() !!}
                     <div class="col-md-12">
                         <div class="col-md-2" ></div>
-                        <div class="col-md-8" id="entrada" style="text-align: center;"><h1></h1></div>
+                        <div class="col-md-8" id="entrada" style="text-align: center;"><h1>{{$array[0]}}</h1></div>
                         <div class="col-md-2"></div>
                     </div>
                     <div class="col-md-12">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-2" ></div>
-                        <div class="col-md-8" id="salida" style="text-align: center;"><h1></h1></div>
+                        <div class="col-md-8" id="salida" style="text-align: center;"><h1>{{$array[1]}}</h1></div>
                         <div class="col-md-2"></div>
                     </div>
                     <div class="col-md-12">
@@ -34,6 +34,17 @@
                         </div>
                         <div class="col-md-2"></div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="col-md-2" ></div>
+                        <div class="col-md-8" style="text-align: center;">
+
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    {!! Form::close() !!}
+
+                    {!! Form::open(['method'=>'POST', 'action'=>'MarcajeController@log_entry', 'class' => 'form-horizontal']) !!}
+                    {!! Form::token() !!}
                     <div class="col-md-12">
                         <div class="col-md-2" ></div>
                         <div class="col-md-8" style="text-align: center;">

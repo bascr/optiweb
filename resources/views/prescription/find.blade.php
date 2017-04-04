@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel">
-                <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Buscar cliente</div>
+                <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Seleccione un cliente</div>
                 <div class="panel-body">
 <!-- Inicio formulario -->
                 {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@find', 'class' => 'form-horizontal']) !!}
