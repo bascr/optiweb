@@ -15,7 +15,7 @@
                         <div class="form-group {{$errors->has('run') ? 'has_error' : ''}}">
                             {!! Form::label('run', 'Run', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-3">
-                                {!! Form::text('run', old('run'), [ 'class' => 'form-control', 'placeholder' => '12345678']) !!}
+                                {!! Form::text('run', old('run'), [ 'class' => 'form-control', 'placeholder' => 'sin guión ni dígito']) !!}
                                 @if ($errors->has('run'))
                                     <span class="help-block">
                                          <strong>{{ $errors->first('run') }}</strong>

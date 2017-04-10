@@ -71,6 +71,7 @@ Route::get('/prescription', function(){
 
 Route::get('/prescription/list/{run}', 'PrescriptionController@lista');
 
+Route::get('/prescription/seePrescription/{id}','PrescriptionController@seePrescription');
 
 /*
 |--------------------------------------------------------------------------
