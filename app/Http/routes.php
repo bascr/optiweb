@@ -50,10 +50,16 @@ Route::get('/messages', function(){
     return view('prescription.messages');
 });
 
+Route::get('/prescription/findPrescription', 'PrescriptionController@findPrescription');
+
+Route::post('/prescription/findPrescriptionRun', 'PrescriptionController@findPrescriptionRun');
+
 Route::get('/prescription', function(){
 
     return view('prescription.find');
 });
+
+Route::get('/prescription/list', 'PrescriptionController@lista');
 
 
 /*
