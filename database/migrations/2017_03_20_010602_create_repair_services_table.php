@@ -16,9 +16,9 @@ class CreateRepairServicesTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('client_run');
             $table->integer('workshop_id');
-            $table->date('created_at');
+            $table->dateTime('created_at');
             $table->integer('state');
-            $table->date('delivery_state');
+            $table->dateTime('delivery_state');
             $table->integer('pay');
             $table->integer('price');
             $table->string('observation', 500);

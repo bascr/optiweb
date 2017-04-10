@@ -16,7 +16,7 @@ class CreateInventoriesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('user_username');
             $table->integer('product_productable_id');
-            $table->date('created_at');
+            $table->dateTime('created_at');
             $table->integer('quantity');
         });
     }

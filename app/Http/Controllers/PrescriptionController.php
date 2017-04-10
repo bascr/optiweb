@@ -104,22 +104,24 @@ class PrescriptionController extends Controller
 
     }
 
+
+
     public function findPrescriptionRun(Request $request) {
 
         $run = $request->run;
+
+        return redirect()->action('PrescriptionController@lista', ['run' => $run]);
+
+    }
+
+
+
+    public function lista($run){
 
         $listado = Prescription::where('client_run', (int)$run)->orderBy('id', 'DESC')->paginate(2);
         $client = Client::all()->where('run', (int)$run)->first();
         $nombre = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
 
-
-
-        return view('prescription.list', compact('listado','nombre'));
-
-    }
-
-    public function lista(){
-
-        return view('prescription.list');
+        return view('prescription.list', compact('listado', 'nombre'));
     }
 }

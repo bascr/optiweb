@@ -18,8 +18,8 @@ class CreateSalePromotionsTable extends Migration
             $table->string('description', 255);
             $table->integer('state');
             $table->integer('discount');
-            $table->date('created_at');
-            $table->date('valid_until');
+            $table->dateTime('created_at');
+            $table->dateTime('valid_until');
         });
     }
 

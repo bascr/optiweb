@@ -16,7 +16,7 @@ class CreateSalesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('user_username', 45);
             $table->integer('client_run');
-            $table->date('created_at');
+            $table->dateTime('created_at');
             $table->integer('sale_promotion_id');
             $table->integer('pay');
             $table->integer('sale_state');

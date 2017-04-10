@@ -58,14 +58,18 @@ Route::get('/messages', function(){
 
 Route::get('/prescription/findPrescription', 'PrescriptionController@findPrescription');
 
+
 Route::post('/prescription/findPrescriptionRun', 'PrescriptionController@findPrescriptionRun');
+
+
+
 
 Route::get('/prescription', function(){
 
     return view('prescription.find');
 });
 
-Route::get('/prescription/list', 'PrescriptionController@lista');
+Route::get('/prescription/list/{run}', 'PrescriptionController@lista');
 
 
 /*

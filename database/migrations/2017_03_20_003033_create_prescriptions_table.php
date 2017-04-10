@@ -40,7 +40,7 @@ class CreatePrescriptionsTable extends Migration
             $table->string('near_left_eye_base', 6);
             $table->string('near_left_eye_pd', 6);
             $table->string('doctor_name', 100);
-            $table->date('created_at');
+            $table->dateTime('created_at');
             $table->string('observation', 500);
         });
     }
