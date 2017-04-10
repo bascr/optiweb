@@ -48,17 +48,14 @@ class MarcajeController extends Controller
 
         $entrada = $toDay . " " . $hora;
         $cero = '0000-00-00 00:00:00';
+        $in = explode(' ', $entrada)[0];
+        $diaLaboral = LogEntry::where('user_username', $usuario)->where('out_date', $cero)->where('entry_date', 'like', '%' . $in .'%')->count();
 
-        $diaLaboral = LogEntry::all()->where('out_date',  $cero, 'user_username', $usuario, 'entry_date', $entrada)->count();
-
-        //dd($diaLaboral);
 
         $entrada = '__ : __';
         $salida = '__ : __';
 
-       //dd($diaLaboral[2]->entry_date);
         $array = [$entrada, $salida];
-       // return view('marcaje.marcar', compact('array'));
 
 
          if($diaLaboral == null){
@@ -66,8 +63,8 @@ class MarcajeController extends Controller
             return view('marcaje.marcar', compact('array'));
         }
         else{
-            $diaLaboral = LogEntry::all()->where('out_date',  $cero, 'user_username', $usuario, 'entry_date', $entrada)->first();
-            //dd($diaLaboral->entry_date);
+            $diaLaboral = LogEntry::where('out_date',  $cero)->where( 'user_username', $usuario)->where('entry_date', 'like', '%' . $in .'%')->first();
+
             $entrada = $diaLaboral->entry_date;
             $ar = explode(" ", $entrada);
             $salida = '__ : __';
@@ -113,7 +110,9 @@ class MarcajeController extends Controller
 
         $cero = '0000-00-00 00:00:00';
 
-        $diaLaboral = LogEntry::all()->where('out_date',  $cero, 'user_username', $usuario, 'entry_date', $entrada)->count();
+        $in = explode(' ', $entrada)[0];
+
+        $diaLaboral = LogEntry::where('out_date',  $cero)->where('user_username', $usuario)->where('entry_date', 'like', '%' . $in .'%')->count();
 
         if($diaLaboral == null){
             $marcaje = new LogEntry();
@@ -122,32 +121,20 @@ class MarcajeController extends Controller
             $marcaje->out_date = "";
             $marcaje->save();
 
-            $diaLaboral = LogEntry::all()->where('out_date',  $cero, 'user_username', $usuario, 'entry_date', $entrada)->first();
-            //dd($diaLaboral->entry_date);
+            $diaLaboral = LogEntry::where('out_date',  $cero)->where('user_username', $usuario)->where('entry_date', 'like', '%' . $in .'%')->first();
+
             $entrada = $diaLaboral->entry_date;
             $ar = explode(" ", $entrada);
             $salida = '__ : __';
             $array = [$ar[1], $salida];
 
-
-
-
-
-
-
-
-
-
-            //$salida = '__ : __';
-
-            //$array = [$entrada, $salida];
             return view('marcaje.marcar', compact('array'));
 
         }
         else{
 
             try{
-                $marcarsalida = LogEntry::all()->where('out_date',  $cero, 'user_username', $usuario)->first();
+                $marcarsalida = LogEntry::all()->where('out_date',  $cero)->where('user_username', $usuario)->first();
                 $marcarsalida->out_date = $entrada;
                 //dd($marcarsalida);
                 $marcarsalida->save();
@@ -170,15 +157,6 @@ class MarcajeController extends Controller
                     'messageNumber' => 1,
                 ];
                 return view('marcaje.messages', compact('message'));
-
-
-
-
-
-
-
-
-
 
             }catch (Exception $e){
 

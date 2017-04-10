@@ -140,7 +140,7 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url('/prescription') }}"><i class="glyphicon glyphicon-file"></i> Ingresar receta</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
+                                    <li><a href="{!! url('/prescription/findPrescription') !!}"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
