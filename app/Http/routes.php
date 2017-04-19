@@ -62,8 +62,6 @@ Route::get('/prescription/findPrescription', 'PrescriptionController@findPrescri
 Route::post('/prescription/findPrescriptionRun', 'PrescriptionController@findPrescriptionRun');
 
 
-
-
 Route::get('/prescription', function(){
 
     return view('prescription.find');
