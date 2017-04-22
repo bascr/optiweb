@@ -14,8 +14,8 @@ class CreateInventoriesTable extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('user_username');
-            $table->integer('product_productable_id');
+            $table->string('users_username');
+            $table->integer('products_productable_id');
             $table->dateTime('created_at');
             $table->integer('quantity');
         });

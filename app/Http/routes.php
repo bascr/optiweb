@@ -78,7 +78,9 @@ Route::get('/prescription/seePrescription/{id}','PrescriptionController@seePresc
 */
 
 Route::get('/marcaje', 'MarcajeController@index');
+
 Route::post('/marcar', 'MarcajeController@log_entry');
+
 //Route::post('/marcaje/marcar', 'MarcajeController@index');
 
 
@@ -96,6 +98,22 @@ Route::post('/product/create_article', 'ProductController@createArticle');
 
 Route::post('/product/create_frame', 'ProductController@createFrame');
 
+Route::get('/inventory', 'InventoryController@show');
+
+Route::get('/inventory/{date}', 'InventoryController@showBarCode');
+
+Route::get('/product', 'ProductController@show');
+
+Route::get('/product/{id}', 'ProductController@editForm');
+
+Route::post('/product/update_article', 'ProductController@updateArticle');
+
+Route::post('/product/update_frame', 'ProductController@updateFrame');
+
+Route::get('product/stock/{id}', 'ProductController@stock');
+
+Route::post('product/stock', 'ProductController@addStock');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -107,8 +125,8 @@ Route::post('/product/create_frame', 'ProductController@createFrame');
 Route::auth();
 
 Route::get('register', 'UserController@index');
-Route::post('register', 'UserController@register');
 
+Route::post('register', 'UserController@register');
 
 Route::get('/home', 'HomeController@index');
 

@@ -68,6 +68,8 @@
             }
 
         </style>
+<!-- script to print to pdf -->
+        {!! Html::script('Xportability/js/xepOnline.jqPlugin.js') !!}
 <!-- script to print the date -->
         <Script Language="JavaScript">
             function date() {
@@ -140,7 +142,7 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url('/prescription') }}"><i class="glyphicon glyphicon-file"></i> Ingresar receta</a></li>
-                                    <li><a href="{!! url('/prescription/findPrescription') !!}"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
+                                    <li><a href="{{ url('/prescription/findPrescription') }}"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -187,10 +189,10 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="{{url('/product/article')}}"><i class="fa fa-plus"></i> Ingresar artículo</a></li>
-                                    <li><a href="{{ url('/product/frame') }}"><i class="fa fa-plus"></i> Ingresar marco</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar especie</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Registro inventario</a></li>
+                                    <li><a href="{{ url('/product/article') }}"><i class="fa fa-plus"></i> Ingresar nuevo artículo</a></li>
+                                    <li><a href="{{ url('/product/frame') }}"><i class="fa fa-plus"></i> Ingresar nuevo marco</a></li>
+                                    <li><a href="{{ url('/product') }}"><i class="glyphicon glyphicon-search"></i> Buscar especie</a></li>
+                                    <li><a href="{{ url('/inventory') }}"><i class="fa fa-file"></i> Registro inventario</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">

@@ -177,6 +177,8 @@ return [
             'not_in' => 'Seleccione los privilegios de la cuenta.',
         ],
 
+
+
     ],
 
     /*

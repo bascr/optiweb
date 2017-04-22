@@ -2,7 +2,7 @@
 @section('content')
     <body class="box-header">
         <div class="panel">
-            <div class="panel-heading" style="color: #fff; background-color: #3c8dbc;">Receta<a class="btn btn-info col-md-offset-10" href="javascript:history.back();">Volver</a></div>
+            <div class="panel-heading" style="color: #fff; background-color: #3c8dbc;">Receta</div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -113,6 +113,9 @@
                                 </td>
                             </tr>
                         </table>
+                        <div class="modal-footer">
+                                <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+                        </div>
                     </div>
                 </div>
         </div>
