@@ -15,7 +15,10 @@
                             <tr>
                                 <td style="text-align: center">{{$presc->created_at}}</td>
                                 <td>{{$presc->observation}}</td>
-                                <td><a class="btn btn-primary" href="{{ url('/prescription/seePrescription/'.$presc->id) }}">Abrir</a></td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ url('/prescription/seePrescription/'.$presc->id) }}">Abrir</a>
+                                    <a class="btn btn-primary" href="{{ url('/prescription/update/'.$presc->id) }}">Editar</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

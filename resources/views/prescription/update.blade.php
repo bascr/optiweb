@@ -3,10 +3,10 @@
 @section('content')
 <body class="box-header">
     <div class="panel">
-        <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de recetas</div>
+        <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Modificación de recetas</div>
             <div class="panel-body">
 <!-- Inicio formulario -->
-                {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@create', 'onSubmit'=> 'return validaForm();' , 'class' => 'form-horizontal'])!!}
+                {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@updatePresc', 'onSubmit'=> 'return validaForm();' , 'class' => 'form-horizontal'])!!}
 
                 {!! Form::token() !!}
 <!-- inicio tabla -->
@@ -16,14 +16,10 @@
                                 <td>{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        <label class="control-label text-capitalize" >{{ $datos[0] }}</label>
-                                        <input class="hidden" name="client_run" id="client_run" value="{{ $datos[1] }}">
-                                        <input id="client_run" type="text" class="hidden" name="client_run" value="{{ $datos[1] }}">
-                                        @if ($errors->has('client_run'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('client_run') }}</strong>
-                                            </span>
-                                        @endif
+                                        <label class="control-label text-capitalize" >{{ $name }}</label>
+                                        <input  name="client_run" class="hidden" id="client_run" value="{{ $run }}">
+                                        <input  name="presc_id" class="hidden" id="presc_id" value="{{ $presc->id }}">
+                                        <input  id="client_run" type="text" class="hidden" name="client_run" value="{{ $run }}">
                                     </div>
                                 </td>
                             </tr>
@@ -45,21 +41,21 @@
                             <tr>
                                 <td rowspan="2" style="text-align: center; vertical-align: middle">Lejos</td>
                                 <td>Derecho</td>
-                                <td><input id="far_right_eye_sphere" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_sphere" value="{{ old('far_right_eye_sphere') }}"></td>
-                                <td><input id="far_right_eye_cyl" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_cyl" value="{{ old('far_right_eye_cyl') }}"></td>
-                                <td><input id="far_right_axis" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_axis" value="{{ old('far_right_axis') }}"></td>
-                                <td><input id="far_right_prism" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_prism" value="{{ old('far_right_prism') }}"></td>
-                                <td><input id="far_right_base" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_base" value="{{ old('far_right_base') }}"></td>
-                                <td><input id="far_right_pd" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_pd" value="{{ old('far_right_pd') }}"></td>
+                                <td><input id="far_right_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_sphere" value="{{ $presc->far_right_eye_sphere }}"></td>
+                                <td><input id="far_right_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_cyl" value="{{ $presc->far_right_eye_cyl }}"></td>
+                                <td><input id="far_right_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_axis" value="{{ $presc->far_right_eye_axis }}"></td>
+                                <td><input id="far_right_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_prism" value="{{ $presc->far_right_eye_prism }}"></td>
+                                <td><input id="far_right_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_base" value="{{ $presc->far_right_eye_base }}"></td>
+                                <td><input id="far_right_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_pd" value="{{ $presc->far_right_eye_pd }}"></td>
                             </tr>
                             <tr>
                                 <td>Izquierdo</td>
-                                <td><input id="far_left_eye_sphere" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_sphere" value="{{ old('far_left_eye_sphere') }}"></td>
-                                <td><input id="far_left_eye_cyl" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_cyl" value="{{ old('far_left_eye_cyl') }}"></td>
-                                <td><input id="far_left_axis" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_axis" value="{{ old('far_left_axis') }}"></td>
-                                <td><input id="far_left_prism" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_prism" value="{{ old('far_left_prism') }}"></td>
-                                <td><input id="far_left_base" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_base" value="{{ old('far_left_base') }}"></td>
-                                <td><input id="far_left_pd" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_pd" value="{{ old('far_left_pd') }}"></td>
+                                <td><input id="far_left_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_sphere" value="{{$presc->far_left_eye_sphere }}"></td>
+                                <td><input id="far_left_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_cyl" value="{{ $presc->far_left_eye_cyl }}"></td>
+                                <td><input id="far_left_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_axis" value="{{ $presc->far_left_eye_axis }}"></td>
+                                <td><input id="far_left_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_prism" value="{{ $presc->far_left_eye_prism }}"></td>
+                                <td><input id="far_left_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_base" value="{{ $presc->far_left_eye_base }}"></td>
+                                <td><input id="far_left_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_pd" value="{{ $presc->far_left_eye_pd }}"></td>
                             </tr>
                             <tr class="info" style="text-align: center;">
                                 <td  style="width: 100px;"></td>
@@ -74,27 +70,27 @@
                             <tr>
                                 <td rowspan="2" style="text-align: center; vertical-align: middle">Cerca</td>
                                 <td>Derecho</td>
-                                <td><input id="near_right_eye_sphere" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_sphere" value="{{ old('near_right_eye_sphere') }}"></td>
-                                <td><input id="near_right_eye_cyl" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_cyl" value="{{ old('near_right_eye_cyl') }}"></td>
-                                <td><input id="near_right_axis" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_axis" value="{{ old('near_right_axis') }}"></td>
-                                <td><input id="near_right_prism" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_prism" value="{{ old('near_right_prism') }}"></td>
-                                <td><input id="near_right_base" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_base" value="{{ old('near_right_base') }}"></td>
-                                <td><input id="near_right_pd" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_pd" value="{{ old('near_right_pd') }}"></td>
+                                <td><input id="near_right_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_sphere" value="{{ $presc->near_right_eye_sphere }}"></td>
+                                <td><input id="near_right_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_cyl" value="{{ $presc->near_right_eye_cyl }}"></td>
+                                <td><input id="near_right_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_axis" value="{{ $presc->near_right_eye_axis }}"></td>
+                                <td><input id="near_right_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_prism" value="{{ $presc->near_right_eye_prism }}"></td>
+                                <td><input id="near_right_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_base" value="{{ $presc->near_right_eye_base }}"></td>
+                                <td><input id="near_right_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_pd" value="{{ $presc->near_right_eye_pd }}"></td>
                             </tr>
                             <tr>
                                 <td>Izquierdo</td>
-                                <td><input id="near_left_eye_sphere" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_sphere" value="{{ old('near_left_eye_sphere') }}"></td>
-                                <td><input id="near_left_eye_cyl" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_cyl" value="{{ old('near_left_eye_cyl') }}"></td>
-                                <td><input id="near_left_axis" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_axis" value="{{ old('near_left_axis') }}"></td>
-                                <td><input id="near_left_prism" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_prism" value="{{ old('near_left_prism') }}"></td>
-                                <td><input id="near_left_base" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_base" value="{{ old('near_left_base') }}"></td>
-                                <td><input id="near_left_pd" type="text" class="form-control" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_pd" value="{{ old('near_left_pd') }}"></td>
+                                <td><input id="near_left_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_sphere" value="{{ $presc->near_left_eye_sphere }}"></td>
+                                <td><input id="near_left_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_cyl" value="{{ $presc->near_left_eye_cyl }}"></td>
+                                <td><input id="near_left_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_axis" value="{{ $presc->near_left_eye_axis }}"></td>
+                                <td><input id="near_left_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_prism" value="{{ $presc->near_left_eye_prism }}"></td>
+                                <td><input id="near_left_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_base" value="{{ $presc->near_left_eye_base }}"></td>
+                                <td><input id="near_left_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_pd" value="{{ $presc->near_left_eye_pd }}"></td>
                             </tr>
                             <tr>
                                 <td> {!! Form::label('doctor_name', 'Médico', [ 'class' => 'col-md-1 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        {!! Form::text('doctor_name', old('doctor_name'), [ 'class' => 'form-control']) !!}
+                                        {!! Form::text('doctor_name', $presc->doctor_name, old('doctor_name'), [ 'class' => 'form-control']) !!}
                                         @if ($errors->has('doctor_name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('doctor_name') }}</strong>
@@ -133,7 +129,7 @@
                                 <td>{!! Form::label('observation', 'Observaciones', [ 'class' => 'col-md-2 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        {!! Form::text('observation', old('observation'), [ 'class' => 'form-control']) !!}
+                                        {!! Form::text('observation', $presc->observation, old('observation'), [ 'class' => 'form-control']) !!}
                                         @if ($errors->has('observation'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('observation') }}</strong>
@@ -146,7 +142,7 @@
                     </div>
 <!-- inicio tabla -->
                     <div class="modal-footer">
-                        {!! Form::submit('Ingresar', [ 'class' => 'btn btn-primary' ]) !!}
+                        {!! Form::submit('Modificar', [ 'class' => 'btn btn-primary' ]) !!}
                     </div>
 <!-- cierre formulario -->
                 {!! Form::close() !!}

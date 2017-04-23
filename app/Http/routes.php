@@ -56,6 +56,11 @@ Route::get('/messages', function(){
     return view('prescription.messages');
 });
 
+Route::get('/messages', function(){
+
+    return view('prescription.messages2');
+});
+
 Route::get('/prescription/findPrescription', 'PrescriptionController@findPrescription');
 
 
@@ -71,6 +76,9 @@ Route::get('/prescription/list/{run}', 'PrescriptionController@lista');
 
 Route::get('/prescription/seePrescription/{id}','PrescriptionController@seePrescription');
 
+Route::get('/prescription/update/{id}','PrescriptionController@update');
+
+Route::post('/prescription/update', 'PrescriptionController@updatePresc');
 /*
 |--------------------------------------------------------------------------
 |   Rutas Marcaje

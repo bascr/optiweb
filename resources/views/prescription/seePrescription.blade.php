@@ -5,14 +5,13 @@
             <div class="panel-heading" style="color: #fff; background-color: #3c8dbc;">Receta</div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table id="prescription" class="table table-bordered">
                             <tr class="info">
                                 <td>{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
                                         <label class="control-label text-capitalize" >{{$name}}</label>
-                                        <input class="hidden" name="client_run" id="client_run" value="">{{$presc[1]}}</input>
-                                        <input id="client_run" type="text" class="hidden" name="client_run" value="">
+                                        <input class="hidden" name="client_run" id="client_run" value="{{$presc[1]}}">
 
                                     </div>
                                 </td>
@@ -115,6 +114,7 @@
                         </table>
                         <div class="modal-footer">
                                 <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+                            <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('prescription', {render:'download'});">Imprimir</a>
                         </div>
                     </div>
                 </div>

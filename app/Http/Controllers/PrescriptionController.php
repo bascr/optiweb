@@ -118,11 +118,22 @@ class PrescriptionController extends Controller
 
     public function lista($run){
 
-        $listado = Prescription::where('client_run', (int)$run)->orderBy('id', 'DESC')->paginate(6);
-        $client = Client::all()->where('run', (int)$run)->first();
-        $nombre = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
+        $valida = Client::where('run', (int)$run)->first();
 
-        return view('prescription.list', compact('listado', 'nombre'));
+        if($valida != null){
+            $listado = Prescription::where('client_run', (int)$run)->orderBy('id', 'DESC')->paginate(6);
+            $client = Client::all()->where('run', (int)$run)->first();
+            $nombre = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
+
+            return view('prescription.list', compact('listado', 'nombre'));
+        }else{
+            $message = [
+                'content' => 'Cliente no existe o ingresó mal el run.',
+                'messageNumber' => 1,
+            ];
+            return view('prescription.messages2', compact('message'));
+        }
+
     }
 
     public function seePrescription($id){
@@ -130,7 +141,80 @@ class PrescriptionController extends Controller
         $presc = Prescription::where('id', $id)->first();
         $client = Client::where('run', $presc->client_run)->first();
         $name = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
-        //dd($presc);
-        return view('prescription.seePrescription', compact('presc', 'name'));
+        $run = $presc->client_run;
+
+        return view('prescription.seePrescription', compact('presc', 'name', 'run'));
+    }
+
+    public function update($id){
+
+        $presc = Prescription::where('id', $id)->first();
+        $client = Client::where('run', $presc->client_run)->first();
+        $name = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
+        $run = $presc->client_run;
+
+        return view('prescription.update', compact('presc', 'name', 'run'));
+    }
+
+    public function updatePresc(Request $request) {
+
+        $this->validate($request, [
+
+            'doctor_name' => 'required|max:100',
+            //'frame' => 'required|not_in:0',
+            //'crystal' => 'required|max:500',
+            'observation' => 'required|max:500',
+        ]);
+
+        try{
+
+            $prescription = Prescription::where('client_run', $request->client_run )->where('id', $request->presc_id)->first();
+
+            $prescription->far_right_eye_sphere = $request->far_right_eye_sphere;
+            $prescription->far_right_eye_cyl = $request->far_right_eye_cyl;
+            $prescription->far_right_eye_axis = $request->far_right_axis;
+            $prescription->far_right_eye_prism = $request->far_right_prism;
+            $prescription->far_right_eye_base = $request->far_right_base;
+            $prescription->far_right_eye_pd = $request->far_right_pd;
+            $prescription->far_left_eye_sphere = $request->far_left_eye_sphere;
+            $prescription->far_left_eye_cyl = $request->far_left_eye_cyl;
+            $prescription->far_left_eye_axis = $request->far_left_axis;
+            $prescription->far_left_eye_prism = $request->far_left_prism;
+            $prescription->far_left_eye_base = $request->far_left_base;
+            $prescription->far_left_eye_pd = $request->far_left_pd;
+            $prescription->near_right_eye_sphere = $request->near_right_eye_sphere;
+            $prescription->near_right_eye_cyl = $request->near_right_eye_cyl;
+            $prescription->near_right_eye_axis = $request->near_right_axis;
+            $prescription->near_right_eye_prism = $request->near_right_prism;
+            $prescription->near_right_eye_base = $request->near_right_base;
+            $prescription->near_right_eye_pd = $request->near_right_pd;
+            $prescription->near_left_eye_sphere = $request->near_left_eye_sphere;
+            $prescription->near_left_eye_cyl = $request->near_left_eye_cyl;
+            $prescription->near_left_eye_axis = $request->near_left_axis;
+            $prescription->near_left_eye_prism = $request->near_left_prism;
+            $prescription->near_left_eye_base = $request->near_left_base;
+            $prescription->near_left_eye_pd = $request->near_left_pd;
+            $prescription->doctor_name = $request->doctor_name;
+            $prescription->observation = $request->observation;
+            $prescription->save();
+
+            $message = [
+                'content' => 'La receta se ha modificado exitosamente.',
+                'messageNumber' => 1,
+            ];
+
+            return view('prescription.messages', compact('message'));
+
+        }catch (\Exception $e){
+            dd($e);
+        }
+
+
+    }
+
+    function pdf(){
+
+
+
     }
 }
