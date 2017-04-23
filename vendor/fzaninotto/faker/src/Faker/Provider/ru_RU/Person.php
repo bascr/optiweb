@@ -10,7 +10,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * This provider uses wikipedia's 250 top russian last names
+     * This supplier uses wikipedia's 250 top russian last names
      * That list of MALE last names could be safely extended to FEMALE list just by adding 'a' letter at the end
      */
     protected static $femaleNameFormats = array(

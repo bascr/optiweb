@@ -138,6 +138,18 @@ Route::post('register', 'UserController@register');
 
 Route::get('/home', 'HomeController@index');
 
+/*
+|--------------------------------------------------------------------------
+|   Suppliers
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/register', 'SupplierController@index');
+
+Route::get('/request', 'SupplierController@request');
+
+Route::post('/request', 'SupplierController@sendRequest');
+
 
 
 

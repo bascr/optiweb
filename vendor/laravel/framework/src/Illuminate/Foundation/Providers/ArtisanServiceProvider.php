@@ -42,7 +42,7 @@ use Illuminate\Database\Console\Seeds\SeederMakeCommand;
 class ArtisanServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * Indicates if loading of the supplier is deferred.
      *
      * @var bool
      */
@@ -88,7 +88,7 @@ class ArtisanServiceProvider extends ServiceProvider
         'MiddlewareMake' => 'command.middleware.make',
         'ModelMake' => 'command.model.make',
         'PolicyMake' => 'command.policy.make',
-        'ProviderMake' => 'command.provider.make',
+        'ProviderMake' => 'command.supplier.make',
         'QueueFailedTable' => 'command.queue.failed-table',
         'QueueTable' => 'command.queue.table',
         'RequestMake' => 'command.request.make',
@@ -100,7 +100,7 @@ class ArtisanServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */
@@ -363,7 +363,7 @@ class ArtisanServiceProvider extends ServiceProvider
      */
     protected function registerProviderMakeCommand()
     {
-        $this->app->singleton('command.provider.make', function ($app) {
+        $this->app->singleton('command.supplier.make', function ($app) {
             return new ProviderMakeCommand($app['files']);
         });
     }
@@ -549,7 +549,7 @@ class ArtisanServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
+     * Get the services provided by the supplier.
      *
      * @return array
      */

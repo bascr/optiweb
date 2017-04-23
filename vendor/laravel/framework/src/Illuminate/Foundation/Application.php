@@ -531,7 +531,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Register a service provider with the application.
+     * Register a service supplier with the application.
      *
      * @param  \Illuminate\Support\ServiceProvider|string  $provider
      * @param  array  $options
@@ -544,9 +544,9 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
             return $registered;
         }
 
-        // If the given "provider" is a string, we will resolve it, passing in the
+        // If the given "supplier" is a string, we will resolve it, passing in the
         // application instance automatically for the developer. This is simply
-        // a more convenient way of specifying your service provider classes.
+        // a more convenient way of specifying your service supplier classes.
         if (is_string($provider)) {
             $provider = $this->resolveProviderClass($provider);
         }
@@ -563,7 +563,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
         $this->markAsRegistered($provider);
 
         // If the application has already booted, we will call this boot method on
-        // the provider class so it has an opportunity to do its boot logic and
+        // the supplier class so it has an opportunity to do its boot logic and
         // will be ready for any usage by the developer's application logics.
         if ($this->booted) {
             $this->bootProvider($provider);
@@ -573,7 +573,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Get the registered service provider instance if it exists.
+     * Get the registered service supplier instance if it exists.
      *
      * @param  \Illuminate\Support\ServiceProvider|string  $provider
      * @return \Illuminate\Support\ServiceProvider|null
@@ -588,7 +588,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Resolve a service provider instance from the class name.
+     * Resolve a service supplier instance from the class name.
      *
      * @param  string  $provider
      * @return \Illuminate\Support\ServiceProvider
@@ -599,7 +599,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Mark the given provider as registered.
+     * Mark the given supplier as registered.
      *
      * @param  \Illuminate\Support\ServiceProvider  $provider
      * @return void
@@ -631,7 +631,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Load the provider for a deferred service.
+     * Load the supplier for a deferred service.
      *
      * @param  string  $service
      * @return void
@@ -644,7 +644,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
 
         $provider = $this->deferredServices[$service];
 
-        // If the service provider has not already been loaded and registered we can
+        // If the service supplier has not already been loaded and registered we can
         // register it with the application and remove the service from this list
         // of deferred services, since it will already be loaded on subsequent.
         if (! isset($this->loadedProviders[$provider])) {
@@ -653,7 +653,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Register a deferred provider and service.
+     * Register a deferred supplier and service.
      *
      * @param  string  $provider
      * @param  string  $service
@@ -661,7 +661,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function registerDeferredProvider($provider, $service = null)
     {
-        // Once the provider that provides the deferred service has been registered we
+        // Once the supplier that provides the deferred service has been registered we
         // will remove it from our local list of the deferred services with related
         // providers so that this container does not try to resolve it out again.
         if ($service) {
@@ -746,7 +746,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Boot the given service provider.
+     * Boot the given service supplier.
      *
      * @param  \Illuminate\Support\ServiceProvider  $provider
      * @return mixed

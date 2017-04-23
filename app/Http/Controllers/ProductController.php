@@ -93,7 +93,7 @@ class ProductController extends Controller
             $frame->save();
 
             $inventory = new Inventory();
-            $inventory->user_username = $request->user()->username;
+            $inventory->users_username = $request->user()->username;
             $inventory->product_productable_id = $product->productable_id;
             $inventory->created_at = Carbon::now();
             $inventory->quantity = $request['quantity'];
@@ -149,7 +149,7 @@ class ProductController extends Controller
             $article->save();
 
             $inventory = new Inventory();
-            $inventory->user_username = $request->user()->username;
+            $inventory->users_username = $request->user()->username;
             $inventory->product_productable_id = $product->productable_id;
             $inventory->created_at = Carbon::now();
             $inventory->quantity = $request['quantity'];
@@ -284,27 +284,45 @@ class ProductController extends Controller
 
         ]);
 
-        $product = Product::where('productable_id', $request['id'])->get()->first();
+        try {
 
-        if($product->productable_type == 'App\Article') {
+            $product = Product::where('productable_id', $request['id'])->get()->first();
 
-            $article = Article::find($product->productable_id);
-            $article->stock += $request['quantity'];
-            $article->save();
-        } else {
-            $frame = Frame::find($product->productable_id);
-            $frame->stock += $request['quantity'];
-            $frame->save();
+            if($product->productable_type == 'App\Article') {
+
+                $article = Article::find($product->productable_id);
+                $article->stock += $request['quantity'];
+                $article->save();
+            } else {
+                $frame = Frame::find($product->productable_id);
+                $frame->stock += $request['quantity'];
+                $frame->save();
+            }
+
+            $inventory = new Inventory();
+            $inventory->users_username = $request->user()->username;
+            $inventory->product_productable_id = $product->productable_id;
+            $inventory->created_at = Carbon::now();
+            $inventory->quantity = $request['quantity'];
+            $inventory->save();
+
+            $message = [
+                'content' => 'Se ha añadido el stock exitosamente.',
+                'messageNumber' => 1,
+            ];
+
+            return view('product.editmessages', compact('message'));
+
+        } catch(Exception $e) {
+
+            $message = [
+                'content' => 'Error al añadir el stock, Error: '.$e->getMessage() ,
+                'messageNumber' => 0,
+            ];
+
+            return view('product.editmessages', compact('message'));
+
         }
-
-        $inventory = new Inventory();
-        $inventory->user_username = $request->user()->username;
-        $inventory->product_productable_id = $product->productable_id;
-        $inventory->created_at = Carbon::now();
-        $inventory->quantity = $request['quantity'];
-        $inventory->save();
-
-        return 'ok';
 
     }
 

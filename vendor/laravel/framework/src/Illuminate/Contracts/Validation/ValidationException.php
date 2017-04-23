@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\MessageProvider;
 class ValidationException extends RuntimeException
 {
     /**
-     * The message provider implementation.
+     * The message supplier implementation.
      *
      * @var \Illuminate\Contracts\Support\MessageProvider
      */
@@ -26,7 +26,7 @@ class ValidationException extends RuntimeException
     }
 
     /**
-     * Get the validation error message provider.
+     * Get the validation error message supplier.
      *
      * @return \Illuminate\Contracts\Support\MessageBag
      */
@@ -36,7 +36,7 @@ class ValidationException extends RuntimeException
     }
 
     /**
-     * Get the validation error message provider.
+     * Get the validation error message supplier.
      *
      * @return \Illuminate\Contracts\Support\MessageProvider
      */

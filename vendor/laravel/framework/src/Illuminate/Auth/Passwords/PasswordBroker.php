@@ -20,7 +20,7 @@ class PasswordBroker implements PasswordBrokerContract
     protected $tokens;
 
     /**
-     * The user provider implementation.
+     * The user supplier implementation.
      *
      * @var \Illuminate\Contracts\Auth\UserProvider
      */

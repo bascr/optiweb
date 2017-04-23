@@ -359,8 +359,8 @@ class PHPUnit_Util_Test
      * @param string $className
      * @param string $methodName
      *
-     * @return array|Iterator when a data provider is specified and exists
-     *                        null           when no data provider is specified
+     * @return array|Iterator when a data supplier is specified and exists
+     *                        null           when no data supplier is specified
      *
      * @throws PHPUnit_Framework_Exception
      *
@@ -408,8 +408,8 @@ class PHPUnit_Util_Test
      * @param string $className
      * @param string $methodName
      *
-     * @return array|Iterator when a data provider is specified and exists
-     *                        null           when no data provider is specified
+     * @return array|Iterator when a data supplier is specified and exists
+     *                        null           when no data supplier is specified
      *
      * @throws PHPUnit_Framework_Exception
      */

@@ -11,14 +11,14 @@ class ProviderMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:provider';
+    protected $name = 'make:supplier';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new service provider class';
+    protected $description = 'Create a new service supplier class';
 
     /**
      * The type of class being generated.

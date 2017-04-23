@@ -43,7 +43,7 @@ class Factory
         if ($providerClass = self::findProviderClassname($provider)) {
             return $providerClass;
         }
-        throw new \InvalidArgumentException(sprintf('Unable to find provider "%s" with locale "%s"', $provider, $locale));
+        throw new \InvalidArgumentException(sprintf('Unable to find supplier "%s" with locale "%s"', $provider, $locale));
     }
 
     /**

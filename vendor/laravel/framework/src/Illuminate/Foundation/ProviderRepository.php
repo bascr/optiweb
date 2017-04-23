@@ -61,7 +61,7 @@ class ProviderRepository
         }
 
         // Next, we will register events to load the providers for each of the events
-        // that it has requested. This allows the service provider to defer itself
+        // that it has requested. This allows the service supplier to defer itself
         // while still getting automatically loaded when a certain event occurs.
         foreach ($manifest['when'] as $provider => $events) {
             $this->registerLoadEvents($provider, $events);
@@ -78,7 +78,7 @@ class ProviderRepository
     }
 
     /**
-     * Register the load events for the given provider.
+     * Register the load events for the given supplier.
      *
      * @param  string  $provider
      * @param  array  $events
@@ -114,8 +114,8 @@ class ProviderRepository
             $instance = $this->createProvider($provider);
 
             // When recompiling the service manifest, we will spin through each of the
-            // providers and check if it's a deferred provider or not. If so we'll
-            // add it's provided services to the manifest and note the provider.
+            // providers and check if it's a deferred supplier or not. If so we'll
+            // add it's provided services to the manifest and note the supplier.
             if ($instance->isDeferred()) {
                 foreach ($instance->provides() as $service) {
                     $manifest['deferred'][$service] = $provider;
@@ -136,7 +136,7 @@ class ProviderRepository
     }
 
     /**
-     * Create a new provider instance.
+     * Create a new supplier instance.
      *
      * @param  string  $provider
      * @return \Illuminate\Support\ServiceProvider
@@ -159,14 +159,14 @@ class ProviderRepository
     }
 
     /**
-     * Load the service provider manifest JSON file.
+     * Load the service supplier manifest JSON file.
      *
      * @return array|null
      */
     public function loadManifest()
     {
         // The service manifest is a file containing a JSON representation of every
-        // service provided by the application and whether its provider is using
+        // service provided by the application and whether its supplier is using
         // deferred loading or should be eagerly loaded on each request to us.
         if ($this->files->exists($this->manifestPath)) {
             $manifest = $this->files->getRequire($this->manifestPath);

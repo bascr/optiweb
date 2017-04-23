@@ -7,14 +7,14 @@ use Illuminate\Support\AggregateServiceProvider;
 class ConsoleSupportServiceProvider extends AggregateServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * Indicates if loading of the supplier is deferred.
      *
      * @var bool
      */
     protected $defer = true;
 
     /**
-     * The provider class names.
+     * The supplier class names.
      *
      * @var array
      */

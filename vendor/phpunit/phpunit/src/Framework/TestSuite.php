@@ -457,7 +457,7 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
                     );
                 } catch (PHPUnit_Framework_IncompleteTestError $e) {
                     $message = sprintf(
-                        'Test for %s::%s marked incomplete by data provider',
+                        'Test for %s::%s marked incomplete by data supplier',
                         $className,
                         $name
                     );
@@ -471,7 +471,7 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
                     $data = self::incompleteTest($className, $name, $message);
                 } catch (PHPUnit_Framework_SkippedTestError $e) {
                     $message = sprintf(
-                        'Test for %s::%s skipped by data provider',
+                        'Test for %s::%s skipped by data supplier',
                         $className,
                         $name
                     );
@@ -491,7 +491,7 @@ class PHPUnit_Framework_TestSuite implements PHPUnit_Framework_Test, PHPUnit_Fra
 
                 if (isset($t)) {
                     $message = sprintf(
-                        'The data provider specified for %s::%s is invalid.',
+                        'The data supplier specified for %s::%s is invalid.',
                         $className,
                         $name
                     );
