@@ -7,14 +7,14 @@ use InvalidArgumentException;
 trait CreatesUserProviders
 {
     /**
-     * The registered custom provider creators.
+     * The registered custom supplier creators.
      *
      * @var array
      */
     protected $customProviderCreators = [];
 
     /**
-     * Create the user provider implementation for the driver.
+     * Create the user supplier implementation for the driver.
      *
      * @param  string  $provider
      * @return \Illuminate\Contracts\Auth\UserProvider
@@ -42,7 +42,7 @@ trait CreatesUserProviders
     }
 
     /**
-     * Create an instance of the database user provider.
+     * Create an instance of the database user supplier.
      *
      * @param  array  $config
      * @return \Illuminate\Auth\DatabaseUserProvider
@@ -55,7 +55,7 @@ trait CreatesUserProviders
     }
 
     /**
-     * Create an instance of the Eloquent user provider.
+     * Create an instance of the Eloquent user supplier.
      *
      * @param  array  $config
      * @return \Illuminate\Auth\EloquentUserProvider

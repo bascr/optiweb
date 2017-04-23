@@ -5,21 +5,21 @@ namespace Illuminate\Support;
 class AggregateServiceProvider extends ServiceProvider
 {
     /**
-     * The provider class names.
+     * The supplier class names.
      *
      * @var array
      */
     protected $providers = [];
 
     /**
-     * An array of the service provider instances.
+     * An array of the service supplier instances.
      *
      * @var array
      */
     protected $instances = [];
 
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class AggregateServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
+     * Get the services provided by the supplier.
      *
      * @return array
      */

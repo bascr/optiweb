@@ -11,7 +11,7 @@ use Illuminate\View\Compilers\BladeCompiler;
 class ViewServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */

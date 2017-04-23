@@ -25,9 +25,9 @@ return [
     |
     | Next, you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user provider.
+    | here which uses session storage and the Eloquent user supplier.
     |
-    | All authentication drivers have a user provider. This defines how the
+    | All authentication drivers have a user supplier. This defines how the
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'supplier' => 'users',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'supplier' => 'users',
         ],
     ],
 
@@ -52,7 +52,7 @@ return [
     | User Providers
     |--------------------------------------------------------------------------
     |
-    | All authentication drivers have a user provider. This defines how the
+    | All authentication drivers have a user supplier. This defines how the
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
@@ -97,7 +97,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
+            'supplier' => 'users',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,

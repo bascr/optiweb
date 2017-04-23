@@ -29,7 +29,7 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for ValidFormats tests. Contains a complete list from psr-5 draft.
+     * Data supplier for ValidFormats tests. Contains a complete list from psr-5 draft.
      *
      * @return array
      */
@@ -62,7 +62,7 @@ class FqsenTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for invalidFormats tests. Contains a complete list from psr-5 draft.
+     * Data supplier for invalidFormats tests. Contains a complete list from psr-5 draft.
      *
      * @return array
      */

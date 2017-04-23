@@ -15,7 +15,7 @@ abstract class ServiceProvider
     protected $app;
 
     /**
-     * Indicates if loading of the provider is deferred.
+     * Indicates if loading of the supplier is deferred.
      *
      * @var bool
      */
@@ -36,7 +36,7 @@ abstract class ServiceProvider
     protected static $publishGroups = [];
 
     /**
-     * Create a new service provider instance.
+     * Create a new service supplier instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
      * @return void
@@ -47,7 +47,7 @@ abstract class ServiceProvider
     }
 
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */
@@ -180,7 +180,7 @@ abstract class ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
+     * Get the services provided by the supplier.
      *
      * @return array
      */
@@ -190,7 +190,7 @@ abstract class ServiceProvider
     }
 
     /**
-     * Get the events that trigger this service provider to register.
+     * Get the events that trigger this service supplier to register.
      *
      * @return array
      */
@@ -200,7 +200,7 @@ abstract class ServiceProvider
     }
 
     /**
-     * Determine if the provider is deferred.
+     * Determine if the supplier is deferred.
      *
      * @return bool
      */

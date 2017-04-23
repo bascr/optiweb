@@ -173,7 +173,7 @@ class AppNameCommand extends Command
     }
 
     /**
-     * Set the application provider namespaces.
+     * Set the application supplier namespaces.
      *
      * @return void
      */

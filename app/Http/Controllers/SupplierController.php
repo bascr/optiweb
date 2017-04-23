@@ -6,15 +6,25 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Supplier;
+use App\District;
 
-class ProviderController extends Controller
+class SupplierController extends Controller
 {
     //
+    public function index() {
+
+        $districts = District::all();
+
+        return view('supplier.register', compact('districts'));
+
+    }
+
+
     public function request() {
 
         $suppliers = Supplier::all();
 
-        return view('provider.request', compact('suppliers'));
+        return view('supplier.request', compact('suppliers'));
 
     }
 

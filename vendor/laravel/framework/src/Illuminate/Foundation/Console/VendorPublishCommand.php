@@ -24,7 +24,7 @@ class VendorPublishCommand extends Command
      * @var string
      */
     protected $signature = 'vendor:publish {--force : Overwrite any existing files.}
-            {--provider= : The service provider that has assets you want to publish.}
+            {--supplier= : The service supplier that has assets you want to publish.}
             {--tag=* : One or many tags that have assets you want to publish.}';
 
     /**
@@ -72,7 +72,7 @@ class VendorPublishCommand extends Command
     private function publishTag($tag)
     {
         $paths = ServiceProvider::pathsToPublish(
-            $this->option('provider'), $tag
+            $this->option('supplier'), $tag
         );
 
         if (empty($paths)) {

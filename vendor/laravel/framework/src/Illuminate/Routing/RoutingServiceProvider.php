@@ -9,7 +9,7 @@ use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 class RoutingServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */

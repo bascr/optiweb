@@ -11,7 +11,7 @@ use Illuminate\Contracts\Validation\ValidatesWhenResolved;
 class FoundationServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */

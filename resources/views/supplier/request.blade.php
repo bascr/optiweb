@@ -8,7 +8,7 @@
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Realizar pedido</div>
                     <div class="panel-body">
 <!-- Inicio formulario -->
-                        {!! Form::open(['method'=>'POST', 'action'=>'ProviderController@sendRequest', 'class' => 'form-horizontal']) !!}
+                        {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@sendRequest', 'class' => 'form-horizontal']) !!}
 
                         {!! Form::token() !!}
 <!-- Droplist marca -->

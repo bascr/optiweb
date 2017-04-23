@@ -352,7 +352,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
 
         $this->lastAttempted = $user = $this->provider->retrieveByCredentials($credentials);
 
-        // If an implementation of UserInterface was returned, we'll ask the provider
+        // If an implementation of UserInterface was returned, we'll ask the supplier
         // to validate the user against the given credentials, and if they are in
         // fact valid we'll log the users into the application and return true.
         if ($this->hasValidCredentials($user, $credentials)) {
@@ -678,7 +678,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
-     * Get the user provider used by the guard.
+     * Get the user supplier used by the guard.
      *
      * @return \Illuminate\Contracts\Auth\UserProvider
      */
@@ -688,7 +688,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
-     * Set the user provider used by the guard.
+     * Set the user supplier used by the guard.
      *
      * @param  \Illuminate\Contracts\Auth\UserProvider  $provider
      * @return void

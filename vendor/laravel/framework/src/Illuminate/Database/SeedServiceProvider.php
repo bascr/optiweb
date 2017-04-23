@@ -8,14 +8,14 @@ use Illuminate\Database\Console\Seeds\SeedCommand;
 class SeedServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * Indicates if loading of the supplier is deferred.
      *
      * @var bool
      */
     protected $defer = true;
 
     /**
-     * Register the service provider.
+     * Register the service supplier.
      *
      * @return void
      */
@@ -43,7 +43,7 @@ class SeedServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the services provided by the provider.
+     * Get the services provided by the supplier.
      *
      * @return array
      */
