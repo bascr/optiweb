@@ -6,13 +6,35 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <title>OptiWeb</title>
-<!-- Style and Fonts -->
-<!-- Bootstrap 3.3.6 -->
-        {!! Html::style('bootstrap/css/bootstrap-theme.css') !!}
-        {!! Html::style('bootstrap/css/bootstrap.min.css') !!}
 
-<!-- Font Awesome -->
-        {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') !!}
+<!-- Bootstrap and Jquery -->
+
+        <!-- Bootstrap 3.3.5 css -->
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+        <!-- jQuery 2.1.4 -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+        <!-- Bootstrap 3.3.5 js -->
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+        <!-- Bootstrap 3.3.6  css -->
+        {!! Html::style('bootstrap/css/bootstrap-theme.css') !!}
+        {{--{!! Html::style('bootstrap/css/bootstrap.min.css') !!}--}}
+        {{--<!-- jQuery 2.2.3 -->--}}
+        {{--{!! Html::script('bootstrap/js/jquery.min.js') !!}--}}
+        {{--<!-- Bootstrap 3.3.6 js -->--}}
+        {{--{!! Html::script('bootstrap/js/bootstrap.min.js') !!}--}}
+        <!-- jQuery 2.2.3 plugin -->
+        {{--{!! Html::script('plugins/jQuery/jquery-2.2.3.min.js') !!}--}}
+
+<!-- Summernote 8.0 -->
+        <!-- Summernote 8.0 css -->
+        {!! Html::style('summernote/summernote.css') !!}
+        <!-- Summernote 8.0 -->
+        {!! Html::script('summernote/summernote.js') !!}
+
+<!-- Style and Fonts -->
+<!-- Font Awesome 4.7.0 -->
+        {!! Html::style('fontawesome/css/font-awesome.css') !!}
 <!-- Ionicons -->
         {!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') !!}
 <!-- Theme style -->
@@ -197,6 +219,17 @@
                             </li>
                             <li class="treeview">
                                 <a href="">
+                                    <i class="fa fa-handshake-o"></i> <span>Proveedores</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url('/request') }}"><i class="fa fa-envelope"></i>Realizar pedido</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="">
                                     <i class="fa fa-clock-o"></i> <span>Control de acceso</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
@@ -296,14 +329,27 @@
         <div class="control-sidebar-bg"></div>
 
 <!-- Scripts -->
-<!-- JavaScripts -->
-        {!! Html::script('bootstrap/js/jquery.min.js') !!}
-<!-- Bootstrap 3.3.6 -->
-        {!! Html::script('bootstrap/js/bootstrap.min.js') !!}
-<!-- jQuery 2.2.3 -->
-        {!! Html::script('plugins/jQuery/jquery-2.2.3.min.js') !!}
+<!-- Loading summernot to a text structure-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#mail_content').summernote({
+                    toolbar: [
+                        // [groupName, [list of button]]
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        [ 'fontname', [ 'fontname' ] ],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['insert', ['picture']]
+                    ],
+                    height:300
+                });
+            });
+        </script>
+
 <!-- jQuery UI 1.11.4 -->
         {!! Html::script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') !!}
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);

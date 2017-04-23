@@ -130,6 +130,16 @@ Route::post('register', 'UserController@register');
 
 Route::get('/home', 'HomeController@index');
 
+/*
+|--------------------------------------------------------------------------
+|   Providers
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/request', 'ProviderController@request');
+
+Route::post('/request', 'ProviderController@sendRequest');
+
 
 
 
