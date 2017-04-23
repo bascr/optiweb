@@ -136,11 +136,13 @@ Route::get('/home', 'HomeController@index');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/register', 'SupplierController@index');
+Route::get('/supplier', 'SupplierController@index');
 
-Route::get('/request', 'SupplierController@request');
+Route::post('/supplier/create', 'SupplierController@create');
 
-Route::post('/request', 'SupplierController@sendRequest');
+Route::get('/supplier/request', 'SupplierController@request');
+
+Route::post('/supplier/request', 'SupplierController@sendRequest');
 
 
 

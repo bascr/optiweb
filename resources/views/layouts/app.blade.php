@@ -225,10 +225,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="{{ url('/register') }}"><i class="fa fa-id-card-o"></i>Ingresar proveedor</a></li>
-                                </ul>
-                                <ul class="treeview-menu">
-                                    <li><a href="{{ url('/request') }}"><i class="fa fa-envelope"></i>Realizar pedido</a></li>
+                                    <li><a href="{{ url('/supplier') }}"><i class="fa fa-id-card-o"></i>Ingresar proveedor</a></li>
+                                    <li><a href="{{ url('/supplier/request') }}"><i class="fa fa-envelope"></i>Realizar pedido</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">

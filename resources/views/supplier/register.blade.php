@@ -8,9 +8,8 @@
                 <div class="panel">
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de proveedor</div>
                     <div class="panel-body">
-
 <!-- Inicio formulario -->
-                    {!! Form::open(['method'=>'POST', 'action'=>'ClientController@create', 'onSubmit'=> 'return dv();','class' => 'form-horizontal']) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@create','class' => 'form-horizontal']) !!}
 
                     {!! Form::token() !!}
 <!-- Campo nombre -->
