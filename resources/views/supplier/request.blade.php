@@ -11,7 +11,7 @@
                         {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@sendRequest', 'class' => 'form-horizontal']) !!}
 
                         {!! Form::token() !!}
-<!-- Droplist marca -->
+<!-- Droplist proveedor -->
                             <div class="form-group{{ $errors->has('supplier') ? ' has-error' : '' }}">
                                 <label for="supplier" class="col-md-2 control-label">Proveedor</label>
 

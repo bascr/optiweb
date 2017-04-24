@@ -140,6 +140,12 @@ Route::get('/supplier', 'SupplierController@index');
 
 Route::post('/supplier/create', 'SupplierController@create');
 
+Route::get('/supplier/show', 'SupplierController@show');
+
+Route::get('/supplier/edit/{id}', 'SupplierController@edit');
+
+Route::post('/supplier/edit', 'SupplierController@update');
+
 Route::get('/supplier/request', 'SupplierController@request');
 
 Route::post('/supplier/request', 'SupplierController@sendRequest');

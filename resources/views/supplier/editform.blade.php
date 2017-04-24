@@ -6,90 +6,91 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel">
-                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de proveedor</div>
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Editar proveedor</div>
                     <div class="panel-body">
-<!-- Inicio formulario -->
-                    {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@create','class' => 'form-horizontal']) !!}
+    <!-- Inicio formulario -->
+                    {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@update','class' => 'form-horizontal']) !!}
 
                     {!! Form::token() !!}
-<!-- Campo nombre -->
+                        <input type="hidden" value="{{ $supplier->id }}" name="id"/>
+    <!-- Campo nombre -->
                         <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
                             {!! Form::label('name', 'Nombre', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('name', old('name'), [ 'class' => 'form-control', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
+                                {!! Form::text('name', $supplier->name, [ 'class' => 'form-control', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
                                 @if ($errors->has('name'))
                                     <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
-<!-- Campo apellido dirección -->
+    <!-- Campo apellido dirección -->
                         <div class="form-group {{$errors->has('address') ? 'has-error' : ''}}">
                             {!! Form::label('address', 'Dirección', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('address', old('address'), [ 'class' => 'form-control', 'maxlength' => '255']) !!}
+                                {!! Form::text('address', $supplier->address, [ 'class' => 'form-control', 'maxlength' => '255']) !!}
                                 @if ($errors->has('address'))
                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('address') }}</strong>
-                                                    </span>
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
-<!-- Droplist comuna -->
+    <!-- Droplist comuna -->
                         <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
                             <label for="district" class="col-md-4 control-label">Comuna</label>
 
                             <div class="col-md-6">
 
                                 <select id="district" class="form-control" name="district">
-                                    <option value="0" selected>Seleccione comuna</option>
+                                    <option value="0">Seleccione comuna</option>
                                     @foreach($districts as $district)
-                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                        <option @php if($supplier->district_id == $district->id ){ echo 'selected'; } @endphp value="{{ $district->id }}">{{ $district->name }}</option>
                                     @endforeach
                                 </select>
 
                                 @if ($errors->has('district'))
                                     <span class="help-block">
-                                            <strong>{{ $errors->first('district') }}</strong>
-                                        </span>
+                                        <strong>{{ $errors->first('district') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
-<!-- Campo teléfono -->
+    <!-- Campo teléfono -->
                         <div class="form-group {{$errors->has('phone') ? 'has-error' : ''}}">
                             {!! Form::label('phone', 'Teléfono', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('phone', old('phone'), [ 'class' => 'form-control', 'onkeypress' => 'return soloNumeros(event)', 'maxlength' => '11']) !!}
+                                {!! Form::text('phone', $supplier->phone, [ 'class' => 'form-control', 'onkeypress' => 'return soloNumeros(event)', 'maxlength' => '11']) !!}
                                 @if ($errors->has('phone'))
                                     <span class="help-block">
-                                                <strong>{{ $errors->first('phone') }}</strong>
-                                            </span>
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
-<!-- Campo email -->
+    <!-- Campo email -->
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $supplier->email }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
-<!-- Botón registrar -->
+    <!-- Botón registrar -->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                {!! Form::submit('Registrar', [ 'class' => 'btn btn-primary' ]) !!}
-                                <a href="{{ url('/home') }}" class="btn btn-primary">Ir al inicio</a>
+                                {!! Form::submit('Editar', [ 'class' => 'btn btn-primary' ]) !!}
+                                <a href="{{ url('/supplier/show') }}" class="btn btn-primary">Volver</a>
                             </div>
                         </div>
-<!-- cierre formulario -->
+    <!-- cierre formulario -->
                         {!! Form::close() !!}
                     </div>
                 </div>

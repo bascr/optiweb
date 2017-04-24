@@ -10,8 +10,7 @@
         "laravelcollective/html": "^5.2.0",
         "milon/barcode": "^5.2",
         "nesbot/carbon": "^1.22",
-        "barryvdh/laravel-dompdf": "^0.8.0",
-        "snowfire/beautymail": "dev-master"
+        "barryvdh/laravel-dompdf": "^0.8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

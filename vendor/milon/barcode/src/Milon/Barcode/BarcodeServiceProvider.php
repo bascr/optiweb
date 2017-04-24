@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class BarcodeServiceProvider extends ServiceProvider {
 
     /**
-     * Indicates if loading of the supplier is deferred.
+     * Indicates if loading of the provider is deferred.
      *
      * @var bool
      */
@@ -24,7 +24,7 @@ class BarcodeServiceProvider extends ServiceProvider {
 	}
 
     /**
-     * Register the service supplier.
+     * Register the service provider.
      *
      * @return void
      */
@@ -39,7 +39,7 @@ class BarcodeServiceProvider extends ServiceProvider {
     }
 
     /**
-     * Get the services provided by the supplier.
+     * Get the services provided by the provider.
      *
      * @return array
      */

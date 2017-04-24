@@ -38,7 +38,7 @@ class SupplierController extends Controller
             $supplier = new Supplier();
             $supplier->name = $request['name'];
             $supplier->address = $request['address'];
-            $supplier->distric_id = $request['district'];
+            $supplier->district_id = $request['district'];
             $supplier->phone = $request['phone'];
             $supplier->email = $request['email'];
             $supplier->save();
@@ -63,6 +63,68 @@ class SupplierController extends Controller
 
     }
 
+    public function show() {
+
+        $suppliers = Supplier::paginate(6);
+
+        return view('supplier.show', compact('suppliers'));
+
+    }
+
+    public function edit($id) {
+
+        $supplier = Supplier::where('id', $id)->get()->first();
+        $districts = District::all();
+
+
+        return view('supplier.editform', compact('supplier', 'districts'));
+
+    }
+
+    public function update(Request $request) {
+
+        $this->validate($request, [
+
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'address' => 'required|max:255',
+            'district' => 'required|not_in:0',
+            'phone' => 'required|digits_between:9,10|numeric',
+            'email' => 'required|email|max:255|unique:clients',
+
+        ]);
+
+        try{
+
+
+            $supplier = Supplier::where('id', $request['id'])->get()->first();
+            $supplier->name = $request['name'];
+            $supplier->address = $request['address'];
+            $supplier->district_id = $request['district'];
+            $supplier->phone = $request['phone'];
+            $supplier->email = $request['email'];
+            $supplier->save();
+
+            $message = [
+                'content' => 'El proveedor ha sido editado exitosamente.',
+                'messageNumber' => 1,
+            ];
+
+            return view('supplier.editmessages', compact('message'));
+
+
+        } catch(Exception $e) {
+
+            $message = [
+                'content' => 'Error al editar el proveedor, Error: '.$e->getMessage() ,
+                'messageNumber' => 0,
+            ];
+
+            return view('supplier.editmessages', compact('message'));
+
+        }
+
+    }
+
 
     public function request() {
 
@@ -75,12 +137,19 @@ class SupplierController extends Controller
     public function sendRequest(Request $request) {
 
         $supplier = Supplier::find($request['supplier']);
-        $to = $supplier->email;
-        $title = $request['subject'];
+        $email = $supplier->email;
+        $subject = $request['subject'];
         $content = $request['mail_content'];
+        $data = [
+            'content' => $content
+        ];
+
+        Mail::send('supplier.email', $data, function($message) use ($email, $subject) {
+            $message->from('correo@opticasalarcon.cl', 'Using OptiWeb');
+            $message->to($email)->subject($subject);
+        });
 
 
-        echo $request['mail_content'];
 
     }
 

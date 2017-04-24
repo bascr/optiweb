@@ -844,62 +844,6 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.6",
-        "version_normalized": "5.4.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
-            "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.1",
-            "symfony/phpunit-bridge": "~3.2"
-        },
-        "time": "2017-02-13 07:52:53",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/swift_required.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Chris Corbyn"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Swiftmailer, free feature-rich PHP mailer",
-        "homepage": "http://swiftmailer.org",
-        "keywords": [
-            "email",
-            "mail",
-            "mailer"
-        ]
-    },
-    {
         "name": "jakub-onderka/php-console-color",
         "version": "0.1",
         "version_normalized": "0.1.0.0",
@@ -3135,57 +3079,6 @@
         "homepage": "http://laravelcollective.com"
     },
     {
-        "name": "milon/barcode",
-        "version": "5.3.3",
-        "version_normalized": "5.3.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/milon/barcode.git",
-            "reference": "df5f63eda9910f9c554a2d8af48e435129739ed9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/milon/barcode/zipball/df5f63eda9910f9c554a2d8af48e435129739ed9",
-            "reference": "df5f63eda9910f9c554a2d8af48e435129739ed9",
-            "shasum": ""
-        },
-        "require": {
-            "illuminate/support": "5.*",
-            "php": ">=5.4.0"
-        },
-        "time": "2017-03-04 02:04:45",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Milon\\Barcode": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Nuruzzaman Milon",
-                "email": "milon521@gmail.com"
-            }
-        ],
-        "description": "Barcode generator like Qr Code , PDF417,C39, C39+,C39E,C39E+,C93,S25,S25+,I25,I25+,C128,C128A,C128B,C128C,2-Digits UPC-Based Extention,5-Digits UPC-Based Extention,EAN 8,EAN 13,UPC-A,UPC-E,MSI (Variation of Plessey code) ",
-        "keywords": [
-            "CODABAR",
-            "CODE 128",
-            "CODE 39",
-            "barcode",
-            "datamatrix",
-            "ean",
-            "laravel",
-            "pdf417",
-            "qr code",
-            "qrcode"
-        ]
-    },
-    {
         "name": "sabberworm/php-css-parser",
         "version": "6.0.1",
         "version_normalized": "6.0.1.0",
@@ -3421,91 +3314,6 @@
         ]
     },
     {
-        "name": "league/flysystem",
-        "version": "1.0.37",
-        "version_normalized": "1.0.37.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
-            "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "conflict": {
-            "league/flysystem-sftp": "<1.0.6"
-        },
-        "require-dev": {
-            "ext-fileinfo": "*",
-            "mockery/mockery": "~0.9",
-            "phpspec/phpspec": "^2.2",
-            "phpunit/phpunit": "~4.8"
-        },
-        "suggest": {
-            "ext-fileinfo": "Required for MimeType",
-            "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
-            "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
-            "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
-            "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
-            "league/flysystem-copy": "Allows you to use Copy.com storage",
-            "league/flysystem-dropbox": "Allows you to use Dropbox storage",
-            "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
-            "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
-            "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
-            "league/flysystem-webdav": "Allows you to use WebDAV storage",
-            "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
-        },
-        "time": "2017-03-22 15:43:14",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "League\\Flysystem\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Frank de Jonge",
-                "email": "info@frenky.net"
-            }
-        ],
-        "description": "Filesystem abstraction: Many filesystems, one API.",
-        "keywords": [
-            "Cloud Files",
-            "WebDAV",
-            "abstraction",
-            "aws",
-            "cloud",
-            "copy.com",
-            "dropbox",
-            "file systems",
-            "files",
-            "filesystem",
-            "filesystems",
-            "ftp",
-            "rackspace",
-            "remote",
-            "s3",
-            "sftp",
-            "storage"
-        ]
-    },
-    {
         "name": "symfony/event-dispatcher",
         "version": "v3.2.7",
         "version_normalized": "3.2.7.0",
@@ -3625,38 +3433,57 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "pelago/emogrifier",
-        "version": "V1.2.0",
-        "version_normalized": "1.2.0.0",
+        "name": "league/flysystem",
+        "version": "1.0.38",
+        "version_normalized": "1.0.38.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/jjriv/emogrifier.git",
-            "reference": "a1db453bb504597d821efcc04b21c79a6021e00c"
+            "url": "https://github.com/thephpleague/flysystem.git",
+            "reference": "4ba6e13f5116204b21c3afdf400ecf2b9eb1c482"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jjriv/emogrifier/zipball/a1db453bb504597d821efcc04b21c79a6021e00c",
-            "reference": "a1db453bb504597d821efcc04b21c79a6021e00c",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4ba6e13f5116204b21c3afdf400ecf2b9eb1c482",
+            "reference": "4ba6e13f5116204b21c3afdf400ecf2b9eb1c482",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4.0,<=7.1.99"
+            "php": ">=5.5.9"
+        },
+        "conflict": {
+            "league/flysystem-sftp": "<1.0.6"
         },
         "require-dev": {
-            "phpunit/phpunit": "4.8.27",
-            "squizlabs/php_codesniffer": "2.6.0"
+            "ext-fileinfo": "*",
+            "mockery/mockery": "~0.9",
+            "phpspec/phpspec": "^2.2",
+            "phpunit/phpunit": "~4.8"
         },
-        "time": "2017-03-02 12:51:48",
+        "suggest": {
+            "ext-fileinfo": "Required for MimeType",
+            "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
+            "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
+            "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
+            "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+            "league/flysystem-copy": "Allows you to use Copy.com storage",
+            "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
+            "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+            "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
+            "league/flysystem-webdav": "Allows you to use WebDAV storage",
+            "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
+            "spatie/flysystem-dropbox": "Allows you to use Dropbox storage"
+        },
+        "time": "2017-04-22 18:59:19",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.3.x-dev"
+                "dev-master": "1.1-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Pelago\\": "Classes/"
+                "League\\Flysystem\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -3665,54 +3492,65 @@
         ],
         "authors": [
             {
-                "name": "John Reeve",
-                "email": "jreeve@pelagodesign.com"
-            },
-            {
-                "name": "Cameron Brooks"
-            },
-            {
-                "name": "Jaime Prado"
-            },
-            {
-                "name": "Oliver Klee",
-                "email": "typo3-coding@oliverklee.de"
-            },
-            {
-                "name": "Roman Ožana",
-                "email": "ozana@omdesign.cz"
+                "name": "Frank de Jonge",
+                "email": "info@frenky.net"
             }
         ],
-        "description": "Converts CSS styles into inline style attributes in your HTML code",
-        "homepage": "http://www.pelagodesign.com/sidecar/emogrifier/"
+        "description": "Filesystem abstraction: Many filesystems, one API.",
+        "keywords": [
+            "Cloud Files",
+            "WebDAV",
+            "abstraction",
+            "aws",
+            "cloud",
+            "copy.com",
+            "dropbox",
+            "file systems",
+            "files",
+            "filesystem",
+            "filesystems",
+            "ftp",
+            "rackspace",
+            "remote",
+            "s3",
+            "sftp",
+            "storage"
+        ]
     },
     {
-        "name": "snowfire/beautymail",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.7",
+        "version_normalized": "5.4.7.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/Snowfire/Beautymail.git",
-            "reference": "c642c7927481a53cc84ca9459c1304bcaa5b535e"
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Snowfire/Beautymail/zipball/c642c7927481a53cc84ca9459c1304bcaa5b535e",
-            "reference": "c642c7927481a53cc84ca9459c1304bcaa5b535e",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
+            "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
             "shasum": ""
         },
         "require": {
-            "illuminate/support": "4.*|5.*",
-            "pelago/emogrifier": "@dev",
-            "php": ">=5.4.0"
+            "php": ">=5.3.3"
         },
-        "time": "2017-04-05 13:17:37",
+        "require-dev": {
+            "mockery/mockery": "~0.9.1",
+            "symfony/phpunit-bridge": "~3.2"
+        },
+        "time": "2017-04-20 17:32:18",
         "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Snowfire\\Beautymail\\": "src/"
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
             }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -3720,15 +3558,70 @@
         ],
         "authors": [
             {
-                "name": "Emil Sundberg",
-                "email": "emil@snowfire.net"
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
             }
         ],
-        "description": "Send beautiful html emails with Laravel",
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
         "keywords": [
             "email",
-            "html",
-            "laravel"
+            "mail",
+            "mailer"
+        ]
+    },
+    {
+        "name": "milon/barcode",
+        "version": "5.3.5",
+        "version_normalized": "5.3.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/milon/barcode.git",
+            "reference": "0f211bf93ee1783f1b6e2a1081b45b55af3e7df3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/milon/barcode/zipball/0f211bf93ee1783f1b6e2a1081b45b55af3e7df3",
+            "reference": "0f211bf93ee1783f1b6e2a1081b45b55af3e7df3",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.*",
+            "php": ">=5.4.0"
+        },
+        "time": "2017-04-21 01:08:30",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Milon\\Barcode": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Nuruzzaman Milon",
+                "email": "contact@milon.im"
+            }
+        ],
+        "description": "Barcode generator like Qr Code , PDF417,C39, C39+,C39E,C39E+,C93,S25,S25+,I25,I25+,C128,C128A,C128B,C128C,2-Digits UPC-Based Extention,5-Digits UPC-Based Extention,EAN 8,EAN 13,UPC-A,UPC-E,MSI (Variation of Plessey code) ",
+        "keywords": [
+            "CODABAR",
+            "CODE 128",
+            "CODE 39",
+            "barcode",
+            "datamatrix",
+            "ean",
+            "laravel",
+            "pdf417",
+            "qr code",
+            "qrcode"
         ]
     }
 ]

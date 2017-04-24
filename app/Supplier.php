@@ -9,6 +9,7 @@ class Supplier extends Eloquent
     //
     protected $primaryKey = 'id';
     protected $table = 'suppliers';
+    public $timestamps = false;
 
     protected $fillable = [
         'name', 'address',

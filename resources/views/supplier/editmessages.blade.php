@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel">
-                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de proveedores</div>
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Editar proveedor</div>
                     <div class="panel-body">
                         <div class="modal-body">
                             <h4>{{ $message['content'] }}</h4>
@@ -13,7 +13,7 @@
                         <div class="modal-footer">
                             @if($message['messageNumber'] == 1)
                                 <a href="{{ url('/home') }}" class="btn btn-primary">Ir al inicio</a>
-                                <a href="{{ url('/supplier') }}" class="btn btn-primary">Registrar otro proveedor</a>
+                                <a href="{{ url('/supplier/show') }}" class="btn btn-primary">Volver</a>
                             @else
                                 <a href="{{ URL::previous() }}" class="btn btn-primary">Intentarlo nuevamente</a>
                             @endif
