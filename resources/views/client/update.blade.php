@@ -10,38 +10,30 @@
                     <div class="panel-body">
 
 <!-- Inicio formulario -->
-                        {!! Form::open(['method'=>'POST', 'action'=>'ClientController@create', 'onSubmit'=> 'return dv();','class' => 'form-horizontal']) !!}
+                        {!! Form::open(['method'=>'POST', 'action'=>'ClientController@update','class' => 'form-horizontal']) !!}
 
                         {!! Form::token() !!}
 <!-- Campo run -->
-                                <div class="form-group {{$errors->has('run') ? 'has-error' : ''}} {{ $errors->has('digit') ? ' has-error' : '' }}">
+                                <div class="form-group">
                                     <div>
                                         {!! Form::label('run', 'Run', [ 'class' => 'col-md-4 control-label']) !!}
                                     </div>
 
                                     <div class="col-xs-6 col-md-4">
-                                        {!! Form::text('run', old('run'), [ 'class' => 'col-md-4 form-control', 'maxlength' => '8', 'onkeypress' => 'return soloNumeros(event)']) !!}
-                                        @if ($errors->has('run'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('run') }}</strong>
-                                            </span>
-                                        @endif
+                                        {!! Form::text('run', $client->run, [ 'class' => 'col-md-4 form-control', 'maxlength' => '8', 'onkeypress' => 'return soloNumeros(event)']) !!}
+
                                     </div>
 <!-- Campo dígito -->
                                     <div class="col-xs-4 col-md-2">
-                                        {!! Form::text('digit', old('digit'), [ 'class' => 'form-control', 'style'=>'width:40px', 'id' => 'digit', 'onkeypress' => 'return soloDigito(event)', 'maxlength' => '1']) !!}
-                                        @if ($errors->has('digit'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('digit') }}</strong>
-                                            </span>
-                                        @endif
+                                        {!! Form::text('digit', $client->digit, [ 'class' => 'form-control', 'style'=>'width:40px', 'id' => 'digit', 'onkeypress' => 'return soloDigito(event)', 'maxlength' => '1']) !!}
+
                                     </div>
                                 </div>
 <!-- Campo nombre -->
                                 <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
                                     {!! Form::label('name', 'Nombre', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::text('name', old('name'), [ 'class' => 'form-control', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
+                                        {!! Form::text('name', $client->name, [ 'class' => 'form-control', 'style' => 'text-transform: capitalize' ,'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
                                         @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -53,7 +45,7 @@
                                 <div class="form-group {{$errors->has('last_name') ? 'has-error' : ''}}">
                                     {!! Form::label('last_name', 'Apellido paterno', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::text('last_name', old('last_name'), [ 'class' => 'form-control', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
+                                        {!! Form::text('last_name', $client->last_name, [ 'class' => 'form-control', 'style' => 'text-transform: capitalize', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
                                         @if ($errors->has('last_name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('last_name') }}</strong>
@@ -65,7 +57,7 @@
                                 <div class="form-group {{$errors->has('second_last_name') ? 'has-error' : ''}}">
                                     {!! Form::label('second_last_name', 'Apellido materno', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::text('second_last_name', old('second_last_name'), [ 'class' => 'form-control', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
+                                        {!! Form::text('second_last_name', $client->second_last_name, [ 'class' => 'form-control', 'style' => 'text-transform: capitalize', 'onkeypress' => 'return soloLetras(event)', 'maxlength' => '45']) !!}
                                         @if ($errors->has('second_last_name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('second_last_name') }}</strong>
@@ -77,7 +69,7 @@
                                 <div class="form-group {{$errors->has('address') ? 'has-error' : ''}}">
                                     {!! Form::label('address', 'Dirección', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::text('address', old('address'), [ 'class' => 'form-control', 'maxlength' => '255']) !!}
+                                        {!! Form::text('address', $client->address, [ 'class' => 'form-control', 'style' => 'text-transform: capitalize', 'maxlength' => '255']) !!}
                                         @if ($errors->has('address'))
                                             <span class="help-block">
                                                         <strong>{{ $errors->first('address') }}</strong>
@@ -89,7 +81,7 @@
                                 <div class="form-group {{$errors->has('birt_date') ? 'has-error' : ''}}">
                                     {!! Form::label('birt_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::date('birt_date', old('birt_date'), [ 'class' => 'form-control']) !!}
+                                        {!! Form::date('birt_date', $client->birt_date, [ 'class' => 'form-control']) !!}
                                         @if ($errors->has('birt_date'))
                                             <span class="help-block">
                                                    <strong>{{ $errors->first('birt_date') }}</strong>
@@ -102,18 +94,18 @@
                                     <label for="district" class="col-md-4 control-label">Comuna</label>
 
                                     <div class="col-md-6">
-
                                         <select id="district" class="form-control" name="district">
-                                            <option value="0" selected>Seleccione comuna</option>
+                                            <option value="0">Seleccione comuna</option>
                                             @foreach($districts as $district)
-                                                <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                                <option @php if($district->id == $client->district_id ){ echo 'selected'; } @endphp value="{{ $district->id }}">{{ $district->name }}</option>
+
                                             @endforeach
                                         </select>
 
                                         @if ($errors->has('district'))
                                             <span class="help-block">
-                                            <strong>{{ $errors->first('district') }}</strong>
-                                        </span>
+                                                    <strong>{{ $errors->first('district') }}</strong>
+                                                </span>
                                         @endif
                                     </div>
                                 </div>
@@ -121,7 +113,7 @@
                                 <div class="form-group {{$errors->has('phone') ? 'has-error' : ''}}">
                                     {!! Form::label('phone', 'Teléfono', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::text('phone', old('phone'), [ 'class' => 'form-control', 'onkeypress' => 'return soloNumeros(event)', 'maxlength' => '11']) !!}
+                                        {!! Form::text('phone', $client->phone, [ 'class' => 'form-control', 'onkeypress' => 'return soloNumeros(event)', 'maxlength' => '11']) !!}
                                         @if ($errors->has('phone'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('phone') }}</strong>
@@ -134,7 +126,7 @@
                                     <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ $client->email }}">
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -146,7 +138,8 @@
 <!-- Botón registrar -->
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
-                                        {!! Form::submit('Registrar', [ 'class' => 'btn btn-primary' ]) !!}
+                                        {!! Form::submit('Modificar', [ 'class' => 'btn btn-primary' ]) !!}
+                                        <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                                     </div>
                                 </div>
 <!-- cierre formulario -->
@@ -159,32 +152,6 @@
 @endsection
 
 <script>
-
-        dv = function() {
-            var run = document.getElementById('run');
-            var digit = document.getElementById('digit');
-            var dig;
-
-            if(digit.value == "k"){
-                dig = "K";
-            }else{
-                dig = digit.value;
-            }
-
-            var T = run.value;
-            var M=0,S=1;
-            for(;T;T=Math.floor(T/10))
-                S=(S+T%10*(9-M++%6))%11;
-
-            var fin = S?S-1:'K';
-
-            if(fin.toString() == dig){
-
-            }else{
-                swal('Ingrese un run valido', 'para completar el formulario', 'warning');
-                return false;
-            }
-        }
 
         function soloDigito(e){
             key = e.keyCode || e.which;

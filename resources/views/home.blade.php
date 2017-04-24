@@ -15,7 +15,7 @@
                 <div class="icon">
                     <i class="ion-android-clipboard"></i>
                 </div>
-                <a href="#" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{url('/prescription/listToDay')}}" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -45,11 +45,25 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{url('/client/listToDay')}}" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
 
+    </div>
+    <div class="box-header">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" style="text-align: center; height: 50px"></div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="panel panel-default" style="background-color: rgba(0,0,255,0.1)">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"  style="text-align: center; text-transform: none"><h1>{{$mensaje}}</h1></div>
+            <div class="col-md-2"></div>
+        </div>
     </div>
     </body>
 @endsection

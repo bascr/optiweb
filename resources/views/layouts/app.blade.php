@@ -200,7 +200,8 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url('/client') }}"><i class="fa fa-plus"></i> Ingresar cliente</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar cliente</a></li>
+                                    <li><a href="{{ url('/client/list') }}"><i class="glyphicon glyphicon-file"></i> Lista de clientes</a></li>
+                                    <li><a href="{{ url('/client/find') }}"><i class="glyphicon glyphicon-search"></i> Buscar cliente</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">

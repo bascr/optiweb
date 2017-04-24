@@ -38,6 +38,19 @@ Route::get('/client', 'ClientController@index');
 
 Route::post('/client/create', 'ClientController@create');
 
+Route::get('/client/list', 'ClientController@lista');
+
+Route::get('/client/seeClient/{run}', 'ClientController@seeClient');
+
+Route::get('/client/update/{run}', 'ClientController@openUpdate');
+
+Route::post('/client/update/', 'ClientController@update');
+
+Route::get('/client/find', 'ClientController@find');
+
+Route::post('/client/find', 'ClientController@findClient');
+
+Route::get('/client/listToDay', 'ClientController@listToDay');
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +92,9 @@ Route::get('/prescription/seePrescription/{id}','PrescriptionController@seePresc
 Route::get('/prescription/update/{id}','PrescriptionController@update');
 
 Route::post('/prescription/update', 'PrescriptionController@updatePresc');
+
+Route::get('/prescription/listToDay','PrescriptionController@listToDay');
+
 /*
 |--------------------------------------------------------------------------
 |   Rutas Marcaje
@@ -137,6 +153,7 @@ Route::get('register', 'UserController@index');
 Route::post('register', 'UserController@register');
 
 Route::get('/home', 'HomeController@index');
+
 
 /*
 |--------------------------------------------------------------------------

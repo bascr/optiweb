@@ -3,17 +3,17 @@
 @section('content')
     <div class="box-header">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Inventarios</div>
                     <div class="panel-body">
                         <table class="table table-bordered" style="text-align: center">
                             <tr>
-                                <th>Fecha de ingreso</th>
-                                <th>Responsable</th>
-                                <th>Ingresos de productos realizados</th>
-                                <th>Cantidad total de especies ingresadas</th>
-                                <th>Códigos de barra</th>
+                                <th class="col-md-2" style="text-align: center">Fecha de ingreso</th>
+                                <th class="col-md-3" style="text-align: center">Responsable</th>
+                                <th class="col-md-3" style="text-align: center">Ingresos de productos realizados</th>
+                                <th class="col-md-3" style="text-align: center">Cantidad total de especies ingresadas</th>
+                                <th class="col-md-1" style="text-align: center">Códigos de barra</th>
                             </tr>
                             @foreach($inventories as $inventory)
                             <tr>

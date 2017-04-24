@@ -5,7 +5,7 @@
             <div class="panel-heading" style="color: #fff; background-color: #3c8dbc;">Receta</div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table id="prescription" class="table table-bordered">
+                        <table id="imp" class="table table-bordered">
                             <tr class="info">
                                 <td>{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
                                 <td colspan="7">
@@ -114,7 +114,7 @@
                         </table>
                         <div class="modal-footer">
                                 <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
-                            <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('prescription', {render:'download'});">Imprimir</a>
+
                         </div>
                     </div>
                 </div>

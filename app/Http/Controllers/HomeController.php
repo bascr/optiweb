@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Happy_message;
 use App\Http\Requests;
 use App\Prescription;
 use Illuminate\Http\Request;
@@ -47,9 +48,19 @@ class HomeController extends Controller
 
         $client = Client::all()->where('created_at', $toDay)->count();
 
+        $message = Happy_message::all();
+
+        $max = sizeof($message);
+        $random = rand( 1 , $max);
+        foreach($message as $mess){
+            if($random == $mess->id){
+                $mensaje = '"'. $mess->message . '"';
+            }
+        }
+
         $array = [$cantidad, $client];
 
-        return view('home', compact('array'));
+        return view('home', compact('array', 'mensaje'));
     }
 
 

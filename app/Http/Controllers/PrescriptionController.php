@@ -212,9 +212,34 @@ class PrescriptionController extends Controller
 
     }
 
-    function pdf(){
+    public function pdf(){
 
+        $pdf = PDF::loadView('seePrescription');
 
+        return $pdf->download('receta.pdf');
 
+    }
+
+    public function listToDay(){
+
+        $date = getdate();
+        $year = $date['year'];
+        $month = $date['mon'];
+        $day = $date['mday'];
+        if($month != 10 || $month != 11 || $month != 12 ) {
+            $month = "0" . $month;
+        }
+
+        $register_date = $year . "-" . $month . "-" . $day;
+
+        $prescriptions = Prescription::where('created_at', $register_date )->orderBy('id', 'DESC')->paginate(6);
+        //$client = $listado->client->name . ' ' . $listado->client->last_name . ' ' . $listado->client->second_last_name;
+
+        //dd($listado);
+        if($prescriptions != null){
+            return view('prescription.listToDay', compact('prescriptions'));
+        }else{
+            return view('/home');
+        }
     }
 }
