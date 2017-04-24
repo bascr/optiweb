@@ -3342,7 +3342,11 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
+<<<<<<< HEAD
         "time": "2017-04-04T07:26:27+00:00",
+=======
+        "time": "2017-04-04 07:26:27",
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3399,7 +3403,11 @@
         "suggest": {
             "symfony/console": "For validating YAML files using the lint command"
         },
+<<<<<<< HEAD
         "time": "2017-03-20T09:45:15+00:00",
+=======
+        "time": "2017-03-20 09:45:15",
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3433,6 +3441,7 @@
         "homepage": "https://symfony.com"
     },
     {
+<<<<<<< HEAD
         "name": "pelago/emogrifier",
         "version": "V1.2.0",
         "version_normalized": "1.2.0.0",
@@ -3540,6 +3549,8 @@
         ]
     },
     {
+=======
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
         "name": "league/flysystem",
         "version": "1.0.38",
         "version_normalized": "1.0.38.0",
@@ -3580,7 +3591,11 @@
             "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage"
         },
+<<<<<<< HEAD
         "time": "2017-04-22T18:59:19+00:00",
+=======
+        "time": "2017-04-22 18:59:19",
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3646,7 +3661,11 @@
             "mockery/mockery": "~0.9.1",
             "symfony/phpunit-bridge": "~3.2"
         },
+<<<<<<< HEAD
         "time": "2017-04-20T17:32:18+00:00",
+=======
+        "time": "2017-04-20 17:32:18",
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3699,7 +3718,11 @@
             "illuminate/support": "5.*",
             "php": ">=5.4.0"
         },
+<<<<<<< HEAD
         "time": "2017-04-21T01:08:30+00:00",
+=======
+        "time": "2017-04-21 01:08:30",
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
         "type": "library",
         "installation-source": "dist",
         "autoload": {

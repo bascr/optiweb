@@ -18,6 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name', 45);
             $table->string('last_name', 45);
             $table->string('second_last_name', 45);
+            $table->dateTime('birth_date');
             $table->string('address', 255);
             $table->integer('district_id');
             $table->integer('phone');

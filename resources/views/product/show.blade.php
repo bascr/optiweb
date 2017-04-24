@@ -3,7 +3,7 @@
 @section('content')
     <div class="box-header">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Listado de productos</div>
                     <div class="panel-body">

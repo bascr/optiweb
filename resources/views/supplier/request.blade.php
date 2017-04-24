@@ -3,7 +3,11 @@
 @section('content')
     <div class="box-header">
         <div class="row">
+<<<<<<< HEAD
             <div class="col-md-12">
+=======
+            <div class="col-md-8 col-md-offset-2">
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
                 <div class="panel">
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Realizar pedido</div>
                     <div class="panel-body">
@@ -11,7 +15,11 @@
                         {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@sendRequest', 'class' => 'form-horizontal']) !!}
 
                         {!! Form::token() !!}
+<<<<<<< HEAD
 <!-- Droplist marca -->
+=======
+<!-- Droplist proveedor -->
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
                             <div class="form-group{{ $errors->has('supplier') ? ' has-error' : '' }}">
                                 <label for="supplier" class="col-md-2 control-label">Proveedor</label>
 
@@ -67,5 +75,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

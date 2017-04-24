@@ -226,10 +226,16 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
+<<<<<<< HEAD
                                     <li><a href="{{ url('/register') }}"><i class="fa fa-id-card-o"></i>Ingresar proveedor</a></li>
                                 </ul>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url('/request') }}"><i class="fa fa-envelope"></i>Realizar pedido</a></li>
+=======
+                                    <li><a href="{{ url('/supplier') }}"><i class="fa fa-id-card-o"></i>Ingresar proveedor</a></li>
+                                    <li><a href="{{ url('/supplier/show') }}"><i class="glyphicon glyphicon-search"></i>Buscar proveedor</a></li>
+                                    <li><a href="{{ url('/supplier/request') }}"><i class="fa fa-envelope"></i>Realizar pedido</a></li>
+>>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
                                 </ul>
                             </li>
                             <li class="treeview">
