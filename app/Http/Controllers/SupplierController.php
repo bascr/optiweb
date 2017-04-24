@@ -145,7 +145,7 @@ class SupplierController extends Controller
         ];
 
         Mail::send('supplier.email', $data, function($message) use ($email, $subject) {
-            $message->from('correo@opticasalarcon.cl', 'Using OptiWeb');
+            $message->from('contacto@opticasalarcon.cl', 'Using OptiWeb');
             $message->to($email)->subject($subject);
         });
 
