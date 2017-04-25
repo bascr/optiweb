@@ -148,9 +148,21 @@ Route::post('product/stock', 'ProductController@addStock');
 
 Route::auth();
 
-Route::get('register', 'UserController@index');
+Route::get('/user/register', 'UserController@index');
 
-Route::post('register', 'UserController@register');
+Route::post('/user/register', 'UserController@register');
+
+Route::get('/user/show', 'UserController@show');
+
+Route::get('/user/edit/{username}', 'UserController@edit');
+
+Route::post('/user/edit', 'UserController@update');
+
+Route::get('/user/find', 'UserController@find');
+
+Route::post('/user/find', 'UserController@account');
+
+Route::post('/user/edit/account', 'UserController@updateAccount');
 
 Route::get('/home', 'HomeController@index');
 

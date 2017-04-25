@@ -10,6 +10,7 @@ use App\District;
 
 
 use Exception;
+use Mail;
 
 
 class SupplierController extends Controller
@@ -150,14 +151,19 @@ class SupplierController extends Controller
         $email = $supplier->email;
         $subject = $request['subject'];
         $content = $request['mail_content'];
+        $from = 'contacto@opticasalarcon.cl';
         $data = [
+            'subject' => $subject,
             'content' => $content
         ];
 
-        Mail::send('supplier.email', $data, function($message) use ($email, $subject) {
-            $message->from('contacto@opticasalarcon.cl', 'Using OptiWeb');
-            $message->to($email)->subject($subject);
+        Mail::send('supplier.email', $data, function($message) use ($email, $from, $subject) {
+
+            $message->from($from, 'Óptica Alarcón');
+            $message->to('bastycr@hotmail.com')->subject($subject);
         });
+
+        return view('supplier.emailmessages');
 
 
     }

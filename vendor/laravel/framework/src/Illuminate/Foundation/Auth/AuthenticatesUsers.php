@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use App\User;
 
 trait AuthenticatesUsers
 {
@@ -71,9 +72,17 @@ trait AuthenticatesUsers
 
         $credentials = $this->getCredentials($request);
 
-        if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
-            return $this->handleUserWasAuthenticated($request, $throttles);
+        $user = User::where('username', $request['username'])->get()->first();
+
+        if($user != null) {
+            if($user->contract_state == 1) {
+                if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
+                    return $this->handleUserWasAuthenticated($request, $throttles);
+                }
+            }
         }
+
+
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this

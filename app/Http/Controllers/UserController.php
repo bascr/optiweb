@@ -60,8 +60,7 @@ class UserController extends Controller
                 'base_wage' => $request['base_wage'],
                 'overtime_value' => $request['overtime_value'],
                 'user_type_id' => $request['user_type'],
-                'branch_office_id' => 1,
-
+                'branch_office_id' => 1
             ]);
 
             $message = [
@@ -82,4 +81,146 @@ class UserController extends Controller
 
         }
     }
+
+    public function show() {
+
+        $users = User::orderBy('last_name', 'asc')->paginate(7);
+
+        return view('auth.show', compact('users'));
+
+    }
+
+    public function edit($username) {
+
+        $user = User::where('username', $username)->get()->first();
+        $districts = District::all();
+        $user_types = UserType::all();
+
+        return view('auth.editform', compact('user','districts', 'user_types'));
+
+
+    }
+
+    public function update(Request $request) {
+
+        $this->validate($request, [
+
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'second_last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'address' => 'required|max:255',
+            'district' => 'required|not_in:0',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|digits_between:9,10|numeric',
+            'base_wage' => 'required|numeric',
+            'overtime_value' => 'required|numeric',
+            'user_type' => 'required|not_in:0',
+
+        ]);
+
+        try {
+
+            $user = User::where('username', $request['username'])->get()->first();
+            $user->name = $request['name'];
+            $user->last_name = $request['last_name'];
+            $user->second_last_name = $request['second_last_name'];
+            $user->address = $request['address'];
+            $user->district_id = $request['district'];
+            $user->email = $request['email'];
+            $user->phone = $request['phone'];
+            $user->base_wage = $request['base_wage'];
+            $user->overtime_value = $request['overtime_value'];
+            $user->user_type_id = $request['user_type'];
+            $user->save();
+
+            $message = [
+                'content' => 'El usuario ha sido editado exitosamente.',
+                'messageNumber' => 1,
+            ];
+
+            return view('auth.editmessages', compact('message'));
+
+        } catch(Exception $e) {
+
+            $message = [
+                'content' => 'Error al editar usuario, Error: '.$e->getMessage() ,
+                'messageNumber' => 0,
+            ];
+
+            return view('auth.editmessages', compact('message'));
+
+        }
+
+
+    }
+
+    public function find() {
+
+        return view('auth.find');
+
+    }
+
+    public function account(Request $request) {
+
+        $this->validate($request, [
+
+            'username' => 'required|max:45',
+
+        ]);
+
+        try {
+            $user = User::where('username', $request['username'])->get()->first();
+
+            if($user == null) {
+                $message = [
+                    'content' => 'El nombre de usuario ingresado no es válido'
+                ];
+
+                return view('auth.accountmessages', compact('message'));
+            }
+
+            return view('auth.account', compact('user'));
+
+        } catch(Exception $e) {
+
+            $message = [
+                'content' => 'Error al activar/desactivar cuenta, Error: '.$e->getMessage()
+            ];
+
+            return view('auth.accountmessages', compact('message'));
+
+        }
+
+    }
+
+    public function updateAccount(Request $request) {
+
+        try {
+            $user = User::where('username', $request['username'])->get()->first();
+            $user->contract_state = $request['contract_state'];
+            $user->save();
+
+            $state = $request['contract_state'] == 0 ? 'desactivada' : 'activada';
+
+            $message = [
+                'content' => 'La cuenta del usuario '. $user->username . ', perteneciente a ' . $user->name . ' ' . $user->last_name . ' ' . $user->second_last_name . ' ha sido ' . $state,
+            ];
+
+            return view('auth.accountmessages', compact('message'));
+
+
+        } catch(Exception $e) {
+
+            $message = [
+                'content' => 'Error al activar/desactivar cuenta, Error: '.$e->getMessage()
+            ];
+
+            return view('auth.accountmessages', compact('message'));
+
+        }
+
+
+    }
+
+
 }
