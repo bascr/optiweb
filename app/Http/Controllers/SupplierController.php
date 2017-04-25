@@ -12,7 +12,6 @@ use App\District;
 use Exception;
 use Mail;
 
-
 class SupplierController extends Controller
 {
     //
@@ -164,7 +163,6 @@ class SupplierController extends Controller
         });
 
         return view('supplier.emailmessages');
-
 
     }
 
