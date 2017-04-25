@@ -1,20 +1,4 @@
 @extends('layouts.app')
-<<<<<<< HEAD
-@section('content')
-    <body class="box-header">
-        <div class="panel">
-            <div class="panel-heading" style="color: #fff; background-color: #3c8dbc;">Receta</div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="imp" class="table table-bordered">
-                            <tr class="info">
-                                <td>{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
-                                <td colspan="7">
-                                    <div>
-                                        <label class="control-label text-capitalize" >{{$name}}</label>
-                                        <input class="hidden" name="client_run" id="client_run" value="{{$presc[1]}}">
-=======
->>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
 
 @section('content')
     <div class="box-header">
@@ -111,13 +95,9 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-<<<<<<< HEAD
                                 <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
-
-=======
                             <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('prescriptionTable', {render:'download'});">Imprimir</a>
                             <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
->>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
                         </div>
                     </div>
                 </div>

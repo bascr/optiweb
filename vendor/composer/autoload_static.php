@@ -311,8 +311,7 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
     );
 
     public static $classMap = array (
-<<<<<<< HEAD
-=======
+
         'App\\Article' => __DIR__ . '/../..' . '/app/Article.php',
         'App\\BranchOffice' => __DIR__ . '/../..' . '/app/BranchOffice.php',
         'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
@@ -398,7 +397,7 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
->>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
+
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_023834_create_articles_table.php',
         'CreateBranchOfficesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_002226_create_branch_offices_table.php',
@@ -510,8 +509,7 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
-<<<<<<< HEAD
-=======
+
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',
@@ -1287,7 +1285,7 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'Monolog\\Processor\\UidProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
->>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
+
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
