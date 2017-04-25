@@ -250,8 +250,9 @@
                                 </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="{{ url('/register') }}"><i class="fa fa-plus"></i>Ingresar usuario</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i>Buscar usuario</a></li>
+                                    <li><a href="{{ url('/user/register') }}"><i class="fa fa-plus"></i>Ingresar usuario</a></li>
+                                    <li><a href="{{ url('/user/show') }}"><i class="glyphicon glyphicon-search"></i>Buscar usuario</a></li>
+                                    <li><a href="{{ url('/user/find') }}"><i class="fa fa-unlock-alt"></i>Activar/Desactivar cuenta</a></li>
                                 </ul>
                             </li>
                         @endif
