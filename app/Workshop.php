@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Workshop extends Model
+class Workshop extends Eloquent
 {
     //
     protected $primaryKey = 'id';

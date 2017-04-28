@@ -20,6 +20,7 @@ class CreateSalesTable extends Migration
             $table->integer('sale_promotion_id');
             $table->integer('pay');
             $table->integer('sale_state');
+            $table->integer('sale_type_id')->unsigned();
 
         });
     }

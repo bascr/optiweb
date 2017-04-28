@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class CrystalType extends Model
+class CrystalType extends Eloquent
 {
     //
     protected $primaryKey = 'id';
     protected $table = 'crystal_types';
 
-    protected $fillable = [ 'type' ];
+    protected $fillable = [ 'name' ];
 
     public function crystals() {
 

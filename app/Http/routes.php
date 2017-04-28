@@ -60,7 +60,7 @@ Route::get('/client/listToDay', 'ClientController@listToDay');
 
 Route::get('/prescription', 'PrescriptionController@index');
 
-Route::post('/prescription/find', 'PrescriptionController@find');
+Route::get('/prescription/find/', 'PrescriptionController@find');
 
 Route::post('/prescription/register', 'PrescriptionController@create');
 
@@ -186,19 +186,19 @@ Route::get('/supplier/request', 'SupplierController@request');
 
 Route::post('/supplier/request', 'SupplierController@sendRequest');
 
-
-/*
-|--------------------------------------------------------------------------
-|   Suppliers
-|--------------------------------------------------------------------------
-*/
-
 Route::get('/register', 'SupplierController@index');
 
 Route::get('/request', 'SupplierController@request');
 
 Route::post('/request', 'SupplierController@sendRequest');
 
+/*
+|--------------------------------------------------------------------------
+|   Mail
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/mail', 'HomeController@mail');
 
 
 

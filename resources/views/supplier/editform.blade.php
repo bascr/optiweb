@@ -37,6 +37,26 @@
                                 @endif
                             </div>
                         </div>
+<!-- Droplist tipo proveedor -->
+                        <div class="form-group{{ $errors->has('supplier_type') ? ' has-error' : '' }}">
+                            <label for="supplier_type" class="col-md-4 control-label">Tipo proveedor</label>
+
+                            <div class="col-md-6">
+
+                                <select id="supplier_type" class="form-control" name="supplier_type">
+                                    <option value="0">Seleccione tipo proveedor</option>
+                                    @foreach($supplier_types as $supplier_type)
+                                        <option @php if($supplier->supplier_type_id == $supplier_type->id ){ echo 'selected'; } @endphp value="{{ $supplier_type->id }}">{{ $supplier_type->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('supplier_type'))
+                                    <span class="help-block">
+                                            <strong>{{ $errors->first('supplier_type') }}</strong>
+                                        </span>
+                                @endif
+                            </div>
+                        </div>
     <!-- Droplist comuna -->
                         <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
                             <label for="district" class="col-md-4 control-label">Comuna</label>

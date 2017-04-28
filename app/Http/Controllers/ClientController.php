@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prescription;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -40,10 +41,10 @@ class ClientController extends Controller
 
             'run' => 'required|numeric|unique:clients',
             'digit' => 'required|max:1|regex:/^[0-9Kk]$/',
-            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
-            'last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
-            'second_last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
-            'birt_date' => 'required',
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
+            'last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
+            'second_last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
+            'birth_date' => 'required',
             'address' => 'required|max:255',
             'district' => 'required|not_in:0',
             'phone' => 'required|digits_between:9,10|numeric',
@@ -58,7 +59,7 @@ class ClientController extends Controller
             $client->name = $request->name;
             $client->last_name = $request->last_name;
             $client->second_last_name = $request->second_last_name;
-            $client->birt_date = $request->birt_date;
+            $client->birth_date = Carbon::parse($request->birth_date)->format('Y-m-d');
             $client->address = $request->address;
             $client->district_id = $request->district;
             $client->phone = $request->phone;
@@ -120,10 +121,10 @@ class ClientController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
-            'last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
-            'second_last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
-            'birt_date' => 'required',
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
+            'last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
+            'second_last_name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
+            'birth_date' => 'required',
             'address' => 'required|max:255',
             'district' => 'required|not_in:0',
             'phone' => 'required|digits_between:9,10|numeric',
@@ -137,7 +138,7 @@ class ClientController extends Controller
             $client->name = $request->name;
             $client->last_name = $request->last_name;
             $client->second_last_name = $request->second_last_name;
-            $client->birt_date = $request->birt_date;
+            $client->birth_date = Carbon::parse($request->birth_date)->format('Y-m-d');
             $client->address = $request->address;
             $client->district_id = $request->district;
             $client->phone = $request->phone;

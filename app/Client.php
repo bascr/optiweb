@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Client extends Model
+class Client extends Eloquent
 {
     //
     protected $primaryKey = 'run';

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Crystal extends Model
+class Crystal extends Eloquent
 {
     //
     protected $primaryKey = 'id';
@@ -33,11 +33,6 @@ class Crystal extends Model
     public function diopterRange() {
 
         return $this->belongsTo('App\DiopterRange');
-    }
-
-    public function laboratory() {
-
-        return $this->belongsTo('App\Laboratory');
     }
 
     public function products() {

@@ -26,4 +26,12 @@ class Supplier extends Eloquent
 
         return $this->hasMany('App\Product');
     }
+
+    public function supplierType() {
+
+        return $this->belongsTo('App\SupplierType');
+
+    }
+
+
 }

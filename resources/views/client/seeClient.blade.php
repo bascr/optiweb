@@ -55,9 +55,9 @@
                                 </div>
 <!-- Campo fecha de nacimiento -->
                                 <div class="form-group">
-                                    {!! Form::label('birt_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
+                                    {!! Form::label('birth_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        <label class="form-control text-capitalize" style="text-align: left">{{ $client->birt_date}}</label>
+                                        <label class="form-control text-capitalize" style="text-align: left">{{ Carbon\Carbon::parse($client->birth_date)->format('d-m-Y')}}</label>
                                     </div>
                                 </div>
 <!-- Droplist comuna -->

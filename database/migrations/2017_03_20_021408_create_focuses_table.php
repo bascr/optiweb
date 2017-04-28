@@ -25,6 +25,6 @@ class CreateFocusesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('foci');
+        Schema::drop('focuses');
     }
 }

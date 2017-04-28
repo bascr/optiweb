@@ -8,14 +8,14 @@
                 <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Seleccione un cliente</div>
                 <div class="panel-body">
 <!-- Inicio formulario -->
-                {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@find', 'class' => 'form-horizontal']) !!}
+                {!! Form::open( array('url' => '/prescription/find/', 'method' => 'GET')) !!}
 
-                {!! Form::token() !!}
+                {{--{!! Form::token() !!}--}}
  <!-- Buscar run -->
                     <div class="form-group {{$errors->has('run') ? 'has_error' : ''}}">
                         {!! Form::label('run', 'Run', [ 'class' => 'col-md-4 control-label']) !!}
                         <div class="col-md-3">
-                            {!! Form::text('run', old('run'), [ 'class' => 'form-control', 'placeholder' => 'sin guión ni dígito']) !!}
+                            {!! Form::text('run', old('run'), [ 'class' => 'form-control', 'placeholder' => 'sin guión ni dígito', 'maxlength' => '8', 'onkeypress' => 'return soloNumeros(event)']) !!}
                             @if ($errors->has('run'))
                                 <span class="help-block">
                                      <strong>{{ $errors->first('run') }}</strong>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
 <!-- cierre formulario -->
-                    {!! Form::close() !!}
+                 {!! Form::close() !!}
 
                 </div>
                 </div>
@@ -38,3 +38,24 @@
         </div>
     </body>
 @endsection
+
+<script>
+    function soloNumeros(e){
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "0123456789";
+        especiales = "8-37-39-46";
+
+        tecla_especial = false
+        for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+
+</script>

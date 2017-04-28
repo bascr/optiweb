@@ -23,7 +23,7 @@ class ProductController extends Controller
     //
     public function show() {
 
-        $products = Product::paginate(7);
+        $products = Product::where('productable_type', '<>', 'App\\Crystal')->paginate(7);
         return view('product.show', compact('products'));
 
     }

@@ -177,6 +177,11 @@ return [
             'not_in' => 'Seleccione los privilegios de la cuenta.',
         ],
 
+        'supplier_type' => [
+            'required' => 'Este campo es requerido.',
+            'not_in' => 'Seleccione un tipo proveedor.',
+        ],
+
 
 
     ],

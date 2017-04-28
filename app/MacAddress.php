@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class MacAddress extends Model
+class MacAddress extends Eloquent
 {
     //
     protected $primaryKey = 'id';

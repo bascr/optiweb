@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class SalePromotion extends Model
+class SalePromotion extends Eloquent
 {
     //
     protected $primaryKey = 'id';
     protected $table = 'sale_promotions';
+    public $timestamps = false;
 
     public function sales() {
 

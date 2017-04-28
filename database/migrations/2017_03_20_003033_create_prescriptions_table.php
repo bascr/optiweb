@@ -42,6 +42,7 @@ class CreatePrescriptionsTable extends Migration
             $table->string('doctor_name', 100);
             $table->dateTime('created_at');
             $table->string('observation', 500);
+            $table->integer('sale_id');
         });
     }
 

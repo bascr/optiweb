@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class RepairService extends Model
+class RepairService extends Eloquent
 {
     //
     protected $primaryKey = 'id';

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class DiopterRange extends Model
+class DiopterRange extends Eloquent
 {
     //
     protected $primaryKey = 'id';

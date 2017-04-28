@@ -8,7 +8,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>{{$array[0]}}</h3>
+                    <h3>{{ $cantidad }}</h3>
 
                     <p>Recetas en el día</p>
                 </div>
@@ -38,7 +38,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>{{$array[1]}}</h3>
+                    <h3>{{ $client }}</h3>
 
                     <p>Clientes registrados en el día</p>
                 </div>

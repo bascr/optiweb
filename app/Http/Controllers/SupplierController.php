@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Supplier;
 use App\District;
-
-
+use App\SupplierType;
 use Exception;
 use Mail;
+
 
 class SupplierController extends Controller
 {
@@ -18,8 +19,9 @@ class SupplierController extends Controller
     public function index() {
 
         $districts = District::all();
+        $supplier_types = SupplierType::all();
 
-        return view('supplier.register', compact('districts'));
+        return view('supplier.register', compact('districts', 'supplier_types'));
 
     }
 
@@ -27,9 +29,10 @@ class SupplierController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
             'address' => 'required|max:255',
             'district' => 'required|not_in:0',
+            'supplier_type' => 'required|not_in:0',
             'phone' => 'required|digits_between:9,10|numeric',
             'email' => 'required|email|max:255|unique:clients',
 
@@ -41,6 +44,7 @@ class SupplierController extends Controller
             $supplier->name = $request['name'];
             $supplier->address = $request['address'];
             $supplier->district_id = $request['district'];
+            $supplier->supplier_type_id = $request['supplier_type'];
             $supplier->phone = $request['phone'];
             $supplier->email = $request['email'];
             $supplier->save();
@@ -77,9 +81,10 @@ class SupplierController extends Controller
 
         $supplier = Supplier::where('id', $id)->get()->first();
         $districts = District::all();
+        $supplier_types = SupplierType::all();
 
 
-        return view('supplier.editform', compact('supplier', 'districts'));
+        return view('supplier.editform', compact('supplier', 'districts', 'supplier_types'));
 
     }
 
@@ -87,9 +92,10 @@ class SupplierController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑ ]+$/',
+            'name' => 'required|max:45|regex:/^[a-zA-ZáéíóúñÑÁÉÍÓÚ ]+$/',
             'address' => 'required|max:255',
             'district' => 'required|not_in:0',
+            'supplier_type' => 'required|not_in:0',
             'phone' => 'required|digits_between:9,10|numeric',
             'email' => 'required|email|max:255|unique:clients',
 
@@ -101,6 +107,7 @@ class SupplierController extends Controller
             $supplier = Supplier::where('id', $request['id'])->get()->first();
             $supplier->name = $request['name'];
             $supplier->address = $request['address'];
+            $supplier->supplier_type_id = $request['supplier_type'];
             $supplier->district_id = $request['district'];
             $supplier->phone = $request['phone'];
             $supplier->email = $request['email'];
@@ -140,26 +147,19 @@ class SupplierController extends Controller
 
         $supplier = Supplier::find($request['supplier']);
 
-        $to = $supplier->email;
-        $title = $request['subject'];
-        $content = $request['mail_content'];
-
-
-        echo $request['mail_content'];
-
         $email = $supplier->email;
         $subject = $request['subject'];
         $content = $request['mail_content'];
         $from = 'contacto@opticasalarcon.cl';
         $data = [
-            'subject' => $subject,
             'content' => $content
         ];
 
-        Mail::send('supplier.email', $data, function($message) use ($email, $from, $subject) {
+        Mail::send('supplier.email', $data, function($message) use ($email, $subject) {
 
-            $message->from($from, 'Óptica Alarcón');
+            $message->from('bastycr@gmail.com', 'Óptica Alarcón');
             $message->to('bastycr@hotmail.com')->subject($subject);
+
         });
 
         return view('supplier.emailmessages');

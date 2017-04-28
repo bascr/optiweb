@@ -15,6 +15,7 @@
                                     <th>Comuna</th>
                                     <th>Teléfono</th>
                                     <th>Email</th>
+                                    <th>Tipo proveedor</th>
                                     <th>Editar</th>
                                 </tr>
                                 @foreach($suppliers as $supplier)
@@ -24,6 +25,7 @@
                                         <td>{{ $supplier->district->name }}</td>
                                         <td>{{ $supplier->phone }}</td>
                                         <td>{{ $supplier->email }}</td>
+                                        <td>{{ $supplier->supplierType->name }}</td>
                                         <td><a class="btn btn-primary" href="/supplier/edit/{{ $supplier->id }}">Editar</a></td>
                                     </tr>
                                 @endforeach

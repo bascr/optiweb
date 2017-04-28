@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Focus extends Model
+class Focus extends Eloquent
 {
     //
     protected $primaryKey = 'id';

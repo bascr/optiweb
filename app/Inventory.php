@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Inventory extends Model
+class Inventory extends Eloquent
 {
     //
     protected $primaryKey = 'id';

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Prescription extends Model
+class Prescription extends Eloquent
 {
     //
     protected $primaryKey = 'id';
@@ -45,5 +45,11 @@ class Prescription extends Model
     public function client() {
 
         return $this->belongsTo('App\Client', 'client_run', 'run');
+    }
+
+    public function sale() {
+
+        return $this->belongsTo('App\Sale');
+
     }
 }

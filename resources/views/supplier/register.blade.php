@@ -8,14 +8,8 @@
                 <div class="panel">
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de proveedor</div>
                     <div class="panel-body">
-<<<<<<< HEAD
-
-<!-- Inicio formulario -->
-                    {!! Form::open(['method'=>'POST', 'action'=>'ClientController@create', 'onSubmit'=> 'return dv();','class' => 'form-horizontal']) !!}
-=======
 <!-- Inicio formulario -->
                     {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@create','class' => 'form-horizontal']) !!}
->>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
 
                     {!! Form::token() !!}
 <!-- Campo nombre -->
@@ -30,7 +24,7 @@
                                 @endif
                             </div>
                         </div>
-<!-- Campo apellido dirección -->
+<!-- Campo dirección -->
                         <div class="form-group {{$errors->has('address') ? 'has-error' : ''}}">
                             {!! Form::label('address', 'Dirección', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
@@ -39,6 +33,26 @@
                                     <span class="help-block">
                                                         <strong>{{ $errors->first('address') }}</strong>
                                                     </span>
+                                @endif
+                            </div>
+                        </div>
+<!-- Droplist tipo proveedor -->
+                        <div class="form-group{{ $errors->has('supplier_type') ? ' has-error' : '' }}">
+                            <label for="supplier_type" class="col-md-4 control-label">Tipo proveedor</label>
+
+                            <div class="col-md-6">
+
+                                <select id="supplier_type" class="form-control" name="supplier_type">
+                                    <option value="0" selected>Seleccione tipo proveedor</option>
+                                    @foreach($supplier_types as $supplier_type)
+                                        <option value="{{ $supplier_type->id }}">{{ $supplier_type->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('supplier_type'))
+                                    <span class="help-block">
+                                            <strong>{{ $errors->first('supplier_type') }}</strong>
+                                        </span>
                                 @endif
                             </div>
                         </div>
@@ -92,10 +106,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::submit('Registrar', [ 'class' => 'btn btn-primary' ]) !!}
-<<<<<<< HEAD
-=======
                                 <a href="{{ url('/home') }}" class="btn btn-primary">Ir al inicio</a>
->>>>>>> 3fc7fea37be34257a83a5d12c731d7a427d90a0e
                             </div>
                         </div>
 <!-- cierre formulario -->

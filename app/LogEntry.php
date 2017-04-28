@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class LogEntry extends Model
+class LogEntry extends Eloquent
 {
     //
     protected $primaryKey = 'id';

@@ -86,13 +86,13 @@
                                     </div>
                                 </div>
 <!-- Campo fecha de nacimiento -->
-                                <div class="form-group {{$errors->has('birt_date') ? 'has-error' : ''}}">
-                                    {!! Form::label('birt_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
+                                <div class="form-group {{$errors->has('birth_date') ? 'has-error' : ''}}">
+                                    {!! Form::label('birth_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::date('birt_date', old('birt_date'), [ 'class' => 'form-control']) !!}
-                                        @if ($errors->has('birt_date'))
+                                        {!! Form::text('birth_date', old('birth_date'), [ 'class' => 'form-control', 'id'=>'datepicker']) !!}
+                                        @if ($errors->has('birth_date'))
                                             <span class="help-block">
-                                                   <strong>{{ $errors->first('birt_date') }}</strong>
+                                                   <strong>{{ $errors->first('birth_date') }}</strong>
                                              </span>
                                         @endif
                                     </div>

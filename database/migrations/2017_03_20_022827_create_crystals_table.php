@@ -14,14 +14,12 @@ class CreateCrystalsTable extends Migration
     {
         Schema::create('crystals', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('diopter_first_value');
-            $table->integer('diopter_second_value');
+            $table->integer('diopter_range_id');
             $table->integer('material_id');
             $table->integer('focus_id');
             $table->integer('crystal_treatment_id');
-            $table->integer('crystal_type');
+            $table->integer('crystal_type_id');
             $table->integer('price');
-            $table->integer('laboratory_id');
 
         });
     }

@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Product extends Model
+class Product extends Eloquent
 {
     //
     protected $primaryKey = 'productable_id';

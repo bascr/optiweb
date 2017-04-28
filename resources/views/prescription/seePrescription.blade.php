@@ -82,11 +82,11 @@
                                 </tr>
                                 <tr>
                                     <td style="min-width: 70px;">Armazón</td>
-                                    <td style="min-width: 70px;" colspan="7">Este atributo se debe agregar a la base de datos</td>
+                                    <td style="min-width: 70px;" colspan="7">{{ $frame->name . ' ' . $frame->model->name . ' ' . $frame->color->name }}</td>
                                 </tr>
                                 <tr>
                                     <td style="min-width: 70px;">Cristales</td>
-                                    <td style="min-width: 70px;" colspan="7">Este atributo se debe agregar a la base de datos</td>
+                                    <td style="min-width: 70px;" colspan="7">{{ $crystal->material->name . ' ' . $crystal->crystalTreatment->name }}</td>
                                 </tr>
                                 <tr>
                                     <td style="min-width: 70px;">Observaciones</td>
@@ -95,7 +95,6 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                                <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                             <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('prescriptionTable', {render:'download'});">Imprimir</a>
                             <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                         </div>

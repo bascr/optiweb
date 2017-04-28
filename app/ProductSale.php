@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class ProductSale extends Model
+class ProductSale extends Eloquent
 {
     //
-    protected $primaryKey = null;
+//    protected $primaryKey = null;
     protected $table = 'product_sale';
+    public $timestamps = false;
 
     public function sale() {
 
@@ -20,8 +21,4 @@ class ProductSale extends Model
         return $this->belongsTo('App\Product');
     }
 
-    public function saleType() {
-
-        return $this->belongsTo('App\SaleType');
-    }
 }

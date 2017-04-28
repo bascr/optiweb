@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class CrystalTreatment extends Model
+class CrystalTreatment extends Eloquent
 {
     //
     protected $primaryKey = 'id';

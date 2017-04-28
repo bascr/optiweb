@@ -70,49 +70,17 @@
 <!-- Style sweetAlert -->
         {!! Html::style('sweetalert/css/sweetalert.css') !!}
 <!-- style to set some css issues -->
-        <style>
-            body {
-                font-family: 'Lato';
-            }
-
-            .fa-btn {
-                margin-right: 6px;
-            }
-
-            #dropdownMenu {
-                width: 225px;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-                text-align: left;
-            }
-
-            #dropdownLogout {
-                color:#0c0c0c;
-            }
-
-        </style>
+        {!! Html::style('custom/styleissues.css') !!}
 <!-- script to print to pdf -->
         {!! Html::script('Xportability/js/xepOnline.jqPlugin.js') !!}
 <!-- script to print the date -->
-        <Script Language="JavaScript">
-            function date() {
-                var hoy = new Date();
-                var m = [];
-                var d = [];
-                var an = hoy.getUTCFullYear();
-                var day = hoy.getDay();
-                d[1]="Lunes";d[2]="Martes";d[3]="Miercoles";d[4]="Jueves";d[5]="Viernes";d[6]="Sábado";d[0]="Domingo";
-                m[0]="Enero"; m[1]="Febrero"; m[2]="Marzo";
-                m[3]="Abril"; m[4]="Mayo"; m[5]="Junio";
-                m[6]="Julio"; m[7]="Agosto"; m[8]="Septiembre";
-                m[9]="Octubre"; m[10]="Noviembre"; m[11]="Diciembre";
-                document.write(d[hoy.getDay()]);
-                document.write(" " + hoy.getDate());
-                document.write(" de ");
-                document.write(m[hoy.getMonth()]);
-                document.write(" del " + an);
-            }
-        </Script>
-
+        {!! Html::script('custom/date.js')  !!}
+<!-- style to set tabs in prescription-->
+        {!! Html::style('custom/tabs.css') !!}
+<!-- check the first radio button in prescription -->
+        {!! Html::script('custom/checkradioprescription.js') !!}
+<!-- set a date picker -->
+        {!! Html::script('custom/datepicker.js') !!}
     </head>
     <body id="app-layout" class="hold-transition skin-blue-light sidebar-mini">
 <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< inicio >>>>>>>>>>>>>>>>>>> -->
@@ -258,7 +226,7 @@
                             </li>
                         @endif
                         <li>
-                                <a href="http://www.optiweb.cl:2095/" target="_blank">
+                                <a href="{{ url('/mail') }}">
                                     <i class="fa fa-envelope"></i> <span>Correo</span>
 
                                 </a>
@@ -340,7 +308,6 @@
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
                         ['height', ['height']],
-                        ['insert', ['picture']]
                     ],
                     height:300
                 });
@@ -349,7 +316,12 @@
 
 <!-- jQuery UI 1.11.4 -->
         {!! Html::script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') !!}
-
+<!-- script to set tabs in prescription-->
+        {!! Html::script('custom/tabs.js') !!}
+        <script>
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);

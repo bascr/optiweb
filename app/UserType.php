@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class UserType extends Model
+class UserType extends Eloquent
 {
     //
     protected $primaryKey = 'id';

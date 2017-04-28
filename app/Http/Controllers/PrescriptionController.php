@@ -3,8 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Crystal;
+use App\Frame;
 use App\Prescription;
+use App\Product;
+use App\ProductSale;
+use App\Sale;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 
 class PrescriptionController extends Controller
@@ -17,18 +26,20 @@ class PrescriptionController extends Controller
     }
 
 
-    public function find(Request $request) {
+    public function find() {
 
-
-        $run = $request -> run;
+        $run = Input::get('run');
 
         try{
-            $client = Client::all()->where('run', (int)$run)->first();
+            $client = Client::where('run', $run)->get()->first();
 
-            $nombre = $client -> name . " " . $client -> last_name . " " . $client -> second_last_name;
-            $datos = collect([$nombre, $run]);
-            return view('prescription.register') -> with('datos', $datos);
-           // dd($datos);
+            if($client == null) {
+                return view('prescription.clientnotfoundmessage');
+            }
+
+            $crystals = Crystal::all();
+
+            return view('prescription.register', compact('client', 'crystals'));
 
         }catch (Exception $e){
 
@@ -53,6 +64,21 @@ class PrescriptionController extends Controller
 
        try{
 
+           // add sale
+           $sale = new Sale();
+           $sale->user_username = Auth::user()->username;
+           $sale->client_run = $request->client_run;
+           $sale->created_at = Carbon::now();
+           $sale->sale_promotion_id = 1; // sin promoción
+           $sale->pay = $request->pay;
+           $sale->sale_state = 1; // 1 = pendiente
+           $sale->sale_type_id = 2; // 2 = receta
+           $sale->save();
+
+           // getting the last sale id inserted
+           $sale_id = Sale::all()->last()->id;
+
+           // add prescription
            $prescription = new Prescription();
            $prescription->client_run = $request['client_run'];
            $prescription->far_right_eye_sphere = $request->far_right_eye_sphere;
@@ -82,7 +108,28 @@ class PrescriptionController extends Controller
            $prescription->doctor_name = $request->doctor_name;
            $prescription->created_at = $register_date;
            $prescription->observation = $request->observation;
+           $prescription->sale_id = $sale_id;
            $prescription->save();
+
+           // add frame to product_sale
+           $product_sale = new ProductSale();
+           $product_sale->sale_id = $sale_id;
+           $product_sale->product_productable_id = $request->frame;
+           $product_sale->quantity = 1;
+           $product_sale->save();
+
+           // reduce frame stock
+           $frame = Frame::where('id', $request['frame'])->get()->first();
+           $stock = $frame->stock;
+           $frame->stock = ($stock - 1);
+           $frame->save();
+
+           // add crystal to product_sale
+           $product_sale = new ProductSale();
+           $product_sale->sale_id = $sale_id;
+           $product_sale->product_productable_id = (int) Input::get('crystals');
+           $product_sale->quantity = 1; // un par
+           $product_sale->save();
 
            $message = [
                'content' => 'La receta se ha ingresado exitosamente.',
@@ -91,8 +138,13 @@ class PrescriptionController extends Controller
 
            return view('prescription.messages', compact('message'));
 
-       }catch (\Exception $e){
-            dd($e);
+       }catch (Exception $e){
+           $message = [
+               'content' => 'Error al ingresar la receta.' . $e->getMessage(),
+               'messageNumber' => 2,
+           ];
+
+           return view('prescription.messages', compact('message'));
        }
 
 
@@ -128,7 +180,7 @@ class PrescriptionController extends Controller
             return view('prescription.list', compact('listado', 'nombre'));
         }else{
             $message = [
-                'content' => 'Cliente no existe o ingresó mal el run.',
+                'content' => 'El run ingresado no se encuentra registrado.',
                 'messageNumber' => 1,
             ];
             return view('prescription.messages2', compact('message'));
@@ -143,7 +195,28 @@ class PrescriptionController extends Controller
         $name = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
         $run = $presc->client_run;
 
-        return view('prescription.seePrescription', compact('presc', 'name', 'run'));
+        // getting product_sale record from prescription, passing through sale
+        $product_sales = $presc->sale->productSale;
+
+        // creating new object to store the resultant objects
+        $product = new Product();
+        $frame = new Frame();
+        $crystal = new Crystal();
+
+        // identify if the record from product_sale is frame or crystal
+        foreach ( $product_sales as $product_sale) {
+            $productable_id = $product_sale->product_productable_id;
+
+            $product = Product::where('productable_id', $productable_id)->get()->first();
+            if($product->productable_type == 'App\\Frame') {
+                $frame = $product->productable;
+            }
+            if($product->productable_type == 'App\\Crystal') {
+                $crystal = $product->productable;
+            }
+        }
+
+        return view('prescription.seePrescription', compact('presc', 'name', 'run', 'frame', 'crystal'));
     }
 
     public function update($id){
@@ -205,7 +278,7 @@ class PrescriptionController extends Controller
 
             return view('prescription.messages', compact('message'));
 
-        }catch (\Exception $e){
+        }catch (Exception $e){
             dd($e);
         }
 
@@ -233,9 +306,6 @@ class PrescriptionController extends Controller
         $register_date = $year . "-" . $month . "-" . $day;
 
         $prescriptions = Prescription::where('created_at', $register_date )->orderBy('id', 'DESC')->paginate(6);
-        //$client = $listado->client->name . ' ' . $listado->client->last_name . ' ' . $listado->client->second_last_name;
-
-        //dd($listado);
         if($prescriptions != null){
             return view('prescription.listToDay', compact('prescriptions'));
         }else{

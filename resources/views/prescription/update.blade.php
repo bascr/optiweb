@@ -90,7 +90,7 @@
                                 <td> {!! Form::label('doctor_name', 'Médico', [ 'class' => 'col-md-1 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        {!! Form::text('doctor_name', $presc->doctor_name, old('doctor_name'), [ 'class' => 'form-control']) !!}
+                                        {!! Form::text('doctor_name', $presc->doctor_name, [ 'class' => 'form-control']) !!}
                                         @if ($errors->has('doctor_name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('doctor_name') }}</strong>
@@ -99,37 +99,37 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>{!! Form::label('frame', 'Armazón', [ 'class' => 'col-md-2 control-label']) !!}</td>
-                                <td colspan="7">
-                                    <div>
-                                        {!! Form::text('frame', old('frame'), [ 'class' => 'form-control']) !!}
-                                        @if ($errors->has('frame'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('frame') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{!! Form::label('crystal', 'Cristales', [ 'class' => 'col-md-3 control-label']) !!}</td>
-                                <td colspan="7">
-                                    <div>
-                                        {!! Form::text('crystal', old('crystal'), [ 'class' => 'form-control']) !!}
-                                        @if ($errors->has('crystal'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('crystal') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
+                            {{--<tr>--}}
+                                {{--<td>{!! Form::label('frame', 'Armazón', [ 'class' => 'col-md-2 control-label']) !!}</td>--}}
+                                {{--<td colspan="7">--}}
+                                    {{--<div>--}}
+                                        {{--{!! Form::text('frame', old('frame'), [ 'class' => 'form-control']) !!}--}}
+                                        {{--@if ($errors->has('frame'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong>{{ $errors->first('frame') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
+                            {{--<tr>--}}
+                                {{--<td>{!! Form::label('crystal', 'Cristales', [ 'class' => 'col-md-3 control-label']) !!}</td>--}}
+                                {{--<td colspan="7">--}}
+                                    {{--<div>--}}
+                                        {{--{!! Form::text('crystal', old('crystal'), [ 'class' => 'form-control']) !!}--}}
+                                        {{--@if ($errors->has('crystal'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong>{{ $errors->first('crystal') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+                                {{--</td>--}}
+                            {{--</tr>--}}
                             <tr>
                                 <td>{!! Form::label('observation', 'Observaciones', [ 'class' => 'col-md-2 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        {!! Form::text('observation', $presc->observation, old('observation'), [ 'class' => 'form-control']) !!}
+                                        {!! Form::text('observation', $presc->observation, [ 'class' => 'form-control']) !!}
                                         @if ($errors->has('observation'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('observation') }}</strong>
@@ -143,6 +143,7 @@
 <!-- inicio tabla -->
                     <div class="modal-footer">
                         {!! Form::submit('Modificar', [ 'class' => 'btn btn-primary' ]) !!}
+                        <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                     </div>
 <!-- cierre formulario -->
                 {!! Form::close() !!}
@@ -156,7 +157,7 @@
     function soloNumeros(e){
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = "0123456789+-";
+        letras = "0123456789+-.";
         especiales = "8-37-39-46";
 
         tecla_especial = false;
@@ -288,6 +289,7 @@
             swal("Verifique en la receta", "Ingrese valores de dioptría", "warning");
             return false;
         }
+
     }
 
 </script>

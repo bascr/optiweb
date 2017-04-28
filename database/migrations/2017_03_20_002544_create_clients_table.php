@@ -14,7 +14,7 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->integer('run')->primary();
-            $table->integer('digit');
+            $table->char('digit');
             $table->string('name', 45);
             $table->string('last_name', 45);
             $table->string('second_last_name', 45);
@@ -23,6 +23,7 @@ class CreateClientsTable extends Migration
             $table->integer('district_id');
             $table->integer('phone');
             $table->string('email')->unique();
+            $table->dateTime('created_at');
         });
     }
 

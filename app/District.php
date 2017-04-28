@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class District extends Model
+class District extends Eloquent
 {
     //
     protected $primaryKey = 'id';
@@ -25,11 +25,6 @@ class District extends Model
     public function branchOffices() {
 
         return $this->hasMany('App\BranchOffice');
-    }
-
-    public function  laboratories() {
-
-        return $this->hasMany('App\Laboratory');
     }
 
     public function  workshops() {

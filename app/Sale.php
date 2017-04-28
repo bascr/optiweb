@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Sale extends Model
+class Sale extends Eloquent
 {
     //
     protected $primaryKey = 'id';
     protected $table = 'sales';
+    public $timestamps = false;
 
     public function user() {
 
@@ -28,5 +29,16 @@ class Sale extends Model
     public function salePromotion() {
 
         return $this->belongsTo('App\SalePromotion');
+    }
+
+    public function saleType() {
+
+        return $this->belongsTo('App\SaleType');
+    }
+
+    public function prescriptions() {
+
+        return $this->hasMany('App\Prescription');
+
     }
 }

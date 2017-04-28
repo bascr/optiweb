@@ -44,9 +44,9 @@ class HomeController extends Controller
         }
 
 
-        $cantidad = Prescription::all()->where('created_at', $toDay)->count();
+        $cantidad = Prescription::where('created_at', $toDay)->count();
 
-        $client = Client::all()->where('created_at', $toDay)->count();
+        $client = Client::where('created_at', $toDay)->count();
 
         $message = Happy_message::all();
 
@@ -58,9 +58,13 @@ class HomeController extends Controller
             }
         }
 
-        $array = [$cantidad, $client];
+        return view('home', compact('cantidad', 'client', 'mensaje'));
+    }
 
-        return view('home', compact('array', 'mensaje'));
+    public function mail() {
+
+        return view('mail.mail');
+
     }
 
 

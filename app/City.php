@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class City extends Model
+class City extends Eloquent
 {
     //
     protected $primaryKey = 'id';

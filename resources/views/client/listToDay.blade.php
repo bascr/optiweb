@@ -29,7 +29,7 @@
                 {!!$listado->render()!!}
             </div>
         <div class="modal-footer">
-            <a href="{{ url('home') }}" class="btn btn-primary">Home</a>
+            <a href="{{ url('home') }}" class="btn btn-primary">Ir al inicio</a>
 
         </div>
     </div>

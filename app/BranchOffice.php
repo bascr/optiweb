@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class BranchOffice extends Model
+class BranchOffice extends Eloquent
 {
     //
     protected $primaryKey = 'id';
