@@ -255,7 +255,7 @@
                                 <td style="min-width: 70px;">{!! Form::label('pay', 'Abono', [ 'class' => 'col-md-2 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        {!! Form::text('pay', old('pay'), [ 'class' => 'form-control']) !!}
+                                        {!! Form::text('pay', old('pay'), [ 'class' => 'form-control', 'onKeyPress'=>'return soloNumeros(event)']) !!}
                                         @if ($errors->has('pay'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('pay') }}</strong>

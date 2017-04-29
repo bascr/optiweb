@@ -25,6 +25,8 @@
         {{--{!! Html::script('bootstrap/js/bootstrap.min.js') !!}--}}
         <!-- jQuery 2.2.3 plugin -->
         {{--{!! Html::script('plugins/jQuery/jquery-2.2.3.min.js') !!}--}}
+<!-- Token for Ajax -->
+        <meta name="_token" content="{!! csrf_token() !!}"/>
 
 <!-- Summernote 8.0 -->
         <!-- Summernote 8.0 css -->
@@ -137,13 +139,13 @@
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="glyphicon glyphicon-usd"></i> <span>Ventas</span>
+                                    <i class="glyphicon glyphicon-usd"></i> <span>Ventas de artículos</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="glyphicon glyphicon-file"></i> Nueva venta</a></li>
+                                    <li><a href="/article_sale"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
                                     <li><a href="#"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
                                 </ul>
                             </li>
@@ -155,8 +157,11 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación</a></li>
-                                    <li><a href="#"><i class="fa fa-sign-out"></i> Entregar reparación</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación interna</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación externa</a></li>
+                                    <li><a href="#"><i class="fa fa-check-square-o"></i> Entregar reparación</a></li>
+                                    <li><a href="#"><i class="fa fa-plus"></i> Ingresar taller</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar taller</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -322,6 +327,13 @@
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script>
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+            });
+        </script>
+<!-- scripts for articles sales functions -->
+        {!! Html::script('/custom/salesfunctions.js') !!}
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
@@ -355,9 +367,3 @@
         {!! Html::script('sweetalert/js/sweetalert.min.js') !!}
     </body>
 </html>
-<script>
-    function open() {
-        window.locationf="http://www.optiweb.cl:2095/";
-    }
-
-</script>

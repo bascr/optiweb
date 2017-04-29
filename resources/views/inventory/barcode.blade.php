@@ -37,7 +37,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="modal-footer">
-                                <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('barCodeTable', {render:'download'});">Imprimir</a>
+                                <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('barCodeTable', {render:'download'});"><i class="fa fa-print"></i><span> Imprimir</span></a>
                                 <a href="{{ url('/inventory') }}" class="btn btn-primary">Volver</a>
                             </div>
                         </div>

@@ -95,7 +95,7 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('prescriptionTable', {render:'download'});">Imprimir</a>
+                            <a class="btn btn-primary" href="#" onclick="return xepOnline.Formatter.Format('prescriptionTable', {render:'download'});"><i class="fa fa-print"></i><span> Imprimir</span></a>
                             <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                         </div>
                     </div>

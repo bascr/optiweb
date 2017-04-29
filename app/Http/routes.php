@@ -200,9 +200,17 @@ Route::post('/request', 'SupplierController@sendRequest');
 
 Route::get('/mail', 'HomeController@mail');
 
+/*
+|--------------------------------------------------------------------------
+|   Article Sale
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/article_sale', 'SaleController@showArticleSaleForm');
 
+Route::post('/article_sale', 'SaleController@createArticleSale');
 
+Route::post('/get_article_name', 'SaleController@getArticleName');
 
 
 

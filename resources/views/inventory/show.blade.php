@@ -21,7 +21,7 @@
                                 <td>{{ $inventory->name.' '.$inventory->last_name }}</td>
                                 <td>{{ $inventory->quantity_registers }}</td>
                                 <td>{{ $inventory->quantity_products }}</td>
-                                <td><a class="btn btn-primary" href="{{ url('/inventory/'.$inventory->created_at) }}">Imprimir</a></td>
+                                <td><a class="btn btn-primary" href="{{ url('/inventory/'.$inventory->created_at) }}"><i class="fa fa-print"></i><span> Imprimir</span></a></td>
                             </tr>
                             @endforeach
                         </table>
