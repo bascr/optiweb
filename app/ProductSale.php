@@ -7,7 +7,7 @@ use Eloquent;
 class ProductSale extends Eloquent
 {
     //
-//    protected $primaryKey = null;
+//    protected $primaryKey = ['sale_id', 'product_productable_id'];
     protected $table = 'product_sale';
     public $timestamps = false;
 

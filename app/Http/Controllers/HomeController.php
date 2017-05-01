@@ -6,6 +6,8 @@ use App\Client;
 use App\Happy_message;
 use App\Http\Requests;
 use App\Prescription;
+use App\Sale;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -28,25 +30,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $date = getdate();
-        $year = $date['year'];
-        $month = $date['mon'];
-        $day = $date['mday'];
-        if($month != 10 || $month != 11 || $month != 12 ) {
-            $month = "0" . $month;
-        }
+        $today = (string) Carbon::now('America/Santiago')->format('Y/m/d');
 
-        if($day < 10){
+        $cantidad = Prescription::where('created_at', '=' , $today)->count();
 
-            $toDay = $year . "-" . $month . "-" . "0" . $day;
-        }else{
-            $toDay = $year . "-" . $month . "-" . $day;
-        }
+        $client = Client::whereDate('created_at', '=' ,$today)->count();
 
-
-        $cantidad = Prescription::where('created_at', $toDay)->count();
-
-        $client = Client::where('created_at', $toDay)->count();
+        $sales = Sale::whereDate('created_at', '=' ,$today)->count();
 
         $message = Happy_message::all();
 
@@ -58,7 +48,7 @@ class HomeController extends Controller
             }
         }
 
-        return view('home', compact('cantidad', 'client', 'mensaje'));
+        return view('home', compact('cantidad', 'client', 'sales','mensaje'));
     }
 
     public function mail() {

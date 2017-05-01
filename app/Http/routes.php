@@ -212,6 +212,8 @@ Route::post('/article_sale', 'SaleController@createArticleSale');
 
 Route::post('/get_article_name', 'SaleController@getArticleName');
 
+Route::get('/article_sale/list_today', 'SaleController@listToday');
+
 
 
 

@@ -71,11 +71,11 @@ class PrescriptionController extends Controller
                $sale = new Sale();
                $sale->user_username = Auth::user()->username;
                $sale->client_run = $request->client_run;
-               $sale->created_at = Carbon::now();
-               $sale->sale_promotion_id = 1; // sin promoción
+               $sale->created_at = Carbon::now('America/Santiago');
+               $sale->sale_promotion_id = 1;        // sin promoción
                $sale->pay = $request->pay;
-               $sale->sale_state = 1; // 1 = pendiente
-               $sale->sale_type_id = 2; // 2 = receta
+               $sale->sale_state = 1;               //1. pendiente, 2. en local 3. realizada 4. devolución
+               $sale->sale_type_id = 2;             // 1. articulo, 2. receta, 3.reparacion interna, 4. reparacion externa
                $sale->save();
 
                // getting the last sale id inserted

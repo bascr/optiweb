@@ -14,26 +14,39 @@
                 {!! Form::token() !!}
 <!-- Campo codigo articulo, cantidad -->
                     <div id="articles">
-                        <div class="form-group">
-                            <label for="codArticle" class="col-md-2 control-label" >Cód. Artículo</label>
+                        <div class="">
                             <div class="col-md-2">
-                                <input class="form-control codArticle" name="codArticle" type="text" onkeypress="return soloNumeros(event)" style="max-width:100px;"/>
+                                <label for="codArticle" class="control-label" >Cód. Artículo</label>
+                                <input class="form-control codArticle" name="codArticle[]" type="text" onkeypress="return soloNumeros(event)" style="min-width:80px;"/>
                             </div>
-                            <label for="article" class="col-md-1 control-label" >Artículo</label>
-                            <div class="col-md-3">
-                                <input class="form-control article" name="article" type="text" style="max-width:200px;" readonly/>
+                            <div class="col-md-4">
+                                <label for="article" class="control-label" >Artículo</label>
+                                <input class="form-control article" name="article[]" type="text" style=" background-color:#fff; min-width:150px;" readonly value="Articulo no encontrado, o sin stock"/>
                             </div>
-                            <label for="quantity" class="col-md-1 control-label" >Cantidad</label>
                             <div class="col-md-2">
-                                <input type="number" class="form-control" name="quantity" onkeypress="return soloNumeros(event)" style="max-width:100px;" min="1" value="1"/>
+                                <label for="quantity" class="control-label" >Cantidad</label>
+                                <input type="number" class="form-control quantity" name="quantity[]" onkeypress="return soloNumeros(event)" style="max-width:100px;" min="1" value="1"/>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="price" class="control-label" >Precio Unitario</label>
+                                <input type="text" class="form-control price" name="price[]" onkeypress="return soloNumeros(event)" style="background-color:#fff; max-width:100px;" value="0" readonly/>
+                            </div>
+                            <div class="col-md-2">
+
                             </div>
                             <div class="col-md-12 modal-footer" style="margin-top: 20px;"></div>
                         </div>
                     </div>
                     <!-- Botón registrar -->
-                    <div class="col-md-6 col-md-offset-4 pull-right">
+                    <div class="col-md-12 pull-right">
+                        <label class="col-md-8 control-label" style="margin-right: 5px;">Total</label>
+                        <div class="col-md-2">
+                            <input id="total" class="form-control" name="total" type="text" readonly value="0" style="background-color:#fff; max-width:100px;"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-offset-4 pull-right" style="margin-top: 20px;">
                         <input class="btn btn-success addButton" type="button" value="Añadir otro artículo a la venta"/>
-                        {!! Form::submit('Registrar', [ 'class' => 'btn btn-primary' ]) !!}
+                        {!! Form::submit('Registrar', [ 'class' => 'btn btn-primary', 'id' =>'send' ]) !!}
                         <a href="{{ url('/home') }}" class="btn btn-primary">Ir al inicio</a>
                     </div>
                     <!-- cierre formulario -->

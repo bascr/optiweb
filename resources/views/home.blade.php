@@ -23,14 +23,14 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>0<sup style="font-size: 20px"></sup></h3>
+                    <h3>{{ $sales }}<sup style="font-size: 20px"></sup></h3>
 
                     <p>Ventas del día</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{ url('/article_sale/list_today') }}" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

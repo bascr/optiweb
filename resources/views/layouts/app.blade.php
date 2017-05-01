@@ -146,7 +146,7 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="/article_sale"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
+                                    <li><a href="/article_sale/list_today"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -323,6 +323,7 @@
         {!! Html::script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') !!}
 <!-- script to set tabs in prescription-->
         {!! Html::script('custom/tabs.js') !!}
+<!-- script to get the elements from de DOM to print-->
         <script>
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
