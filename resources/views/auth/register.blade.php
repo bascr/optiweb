@@ -8,7 +8,7 @@
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de usuario</div>
                     <div class="panel-body">
 <!-- Inicio formulario -->
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/register') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/register') }}" onsubmit="return dv();">
                             {{ csrf_field() }}
 <!-- Campo nombre -->
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -58,7 +58,7 @@
                                     <label for="run" class="col-md-4 control-label">Run</label>
                                 </div>
                                 <div class="col-xs-6 col-md-4">
-                                    <input id="run" type="text" class="form-control" name="run" value="{{ old('run') }}">
+                                    <input id="run" type="text" class="form-control" name="run" value="{{ old('run') }}" onkeypress="return soloNumeros(event)">
 
                                     @if ($errors->has('run'))
                                         <span class="help-block">
@@ -68,7 +68,7 @@
                                 </div>
 <!-- Campo dígito -->
                                 <div class="col-xs-4 col-md-2">
-                                    <input id="digit" type="text" class="form-control" name="digit" value="{{ old('digit') }}" style="width: 40px;">
+                                    <input id="digit" type="text" class="form-control" name="digit" value="{{ old('digit') }}" style="width: 40px;" onkeypress="return soloDigito(event)">
 
                                     @if ($errors->has('digit'))
                                         <span class="help-block"><strong>{{ $errors->first('digit') }}</strong>
@@ -259,3 +259,87 @@
         </div>
     </div>
 @endsection
+
+<script>
+
+    dv = function() {
+        var run = document.getElementById('run');
+        var digit = document.getElementById('digit');
+        var dig;
+
+        if(digit.value == "k"){
+            dig = "K";
+        }else{
+            dig = digit.value;
+        }
+
+        var T = run.value;
+        var M=0,S=1;
+        for(;T;T=Math.floor(T/10))
+            S=(S+T%10*(9-M++%6))%11;
+
+        var fin = S?S-1:'K';
+
+        if(fin.toString() == dig){
+
+        }else{
+            swal('Ingrese un run valido', 'para completar el formulario', 'warning');
+            return false;
+        }
+    }
+
+    function soloDigito(e){
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " k023456789";
+        especiales = "8";
+
+        tecla_especial = false
+        for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+
+    function soloNumeros(e){
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "0123456789";
+        especiales = "8-37-39-46";
+
+        tecla_especial = false
+        for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+
+    function soloLetras(e){
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+        especiales = "8-37-39-46";
+
+        tecla_especial = false
+        for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+
+</script>
