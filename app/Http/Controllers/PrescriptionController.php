@@ -324,4 +324,28 @@ class PrescriptionController extends Controller
             return view('/home');
         }
     }
+
+    public function getFrameName(Request $request) {
+
+        $frame = Frame::where('id', $request['id'])->get()->first();
+
+        $data = array();
+
+        if($frame != null) {
+
+            $data = [
+                'name' => $frame->name,
+                'price' => $frame->price
+            ];
+
+        } else {
+            $data = [
+                'name' => 'El armazón ingresado no se ha encontrado.',
+                'price' => 0
+            ];
+        }
+
+        echo json_encode($data);
+    }
+
 }

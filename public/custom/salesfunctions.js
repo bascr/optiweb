@@ -51,7 +51,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: "POST",
-            url: "/get_article_name",
+            url: "../get_article_name",
             data : values,
             dataType: 'json',
             encode: true

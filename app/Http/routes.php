@@ -95,6 +95,9 @@ Route::post('/prescription/update', 'PrescriptionController@updatePresc');
 
 Route::get('/prescription/listToDay','PrescriptionController@listToDay');
 
+// Ajax request to get frame name
+Route::post('/get_frame_name', 'PrescriptionController@getFrameName');
+
 /*
 |--------------------------------------------------------------------------
 |   Rutas Marcaje
@@ -210,6 +213,7 @@ Route::get('/article_sale', 'SaleController@showArticleSaleForm');
 
 Route::post('/article_sale', 'SaleController@createArticleSale');
 
+// Ajax request to get article name
 Route::post('/get_article_name', 'SaleController@getArticleName');
 
 Route::get('/article_sale/list_today', 'SaleController@listToday');

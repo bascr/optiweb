@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="box-header">
+<div class="box-header">
     <div class="panel">
         <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de recetas</div>
             <div class="panel-body">
@@ -12,7 +12,7 @@
 <!-- inicio tabla -->
                     <div class="table-responsive">
                         <table class="table table-bordered">
-                            <tr class="info">
+                            <tr style="background-color: #F2F2F2;">
                                 <td style="min-width: 70px;">{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
                                 <td style="min-width: 70px;" colspan="7">
                                     <div>
@@ -31,7 +31,7 @@
                                 <th style="text-align: center;">Ojo</th>
                                 <th colspan="6" style="text-align: center;">Dioptría</th>
                             </tr>
-                            <tr class="info" style="text-align: center;">
+                            <tr style="background-color: #F2F2F2; text-align: center;">
                                 <td style="min-width: 70px;"></td>
                                 <td style="min-width: 70px;"></td>
                                 <td style="min-width: 70px;">Esférico</td>
@@ -60,7 +60,7 @@
                                 <td style="min-width: 70px;"><input id="far_left_base" type="text" class="form-control" maxlength="6" onKeyPress="return soloNumeros(event)" name="far_left_base" value="{{ old('far_left_base') }}"></td>
                                 <td style="min-width: 70px;"><input id="far_left_pd" type="text" class="form-control" maxlength="6" onKeyPress="return soloNumeros(event)" name="far_left_pd" value="{{ old('far_left_pd') }}"></td>
                             </tr>
-                            <tr class="info" style="text-align: center;">
+                            <tr style="background-color: #F2F2F2; text-align: center;">
                                 <td  style="min-width: 70px;"></td>
                                 <td  style="min-width: 70px;"></td>
                                 <td  style="min-width: 70px;">Esférico</td>
@@ -104,12 +104,34 @@
                             </tr>
                             <tr>
                                 <td style="min-width: 70px;">{!! Form::label('frame', 'Código Armazón', [ 'class' => 'col-md-2 control-label']) !!}</td>
-                                <td colspan="7">
+                                <td colspan="1">
                                     <div>
                                         {!! Form::text('frame', old('frame'), [ 'class' => 'form-control']) !!}
                                         @if ($errors->has('frame'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('frame') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td style="min-width: 70px;">{!! Form::label('frameName', 'Armazón', [ 'class' => 'col-md-2 control-label']) !!}</td>
+                                <td colspan="3">
+                                    <div>
+                                        {!! Form::text('frameName', old('frameName'), [ 'class' => 'form-control', 'style' => 'background-color:#fff;', 'readonly' => 'true']) !!}
+                                        @if ($errors->has('frameName'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('frameName') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td style="min-width: 70px;">{!! Form::label('price', 'Precio', [ 'class' => 'col-md-2 control-label']) !!}</td>
+                                <td colspan="1">
+                                    <div>
+                                        {!! Form::text('price', old('price'), [ 'class' => 'form-control', 'style' => 'background-color:#fff; text-align:right;', 'readonly' => 'true']) !!}
+                                        @if ($errors->has('price'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('price') }}</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -127,7 +149,7 @@
 
                                     <div id="Mineral" class="tabcontent">
                                         <div class="table-responsive" style="overflow-y:auto; max-height:300px;">
-                                            <table class="table table-bordered table-hover">
+                                            <table class="table table-bordered table-hover crystalTable">
                                                 <tr>
                                                     <th>Seleccionar</th>
                                                     <th>Rango dioptría</th>
@@ -146,7 +168,7 @@
                                                     <td>{{ $crystal->crystalTreatment->name }}</td>
                                                     <td>{{ $crystal->focus->name }}</td>
                                                     <td>{{ $crystal->crystalType->name }}</td>
-                                                    <td>{{ '$ ' . $crystal->price }}</td>
+                                                    <td>{{ $crystal->price }}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -156,7 +178,7 @@
 
                                     <div id="Organico" class="tabcontent">
                                         <div class="table-responsive" style="overflow-y:auto; max-height:300px;">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered crystalTable">
                                                 <tr>
                                                     <th>Seleccionar</th>
                                                     <th>Rango dioptría</th>
@@ -164,6 +186,7 @@
                                                     <th>Tratamiento</th>
                                                     <th>Foco</th>
                                                     <th>Lente</th>
+                                                    <th>Valor</th>
                                                 </tr>
                                                 @foreach($crystals as $crystal)
                                                     @if($crystal->material->name == 'Orgánico')
@@ -174,7 +197,7 @@
                                                             <td>{{ $crystal->crystalTreatment->name }}</td>
                                                             <td>{{ $crystal->focus->name }}</td>
                                                             <td>{{ $crystal->crystalType->name }}</td>
-                                                            <td>{{ '$ ' . $crystal->price }}</td>
+                                                            <td>{{ $crystal->price }}</td>
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -184,7 +207,7 @@
 
                                     <div id="Policarbonato" class="tabcontent">
                                         <div class="table-responsive" style="overflow-y:auto; max-height:300px;">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered crystalTable">
                                                 <tr>
                                                     <th>Seleccionar</th>
                                                     <th>Rango dioptría</th>
@@ -192,6 +215,7 @@
                                                     <th>Tratamiento</th>
                                                     <th>Foco</th>
                                                     <th>Lente</th>
+                                                    <th>Valor</th>
                                                 </tr>
                                                 @foreach($crystals as $crystal)
                                                     @if($crystal->material->name == 'Policarbonato')
@@ -202,7 +226,7 @@
                                                             <td>{{ $crystal->crystalTreatment->name }}</td>
                                                             <td>{{ $crystal->focus->name }}</td>
                                                             <td>{{ $crystal->crystalType->name }}</td>
-                                                            <td>{{ '$ ' . $crystal->price }}</td>
+                                                            <td>{{ $crystal->price }}</td>
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -211,7 +235,7 @@
                                     </div>
                                     <div id="Contacto" class="tabcontent">
                                         <div class="table-responsive" style="overflow-y:auto; max-height:300px;">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered crystalTable">
                                                 <tr>
                                                     <th>Seleccionar</th>
                                                     <th>Rango dioptría</th>
@@ -219,6 +243,7 @@
                                                     <th>Tratamiento</th>
                                                     <th>Foco</th>
                                                     <th>Lente</th>
+                                                    <th style="min-width: 80px;">Valor</th>
                                                 </tr>
                                                 @foreach($crystals as $crystal)
                                                     @if($crystal->material->name == 'Contacto')
@@ -229,12 +254,25 @@
                                                             <td>{{ $crystal->crystalTreatment->name }}</td>
                                                             <td>{{ $crystal->focus->name }}</td>
                                                             <td>{{ $crystal->crystalType->name }}</td>
-                                                            <td>{{ '$ ' . $crystal->price }}</td>
+                                                            <td>{{ $crystal->price }}</td>
                                                         </tr>
                                                     @endif
                                                 @endforeach
                                             </table>
                                         </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="min-width: 70px;">{!! Form::label('total', 'Total', [ 'class' => 'col-md-2 control-label']) !!}</td>
+                                <td colspan="7">
+                                    <div>
+                                        {!! Form::text('total', old('total'), [ 'class' => 'form-control', 'style' => 'background-color:#fff; text-align:right;', 'readonly' => 'true']) !!}
+                                        @if ($errors->has('total'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('total') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -255,7 +293,7 @@
                                 <td style="min-width: 70px;">{!! Form::label('pay', 'Abono', [ 'class' => 'col-md-2 control-label']) !!}</td>
                                 <td colspan="7">
                                     <div>
-                                        {!! Form::text('pay', old('pay'), [ 'class' => 'form-control', 'onKeyPress'=>'return soloNumeros(event)']) !!}
+                                        {!! Form::text('pay', old('pay'), [ 'class' => 'form-control', 'onKeyPress'=>'return soloNumeros(event)', 'style'=>'text-align:right;']) !!}
                                         @if ($errors->has('pay'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('pay') }}</strong>
@@ -275,7 +313,7 @@
                 {!! Form::close() !!}
             </div>
         </div>
-</body>
+</div>
 @endsection
 
 <script>

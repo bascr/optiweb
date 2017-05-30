@@ -323,6 +323,8 @@
         {!! Html::script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') !!}
 <!-- script to set tabs in prescription-->
         {!! Html::script('custom/tabs.js') !!}
+<!-- script to receive frame data through ajax  -->
+        {!! Html::script('custom/prescriptionfunctions.js') !!}
 <!-- script to get the elements from de DOM to print-->
         <script>
             // Get the element with id="defaultOpen" and click on it

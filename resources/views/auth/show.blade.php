@@ -26,7 +26,7 @@
                                         <td>@php if($user->user_type_id == 1) { echo 'Usuario';} else { echo 'Administrador';} @endphp</td>
                                         <td>@php if($user->contract_state == 0) { echo 'No vigente';} else { echo 'Vigente';} @endphp</td>
                                         <td>{{ $user->email }}</td>
-                                        <td><a class="btn btn-primary" href="/user/edit/{{ $user->username }}">Editar</a></td>
+                                        <td><a class="btn btn-primary" href="{{ url('/user/edit/' .$user->username) }}">Editar</a></td>
                                     </tr>
                                 @endforeach
                             </table>
