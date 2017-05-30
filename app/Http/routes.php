@@ -98,6 +98,8 @@ Route::get('/prescription/listToDay','PrescriptionController@listToDay');
 // Ajax request to get frame name
 Route::post('/get_frame_name', 'PrescriptionController@getFrameName');
 
+Route::get('/prescription/state', 'PrescriptionController@state');
+
 /*
 |--------------------------------------------------------------------------
 |   Rutas Marcaje

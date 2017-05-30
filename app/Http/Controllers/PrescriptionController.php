@@ -14,6 +14,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Product;
+use Illuminate\Support\Facades\DB;
 
 
 class PrescriptionController extends Controller
@@ -346,6 +347,21 @@ class PrescriptionController extends Controller
         }
 
         echo json_encode($data);
+    }
+
+    public function state() {
+
+        $prescriptions = DB::table('clients')
+            ->join('prescriptions', 'clients.run', '=', 'prescriptions.client_run')
+            ->join('sales', 'prescriptions.sale_id', '=', 'sales.id')
+            ->select(DB::raw('prescriptions.sale_id as sale_id, prescriptions.created_at as date, clients.run as run, 
+            clients.name as name, clients.last_name as last_name, clients.second_last_name, sales.sale_state as state'))
+            ->where('sales.sale_state', '=', '1')
+            ->orWhere('sales.sale_state', '=', '2')
+            ->orderBy('prescriptions.created_at', 'desc')->paginate(7);
+
+        return view('prescription.prescriptionstate', compact('prescriptions'));
+
     }
 
 }

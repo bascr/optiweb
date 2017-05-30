@@ -6,7 +6,7 @@
             <div class="panel-body">
                 <table class="table table-striped">
                     <thead>
-                        <th class="col-md-1" style="text-align: center">Numero</th>
+                        <th class="col-md-1" style="text-align: center">Número</th>
                         <th class="col-md-5" style="text-align: left">Nombre</th>
                         <th class="col-md-4" style="text-align: center">Observación</th>
                         <th class="col-md-2" style="text-align: center"></th>

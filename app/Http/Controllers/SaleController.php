@@ -105,9 +105,7 @@ class SaleController extends Controller
         $sales = DB::table('sales')->join('product_sale', 'sales.id', '=', 'product_sale.sale_id')
             ->join('products', 'product_sale.product_productable_id', '=', 'products.productable_id')
             ->join('articles', 'products.productable_id', '=', 'articles.id')
-            ->select(DB::raw('sales.id , time(sales.created_at) as hour, articles.name, articles.price, product_sale.quantity, articles.price * product_sale.quantity as subtotal'))->whereDate('sales.created_at', '=', $today)->get();
-
-//        return dd($sales);
+            ->select(DB::raw('sales.id , time(sales.created_at) as hour, articles.name, articles.price, product_sale.quantity, articles.price * product_sale.quantity as subtotal'))->whereDate('sales.created_at', '=', $today)->where('sales.sale_state', 3)->get();
 
         return view('sale.listToday', compact('sales'));
 
