@@ -13,7 +13,7 @@
                 {{--{!! Form::token() !!}--}}
  <!-- Buscar run -->
                     <div class="form-group {{$errors->has('run') ? 'has_error' : ''}}">
-                        {!! Form::label('run', 'Run', [ 'class' => 'col-md-4 control-label']) !!}
+                        {!! Form::label('run', 'Run', [ 'class' => 'col-md-4 control-label', 'style' => 'text-align: right;']) !!}
                         <div class="col-md-3">
                             {!! Form::text('run', old('run'), [ 'class' => 'form-control', 'placeholder' => 'sin guión ni dígito', 'maxlength' => '8', 'onkeypress' => 'return soloNumeros(event)']) !!}
                             @if ($errors->has('run'))

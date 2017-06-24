@@ -69,3 +69,29 @@
         </div>
     </div>
 @endsection
+
+@section('css')
+    <!-- Summernote 8.0 css -->
+    {!! Html::style('summernote/summernote.css') !!}
+@endsection
+
+@section('script')
+    <!-- Summernote 8.0 -->
+    {!! Html::script('summernote/summernote.js') !!}
+    <!-- Loading summernot to a text structure-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#mail_content').summernote({
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    [ 'fontname', [ 'fontname' ] ],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                ],
+                height:300
+            });
+        });
+    </script>
+@endsection

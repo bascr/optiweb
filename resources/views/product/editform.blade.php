@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel">
-                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">@php if($product->productable_type == 'App\Article') { echo 'Editar artículo'; } else { echo 'Editar marco'; } @endphp </div>
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">@php if($product->productable_type == 'App\Article') { echo 'Editar artículo'; } else { echo 'Editar armazón'; } @endphp </div>
                     <div class="panel-body">
                 @if($product->productable_type == 'App\Article')
 <!-- Inicio formulario -->

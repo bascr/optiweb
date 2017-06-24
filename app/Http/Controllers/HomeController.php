@@ -36,7 +36,7 @@ class HomeController extends Controller
 
         $client = Client::whereDate('created_at', '=' ,$today)->count();
 
-        $sales = Sale::whereDate('created_at', '=' ,$today)->count();
+        $sales = Sale::whereDate('created_at', '=' ,$today)->where('sale_state', '3')->count();
 
         $message = Happy_message::all();
 

@@ -1,39 +1,18 @@
 <!DOCTYPE html>
-<html lang="sp">
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <title>OptiWeb</title>
-
 <!-- Bootstrap and Jquery -->
-
         <!-- Bootstrap 3.3.5 css -->
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-        <!-- jQuery 2.1.4 -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-        <!-- Bootstrap 3.3.5 js -->
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
         <!-- Bootstrap 3.3.6  css -->
         {!! Html::style('bootstrap/css/bootstrap-theme.css') !!}
-        {{--{!! Html::style('bootstrap/css/bootstrap.min.css') !!}--}}
-        {{--<!-- jQuery 2.2.3 -->--}}
-        {{--{!! Html::script('bootstrap/js/jquery.min.js') !!}--}}
-        {{--<!-- Bootstrap 3.3.6 js -->--}}
-        {{--{!! Html::script('bootstrap/js/bootstrap.min.js') !!}--}}
-        <!-- jQuery 2.2.3 plugin -->
-        {{--{!! Html::script('plugins/jQuery/jquery-2.2.3.min.js') !!}--}}
 <!-- Token for Ajax -->
-        <meta name="_token" content="{!! csrf_token() !!}"/>
-
-<!-- Summernote 8.0 -->
-        <!-- Summernote 8.0 css -->
-        {!! Html::style('summernote/summernote.css') !!}
-        <!-- Summernote 8.0 -->
-        {!! Html::script('summernote/summernote.js') !!}
-
+        @yield('ajaxToken')
 <!-- Style and Fonts -->
 <!-- Font Awesome 4.7.0 -->
         {!! Html::style('fontawesome/css/font-awesome.css') !!}
@@ -55,34 +34,18 @@
         {!! Html::style('plugins/daterangepicker/daterangepicker.css') !!}
 <!-- bootstrap wysihtml5 - text editor -->
         {!! Html::style('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') !!}
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        {!! Html::script('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js') !!}
-        {!! Html::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
-<![endif]-->
 <!-- Laravel's Auth Styles and fonts -->
         {!! Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') !!}
-
-        {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.eot') !!}
-        {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.svg') !!}
-        {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.ttf') !!}
-        {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.woff') !!}
-        {!! Html::style('bootstrap/fonts/glyphicons-halflings-regular.woff2') !!}
 <!-- Style sweetAlert -->
         {!! Html::style('sweetalert/css/sweetalert.css') !!}
 <!-- style to set some css issues -->
         {!! Html::style('custom/styleissues.css') !!}
 <!-- script to print to pdf -->
         {!! Html::script('Xportability/js/xepOnline.jqPlugin.js') !!}
+<!-- Css content for every page-->
+        @yield('css')
 <!-- script to print the date -->
         {!! Html::script('custom/date.js')  !!}
-<!-- style to set tabs in prescription-->
-        {!! Html::style('custom/tabs.css') !!}
-<!-- check the first radio button in prescription -->
-        {!! Html::script('custom/checkradioprescription.js') !!}
-<!-- set a date picker -->
-        {!! Html::script('custom/datepicker.js') !!}
     </head>
     <body id="app-layout" class="hold-transition skin-blue-light sidebar-mini">
 <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<< inicio >>>>>>>>>>>>>>>>>>> -->
@@ -135,7 +98,7 @@
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url('/prescription') }}"><i class="glyphicon glyphicon-file"></i> Ingresar receta</a></li>
                                     <li><a href="{{ url('/prescription/findPrescription') }}"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
-                                    <li><a href="{{ url('/prescription/state') }}"><i class="fa fa-file-text"></i> Estado recetas</a></li>
+                                    <li><a href="{{ url('/prescription/state') }}"><i class="fa fa-check-square-o"></i> Estado recetas</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -146,8 +109,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="/article_sale"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
-                                    <li><a href="/article_sale/list_today"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
+                                    <li><a href="{{ url('/article_sale') }}"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
+                                    <li><a href="{{ url('/article_sale/list_today') }}"><i class="glyphicon glyphicon-signal"></i> Ventas del día</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -160,9 +123,9 @@
                                 <ul class="treeview-menu">
                                     <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación interna</a></li>
                                     <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación externa</a></li>
-                                    <li><a href="#"><i class="fa fa-check-square-o"></i> Entregar reparación</a></li>
+                                    <li><a href="#"><i class="fa fa-check-square-o"></i> Estado reparaciones</a></li>
                                     <li><a href="#"><i class="fa fa-plus"></i> Ingresar taller</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar taller</a></li>
+                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Listar talleres</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -187,8 +150,8 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url('/product/article') }}"><i class="fa fa-plus"></i> Ingresar nuevo artículo</a></li>
-                                    <li><a href="{{ url('/product/frame') }}"><i class="fa fa-plus"></i> Ingresar nuevo marco</a></li>
-                                    <li><a href="{{ url('/product') }}"><i class="glyphicon glyphicon-search"></i> Buscar especie</a></li>
+                                    <li><a href="{{ url('/product/frame') }}"><i class="fa fa-plus"></i> Ingresar nuevo armazón</a></li>
+                                    <li><a href="{{ url('/product') }}"><i class="glyphicon glyphicon-search"></i> Buscar especies</a></li>
                                     <li><a href="{{ url('/inventory') }}"><i class="fa fa-file"></i> Registro inventario</a></li>
                                 </ul>
                             </li>
@@ -303,45 +266,25 @@
         <div class="control-sidebar-bg"></div>
 
 <!-- Scripts -->
-<!-- Loading summernot to a text structure-->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#mail_content').summernote({
-                    toolbar: [
-                        // [groupName, [list of button]]
-                        ['style', ['bold', 'italic', 'underline', 'clear']],
-                        [ 'fontname', [ 'fontname' ] ],
-                        ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
-                        ['height', ['height']],
-                    ],
-                    height:300
-                });
-            });
-        </script>
-
+<!-- jQuery 2.1.4 -->
+        {!! Html::script('http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js') !!}
+<!-- Bootstrap 3.3.5 js -->
+        {!! Html::script('http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js') !!}
 <!-- jQuery UI 1.11.4 -->
         {!! Html::script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') !!}
-<!-- script to set tabs in prescription-->
-        {!! Html::script('custom/tabs.js') !!}
-<!-- script to receive frame data through ajax  -->
-        {!! Html::script('custom/prescriptionfunctions.js') !!}
 <!-- script to get the elements from de DOM to print-->
         <script>
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script>
-        <script type="text/javascript">
-            $.ajaxSetup({
-                headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-            });
-        </script>
-<!-- scripts for articles sales functions -->
-        {!! Html::script('/custom/salesfunctions.js') !!}
+<!-- Script for ajax token -->
+        @yield('ajaxScriptToken')
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
+<!-- JS content for every page-->
+        @yield('script')
 <!-- Morris.js charts -->
         {!! Html::script('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js') !!}
         {!! Html::script('plugins/morris/morris.min.js') !!}
@@ -369,5 +312,11 @@
         {!! Html::script('dist/js/demo.js') !!}
 <!-- SweetAler script -->
         {!! Html::script('sweetalert/js/sweetalert.min.js') !!}
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    {!! Html::script('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js') !!}
+    {!! Html::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
+<![endif]-->
     </body>
 </html>

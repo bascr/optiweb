@@ -26,7 +26,7 @@
                                         <td>{{ $supplier->phone }}</td>
                                         <td>{{ $supplier->email }}</td>
                                         <td>{{ $supplier->supplierType->name }}</td>
-                                        <td><a class="btn btn-primary" href="/supplier/edit/{{ $supplier->id }}">Editar</a></td>
+                                        <td><a class="btn btn-primary" href="{{ url('/supplier/edit/'.$supplier->id) }}">Editar</a></td>
                                     </tr>
                                 @endforeach
                             </table>

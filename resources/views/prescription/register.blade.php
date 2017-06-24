@@ -315,3 +315,30 @@
         </div>
 </div>
 @endsection
+
+@section('css')
+    <!-- style to set tabs in prescription-->
+    {!! Html::style('custom/tabs.css') !!}
+@endsection
+
+@section('ajaxToken')
+    <meta name="_token" content="{!! csrf_token() !!}"/>
+@endsection
+
+@section('ajaxScriptToken')
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+        });
+    </script>
+@endsection
+
+@section('script')
+    <!-- script to set tabs in prescription-->
+    {!! Html::script('custom/tabs.js') !!}
+    <!-- check the first radio button in prescription -->
+    {!! Html::script('custom/checkradioprescription.js') !!}
+    <!-- script to receive frame data through ajax  -->
+    {!! Html::script('custom/prescriptionfunctions.js') !!}
+@endsection
+

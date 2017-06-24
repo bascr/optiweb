@@ -27,15 +27,7 @@ class ClientController extends Controller
 
     public function create(Request $request) {
 
-        $date = getdate();
-        $year = $date['year'];
-        $month = $date['mon'];
-        $day = $date['mday'];
-        if($month != 10 || $month != 11 || $month != 12 ) {
-            $month = "0" . $month;
-        }
-
-        $register_date = $year . "-" . $month . "-" . $day;
+        $register_date = Carbon::now('America/Santiago');
 
         $this->validate($request, [
 
@@ -103,14 +95,14 @@ class ClientController extends Controller
 
     public function seeClient($run){
 
-        $client = Client::where('run', $run)->first();
+        $client = Client::where('run', $run)->get()->first();
         $districts = District::all();
         return view('client.seeClient', compact('client', 'districts'));
     }
 
     public function openUpdate($run){
 
-        $client = Client::where('run', $run)->first();
+        $client = Client::where('run', $run)->get()->first();
 
         $districts = District::all();
        //dd($client);
@@ -169,7 +161,7 @@ class ClientController extends Controller
     }
 
     public function findClient(Request $request){
-        $client = Client::where('run', $request->run)->first();
+        $client = Client::where('run', $request->run)->get()->first();
 
         $districts = District::all();
         //dd($client);
@@ -187,17 +179,9 @@ class ClientController extends Controller
 
     public function listToDay(){
 
-        $date = getdate();
-        $year = $date['year'];
-        $month = $date['mon'];
-        $day = $date['mday'];
-        if($month != 10 || $month != 11 || $month != 12 ) {
-            $month = "0" . $month;
-        }
+        $register_date = (string) Carbon::now('America/Santiago')->format('Y/m/d');
 
-        $register_date = $year . "-" . $month . "-" . $day;
-
-        $listado = Client::where('created_at', $register_date )->orderBy('created_at', 'DESC')->paginate(6);
+        $listado = Client::whereDate('created_at', '=', $register_date )->orderBy('created_at', 'DESC')->paginate(6);
 
         //dd($listado);
         if($listado != null){

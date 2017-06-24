@@ -73,18 +73,6 @@
                                         @endif
                                     </div>
                                 </div>
-<!-- Campo apellido dirección -->
-                                <div class="form-group {{$errors->has('address') ? 'has-error' : ''}}">
-                                    {!! Form::label('address', 'Dirección', [ 'class' => 'col-md-4 control-label']) !!}
-                                    <div class="col-md-6">
-                                        {!! Form::text('address', old('address'), [ 'class' => 'form-control', 'maxlength' => '255']) !!}
-                                        @if ($errors->has('address'))
-                                            <span class="help-block">
-                                                        <strong>{{ $errors->first('address') }}</strong>
-                                                    </span>
-                                        @endif
-                                    </div>
-                                </div>
 <!-- Campo fecha de nacimiento -->
                                 <div class="form-group {{$errors->has('birth_date') ? 'has-error' : ''}}">
                                     {!! Form::label('birth_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
@@ -94,6 +82,18 @@
                                             <span class="help-block">
                                                    <strong>{{ $errors->first('birth_date') }}</strong>
                                              </span>
+                                        @endif
+                                    </div>
+                                </div>
+<!-- Campo apellido dirección -->
+                                <div class="form-group {{$errors->has('address') ? 'has-error' : ''}}">
+                                    {!! Form::label('address', 'Dirección', [ 'class' => 'col-md-4 control-label']) !!}
+                                    <div class="col-md-6">
+                                        {!! Form::text('address', old('address'), [ 'class' => 'form-control', 'maxlength' => '255']) !!}
+                                        @if ($errors->has('address'))
+                                            <span class="help-block">
+                                                                <strong>{{ $errors->first('address') }}</strong>
+                                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -158,8 +158,11 @@
     </div>
 @endsection
 
-<script>
+@section('script')
+    <!-- set a date picker -->
+    {!! Html::script('custom/datepicker.js') !!}
 
+    <script>
         dv = function() {
             var run = document.getElementById('run');
             var digit = document.getElementById('digit');
@@ -181,7 +184,7 @@
             if(fin.toString() == dig){
 
             }else{
-                swal('Ingrese un run valido', 'para completar el formulario', 'warning');
+                swal('Ingrese un run válido', 'para completar el formulario', 'warning');
                 return false;
             }
         }
@@ -239,5 +242,7 @@
                 return false;
             }
         }
+    </script>
 
-</script>
+@endsection
+

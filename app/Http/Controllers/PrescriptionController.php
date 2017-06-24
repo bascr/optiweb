@@ -51,18 +51,6 @@ class PrescriptionController extends Controller
 
     public function create(Request $request) {
 
-
-
-        $date = getdate();
-        $year = $date['year'];
-        $month = $date['mon'];
-        $day = $date['mday'];
-        if($month != 10 || $month != 11 || $month != 12 ) {
-            $month = "0" . $month;
-        }
-
-        $register_date = $year . "-" . $month . "-" . $day;
-
        try{
 
            $frame = Frame::where('id', $request['frame'])->get()->first();
@@ -110,7 +98,7 @@ class PrescriptionController extends Controller
                $prescription->near_left_eye_base = $request->near_left_base;
                $prescription->near_left_eye_pd = $request->near_left_pd;
                $prescription->doctor_name = $request->doctor_name;
-               $prescription->created_at = $register_date;
+               $prescription->created_at = Carbon::now('America/Santiago')->format('Y/m/d');
                $prescription->observation = $request->observation;
                $prescription->sale_id = $sale_id;
                $prescription->save();
@@ -183,11 +171,11 @@ class PrescriptionController extends Controller
 
     public function lista($run){
 
-        $valida = Client::where('run', (int)$run)->first();
+        $valida = Client::where('run', (int)$run)->get()->first();
 
         if($valida != null){
             $listado = Prescription::where('client_run', (int)$run)->orderBy('id', 'DESC')->paginate(6);
-            $client = Client::all()->where('run', (int)$run)->first();
+            $client = Client::where('run', (int)$run)->get()->first();
             $nombre = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
 
             return view('prescription.list', compact('listado', 'nombre'));
@@ -308,17 +296,9 @@ class PrescriptionController extends Controller
 
     public function listToDay(){
 
-        $date = getdate();
-        $year = $date['year'];
-        $month = $date['mon'];
-        $day = $date['mday'];
-        if($month != 10 || $month != 11 || $month != 12 ) {
-            $month = "0" . $month;
-        }
+        $register_date = (string) Carbon::now('America/Santiago')->format('Y/m/d');
 
-        $register_date = $year . "-" . $month . "-" . $day;
-
-        $prescriptions = Prescription::where('created_at', $register_date )->orderBy('id', 'DESC')->paginate(6);
+        $prescriptions = Prescription::where('created_at', '=', $register_date )->orderBy('id', 'DESC')->paginate(6);
         if($prescriptions != null){
             return view('prescription.listToDay', compact('prescriptions'));
         }else{
@@ -354,7 +334,7 @@ class PrescriptionController extends Controller
         $prescriptions = DB::table('clients')
             ->join('prescriptions', 'clients.run', '=', 'prescriptions.client_run')
             ->join('sales', 'prescriptions.sale_id', '=', 'sales.id')
-            ->select(DB::raw('prescriptions.sale_id as sale_id, prescriptions.created_at as date, clients.run as run, 
+            ->select(DB::raw('prescriptions.sale_id as sale_id, prescriptions.created_at as date, clients.run as run, clients.digit as digit, 
             clients.name as name, clients.last_name as last_name, clients.second_last_name, sales.sale_state as state'))
             ->where('sales.sale_state', '=', '1')
             ->orWhere('sales.sale_state', '=', '2')

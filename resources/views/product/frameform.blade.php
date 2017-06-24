@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel">
-                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Ingreso de marco</div>
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Ingreso de armazón</div>
                     <div class="panel-body">
 <!-- Inicio formulario -->
                     {!! Form::open(['method'=>'POST', 'action'=>'ProductController@createFrame', 'class' => 'form-horizontal']) !!}
@@ -13,7 +13,7 @@
                     {!! Form::token() !!}
 <!-- Campo nombre -->
                         <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
-                            {!! Form::label('name', 'Nombre', [ 'class' => 'col-md-4 control-label']) !!}
+                            {!! Form::label('name', 'Modelo', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
                                 {!! Form::text('name', old('name'), [ 'class' => 'col-md-4 form-control']) !!}
                                 @if ($errors->has('name'))
@@ -25,7 +25,7 @@
                         </div>
 <!-- Droplist modelo -->
                         <div class="form-group{{ $errors->has('model') ? ' has-error' : '' }}">
-                            <label for="model" class="col-md-4 control-label">Tipo de marco</label>
+                            <label for="model" class="col-md-4 control-label">Tipo de armazón</label>
 
                             <div class="col-md-6">
 

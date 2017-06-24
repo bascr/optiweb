@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <body class="box-header">
+<div class="box-header">
     <div class="panel">
         <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Listado de clientes</div>
             <div class="panel-body">
@@ -28,11 +28,9 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {!!$listado->render()!!}
+                    {!! $listado->render() !!}
                 </div>
             </div>
     </div>
-    </body>
-
-
-    @endsection
+</div>
+@endsection

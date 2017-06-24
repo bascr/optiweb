@@ -43,3 +43,8 @@
     </div>
     </body>
 @endsection
+
+@section('script')
+    <!-- scripts for articles sales functions -->
+    {!! Html::script('/custom/salesfunctions.js') !!}
+@endsection

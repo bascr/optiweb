@@ -58,24 +58,40 @@
 </div>
 @endsection
 
-<script>
-    function soloNumeros(e){
-        key = e.keyCode || e.which;
-        tecla = String.fromCharCode(key).toLowerCase();
-        letras = "0123456789";
-        especiales = "8-37-39-46";
+@section('ajaxToken')
+    <meta name="_token" content="{!! csrf_token() !!}"/>
+@endsection
 
-        tecla_especial = false;
-        for(var i in especiales){
-            if(key == especiales[i]){
-                tecla_especial = true;
-                break;
+@section('ajaxScriptToken')
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+        });
+    </script>
+@endsection
+
+@section('script')
+    <script>
+        function soloNumeros(e){
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = "0123456789";
+            especiales = "8-37-39-46";
+
+            tecla_especial = false;
+            for(var i in especiales){
+                if(key == especiales[i]){
+                    tecla_especial = true;
+                    break;
+                }
+            }
+            if(letras.indexOf(tecla)==-1 && !tecla_especial){
+                return false;
             }
         }
-        if(letras.indexOf(tecla)==-1 && !tecla_especial){
-            return false;
-        }
-    }
+    </script>
 
+    <!-- scripts for articles sales functions -->
+    {!! Html::script('/custom/salesfunctions.js') !!}
+@endsection
 
-</script>

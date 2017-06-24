@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel">
-                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Registro de cliente</div>
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Editar información de cliente</div>
                     <div class="panel-body">
 
 <!-- Inicio formulario -->
@@ -20,12 +20,12 @@
                                     </div>
 
                                     <div class="col-xs-6 col-md-4">
-                                        {!! Form::text('run', $client->run, [ 'class' => 'col-md-4 form-control', 'maxlength' => '8', 'onkeypress' => 'return soloNumeros(event)']) !!}
+                                        {!! Form::text('run', $client->run, [ 'class' => 'col-md-4 form-control', 'style'=>'background-color:#fff;', 'maxlength' => '8', 'onkeypress' => 'return soloNumeros(event)', 'readonly']) !!}
 
                                     </div>
 <!-- Campo dígito -->
                                     <div class="col-xs-4 col-md-2">
-                                        {!! Form::text('digit', $client->digit, [ 'class' => 'form-control', 'style'=>'width:40px', 'id' => 'digit', 'onkeypress' => 'return soloDigito(event)', 'maxlength' => '1']) !!}
+                                        {!! Form::text('digit', $client->digit, [ 'class' => 'form-control', 'style'=>'width:40px; background-color:#fff;', 'id' => 'digit', 'onkeypress' => 'return soloDigito(event)', 'maxlength' => '1', 'readonly']) !!}
 
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                 <div class="form-group {{$errors->has('birth_date') ? 'has-error' : ''}}">
                                     {!! Form::label('birth_date', 'Fecha de nacimiento', [ 'class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
-                                        {!! Form::text('birth_date', $client->birt_date, [ 'class' => 'form-control','id'=>'datepicker']) !!}
+                                        {!! Form::text('birth_date', Carbon\Carbon::parse($client->birth_date)->format('d-m-Y'), [ 'class' => 'form-control','id'=>'datepicker']) !!}
                                         @if ($errors->has('birth_date'))
                                             <span class="help-block">
                                                    <strong>{{ $errors->first('birth_date') }}</strong>
@@ -151,8 +151,11 @@
     </div>
 @endsection
 
-<script>
+@section('script')
+    <!-- set a date picker -->
+    {!! Html::script('custom/datepicker.js') !!}
 
+    <script>
         function soloDigito(e){
             key = e.keyCode || e.which;
             tecla = String.fromCharCode(key).toLowerCase();
@@ -206,5 +209,5 @@
                 return false;
             }
         }
-
-</script>
+    </script>
+@endsection

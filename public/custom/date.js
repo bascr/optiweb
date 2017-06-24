@@ -1,4 +1,7 @@
-    function date() {
+/**
+ * Created by bascr on 25-04-2017.
+ */
+function date() {
         var hoy = new Date();
         var m = [];
         var d = [];
@@ -14,6 +17,4 @@
         document.write(" de ");
         document.write(m[hoy.getMonth()]);
         document.write(" del " + an);
-    }/**
- * Created by bascr on 25-04-2017.
- */
+}

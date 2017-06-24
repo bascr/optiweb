@@ -8,12 +8,12 @@
                 <div class="panel">
                     <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Editar proveedor</div>
                     <div class="panel-body">
-    <!-- Inicio formulario -->
+<!-- Inicio formulario -->
                     {!! Form::open(['method'=>'POST', 'action'=>'SupplierController@update','class' => 'form-horizontal']) !!}
 
                     {!! Form::token() !!}
                         <input type="hidden" value="{{ $supplier->id }}" name="id"/>
-    <!-- Campo nombre -->
+<!-- Campo nombre -->
                         <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
                             {!! Form::label('name', 'Nombre', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
@@ -25,7 +25,7 @@
                                 @endif
                             </div>
                         </div>
-    <!-- Campo apellido dirección -->
+<!-- Campo apellido dirección -->
                         <div class="form-group {{$errors->has('address') ? 'has-error' : ''}}">
                             {!! Form::label('address', 'Dirección', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
@@ -33,6 +33,26 @@
                                 @if ($errors->has('address'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+<!-- Droplist comuna -->
+                        <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
+                            <label for="district" class="col-md-4 control-label">Comuna</label>
+
+                            <div class="col-md-6">
+
+                                <select id="district" class="form-control" name="district">
+                                    <option value="0">Seleccione comuna</option>
+                                    @foreach($districts as $district)
+                                        <option @php if($supplier->district_id == $district->id ){ echo 'selected'; } @endphp value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('district'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('district') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -57,27 +77,7 @@
                                 @endif
                             </div>
                         </div>
-    <!-- Droplist comuna -->
-                        <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
-                            <label for="district" class="col-md-4 control-label">Comuna</label>
-
-                            <div class="col-md-6">
-
-                                <select id="district" class="form-control" name="district">
-                                    <option value="0">Seleccione comuna</option>
-                                    @foreach($districts as $district)
-                                        <option @php if($supplier->district_id == $district->id ){ echo 'selected'; } @endphp value="{{ $district->id }}">{{ $district->name }}</option>
-                                    @endforeach
-                                </select>
-
-                                @if ($errors->has('district'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('district') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-    <!-- Campo teléfono -->
+<!-- Campo teléfono -->
                         <div class="form-group {{$errors->has('phone') ? 'has-error' : ''}}">
                             {!! Form::label('phone', 'Teléfono', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
@@ -89,7 +89,7 @@
                                 @endif
                             </div>
                         </div>
-    <!-- Campo email -->
+<!-- Campo email -->
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
@@ -103,22 +103,23 @@
                                 @endif
                             </div>
                         </div>
-    <!-- Botón registrar -->
+<!-- Botón registrar -->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::submit('Editar', [ 'class' => 'btn btn-primary' ]) !!}
                                 <a href="{{ url('/supplier/show') }}" class="btn btn-primary">Volver</a>
                             </div>
                         </div>
-    <!-- cierre formulario -->
+<!-- cierre formulario -->
                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+@endsection
 
+@section('script')
     <script>
         function soloNumeros(e){
             key = e.keyCode || e.which;
@@ -156,3 +157,4 @@
             }
         }
     </script>
+@endsection
