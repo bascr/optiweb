@@ -85,7 +85,7 @@ class SaleController extends Controller
             }
 
 
-            return view('sale.messages', compact('user','cods_article', 'name_articles', 'quantities', 'prices', 'total', 'date', 'sale_id'));
+            return view('sale.ticket', compact('user','cods_article', 'name_articles', 'quantities', 'prices', 'total', 'date', 'sale_id'));
 
         } catch(Exception $e) {
 

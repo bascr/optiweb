@@ -100,6 +100,14 @@ Route::post('/get_frame_name', 'PrescriptionController@getFrameName');
 
 Route::get('/prescription/state', 'PrescriptionController@state');
 
+Route::get('/prescription/state/date', 'PrescriptionController@stateDate');
+
+Route::get('/prescription/state/change/{id}', 'PrescriptionController@confirmInLocal');
+
+Route::get('/prescription/confirm/{id}', 'PrescriptionController@confirmPrescription');
+
+Route::post('/prescription/confirmPrescriptionSale', 'PrescriptionController@prescriptionSale');
+
 /*
 |--------------------------------------------------------------------------
 |   Rutas Marcaje

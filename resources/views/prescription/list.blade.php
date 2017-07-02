@@ -13,7 +13,7 @@
                     <tbody>
                         @foreach($listado as $presc)
                             <tr>
-                                <td style="text-align: center">{{$presc->created_at}}</td>
+                                <td style="text-align: center">{{ \Carbon\Carbon::parse($presc->created_at)->format('d-m-Y')}}</td>
                                 <td>{{$presc->observation}}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ url('/prescription/seePrescription/'.$presc->id) }}">Abrir</a>

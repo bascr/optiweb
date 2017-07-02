@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Product;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 
 class PrescriptionController extends Controller
 {
     //
 
-    public function index()
-    {
+    public function index() {
         return view('prescription.find');
     }
 
@@ -31,7 +31,7 @@ class PrescriptionController extends Controller
 
         $run = Input::get('run');
 
-        try{
+        try {
             $client = Client::where('run', $run)->get()->first();
 
             if($client == null) {
@@ -42,16 +42,14 @@ class PrescriptionController extends Controller
 
             return view('prescription.register', compact('client', 'crystals'));
 
-        }catch (Exception $e){
+        }catch (Exception $e) {
 
         }
-
-
     }
 
     public function create(Request $request) {
 
-       try{
+       try {
 
            $frame = Frame::where('id', $request['frame'])->get()->first();
 
@@ -164,7 +162,6 @@ class PrescriptionController extends Controller
         $run = $request->run;
 
         return redirect()->action('PrescriptionController@lista', ['run' => $run]);
-
     }
 
 
@@ -186,7 +183,6 @@ class PrescriptionController extends Controller
             ];
             return view('prescription.messages2', compact('message'));
         }
-
     }
 
     public function seePrescription($id){
@@ -216,7 +212,6 @@ class PrescriptionController extends Controller
                 $crystal = $product->productable;
             }
         }
-
         return view('prescription.seePrescription', compact('presc', 'name', 'run', 'frame', 'crystal'));
     }
 
@@ -282,8 +277,6 @@ class PrescriptionController extends Controller
         }catch (Exception $e){
             dd($e);
         }
-
-
     }
 
     public function pdf(){
@@ -291,7 +284,6 @@ class PrescriptionController extends Controller
         $pdf = PDF::loadView('seePrescription');
 
         return $pdf->download('receta.pdf');
-
     }
 
     public function listToDay(){
@@ -325,7 +317,6 @@ class PrescriptionController extends Controller
                 'price' => 0
             ];
         }
-
         echo json_encode($data);
     }
 
@@ -335,13 +326,101 @@ class PrescriptionController extends Controller
             ->join('prescriptions', 'clients.run', '=', 'prescriptions.client_run')
             ->join('sales', 'prescriptions.sale_id', '=', 'sales.id')
             ->select(DB::raw('prescriptions.sale_id as sale_id, prescriptions.created_at as date, clients.run as run, clients.digit as digit, 
-            clients.name as name, clients.last_name as last_name, clients.second_last_name, sales.sale_state as state'))
+            clients.name as name, clients.last_name as last_name, clients.second_last_name, clients.phone, sales.sale_state as state'))
+            ->where('sales.sale_state', '=', '1')
+            ->orWhere('sales.sale_state', '=', '2')
+            ->orderBy('sales.sale_state', 'asc')->paginate(7);
+
+        return view('prescription.prescriptionstate', compact('prescriptions'));
+    }
+
+    public function stateDate() {
+
+        $prescriptions = DB::table('clients')
+            ->join('prescriptions', 'clients.run', '=', 'prescriptions.client_run')
+            ->join('sales', 'prescriptions.sale_id', '=', 'sales.id')
+            ->select(DB::raw('prescriptions.sale_id as sale_id, prescriptions.created_at as date, clients.run as run, clients.digit as digit, 
+            clients.name as name, clients.last_name as last_name, clients.second_last_name, clients.phone, sales.sale_state as state'))
             ->where('sales.sale_state', '=', '1')
             ->orWhere('sales.sale_state', '=', '2')
             ->orderBy('prescriptions.created_at', 'desc')->paginate(7);
 
         return view('prescription.prescriptionstate', compact('prescriptions'));
+    }
 
+    public function confirmInLocal($id) {
+
+        // Changing sale state
+        $sale = Sale::where('id', $id)->get()->first();
+        $sale->sale_state = 2;
+        $sale->save();
+
+        // Sending email to client
+        $email = $sale->client->email;
+        $subject = "Retiro de receta oftalmológica";
+        $from = 'contacto@opticasalarcon.cl';
+        $data = [
+            'name' => 'Estimado(a): '. $sale->client->name .' '. $sale->client->last_name .' '.$sale->client->second_last_name.', ',
+            'content' => 'su receta está lista para ser retirada, le esperamos.',
+            'pathToImage' => public_path().'/images/glasses_email.png'
+        ];
+
+        Mail::send('prescription.emailConfirmation', $data, function($message) use ($email, $subject) {
+
+            $message->from('bastycr@gmail.com', 'Óptica Alarcón');
+            $message->to($email)->subject($subject);
+
+        });
+
+        return redirect('/prescription/state');
+    }
+
+    public function confirmPrescription($id) {
+
+        $sale = Sale::find($id);
+        $product_sales= $sale->productSale;
+        $pay = $sale->pay;
+        $frame = new Frame();
+        $crystal = new Crystal();
+
+        foreach ($product_sales as $product_sale) {
+            $productable_id = $product_sale->product_productable_id;
+
+            $product = Product::where('productable_id', $productable_id)->get()->first();
+
+            if($product->productable_type == 'App\\Frame') {
+                $frame = $product->productable;
+            }
+            if($product->productable_type == 'App\\Crystal') {
+                $crystal = $product->productable;
+            }
+        }
+
+        $total = $frame->price + $crystal->price;
+        $toPay = $total - $pay;
+
+        return view('prescription.confirmSalePrescription', compact('sale', 'total', 'toPay','frame', 'crystal'));
+    }
+
+    public function prescriptionSale(Request $request) {
+
+        $user = $request->user();
+        $date = Carbon::now('America/Santiago');
+        $sale_id = $request->sale_id;
+        $sale = Sale::find($sale_id);
+        $frame = $request->frame;
+        $frame_id = $request->frame_id;
+        $crystal = $request->crystal;
+        $frame_price = $request->frame_price;
+        $crystal_price = $request->crystal_price;
+        $pay = $request->pay;
+        $toPay = $request->toPay;
+        $total = $request->total;
+
+        $sale->sale_state = 3;
+        $sale->save();
+
+        return view('prescription.ticket', compact('user', 'date', 'sale_id', 'frame', 'frame_id', 'crystal', 'frame_price', 'crystal_price', 'pay', 'toPay', 'total' ));
     }
 
 }

@@ -163,7 +163,6 @@ class SupplierController extends Controller
         });
 
         return view('supplier.emailmessages');
-
     }
 
 }

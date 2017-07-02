@@ -22,8 +22,8 @@
                                 <td style="text-transform: capitalize">{{$client->last_name . ' ' . $client->second_last_name . ' ' .$client->name}}</td>
                                 <td style="text-align: center">{{$client->phone}}</td>
                                 <td style="text-align: center">{{$client->email}}</td>
-                                <td style="text-align: center"><a class="btn btn-primary col-md-6" href="{{ url('/client/seeClient/'.$client->run) }}">Abrir</a></td>
-                                <td style="text-align: center"><a class="btn btn-primary col-md-6" href="{{ url('/client/update/'.$client->run) }}">Editar</a></td>
+                                <td><a class="btn btn-primary" href="{{ url('/client/seeClient/'.$client->run) }}">Abrir</a></td>
+                                <td><a class="btn btn-primary" href="{{ url('/client/update/'.$client->run) }}">Editar</a></td>
                             </tr>
                         @endforeach
                         </tbody>

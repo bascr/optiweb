@@ -12,16 +12,16 @@
                                 <tr>
                                     <th>Run</th>
                                     <th>Nombre</th>
-                                    <th>Nombre de usuario</th>
-                                    <th>Privilegios</th>
-                                    <th>Estado del contrato</th>
-                                    <th>Email</th>
-                                    <th>Editar</th>
+                                    <th style="text-align: center;">Nombre de usuario</th>
+                                    <th style="text-align: center;">Privilegios</th>
+                                    <th style="text-align: center;">Estado del contrato</th>
+                                    <th style="text-align: center;">Email</th>
+                                    <th style="text-align: center;">Editar</th>
                                 </tr>
                                 @foreach($users as $user)
                                     <tr>
-                                        <td>{{ $user->run }}-{{$user->digit}}</td>
-                                        <td>{{ $user->name .' '. $user->last_name.' '. $user->second_last_name }}</td>
+                                        <td style="text-align: left;">{{ $user->run }}-{{$user->digit}}</td>
+                                        <td style="text-align: left;">{{ $user->name .' '. $user->last_name.' '. $user->second_last_name }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>@php if($user->user_type_id == 1) { echo 'Usuario';} else { echo 'Administrador';} @endphp</td>
                                         <td>@php if($user->contract_state == 0) { echo 'No vigente';} else { echo 'Vigente';} @endphp</td>

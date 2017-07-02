@@ -365,6 +365,10 @@ function validaForm(){
         swal("Verifique en la receta", "El abono debe ser igual o mayor al 50%.", "warning");
         return false;
     }
+    if(pay > total) {
+        swal("Verifique en la receta", "El abono no puede ser mayor al total de la venta.", "warning");
+        return false;
+    }
 
 }
 

@@ -125,7 +125,7 @@ class ClientController extends Controller
         ]);
 
         try {
-            $client = Client::where('run', $request->run)->first();
+            $client = Client::where('run', $request->run)->get()->first();
 
             $client->name = $request->name;
             $client->last_name = $request->last_name;
