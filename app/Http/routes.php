@@ -60,9 +60,15 @@ Route::get('/client/listToDay', 'ClientController@listToDay');
 
 Route::get('/prescription', 'PrescriptionController@index');
 
+Route::get('/prescription/crystal_contact', 'PrescriptionController@indexCrystalContact');
+
 Route::get('/prescription/find/', 'PrescriptionController@find');
 
+Route::get('/prescription/find/crystal_contact', 'PrescriptionController@findCrystalContact');
+
 Route::post('/prescription/register', 'PrescriptionController@create');
+
+Route::post('/prescription/register/crystal_Contact', 'PrescriptionController@createCrystalContact');
 
 Route::get('/messages', function(){
 
@@ -94,6 +100,8 @@ Route::get('/prescription/update/{id}','PrescriptionController@update');
 Route::post('/prescription/update', 'PrescriptionController@updatePresc');
 
 Route::get('/prescription/listToDay','PrescriptionController@listToDay');
+
+Route::get('/prescription/listToDay/RetiredPrescription', 'PrescriptionController@listToDayRetiredPrescription');
 
 // Ajax request to get frame name
 Route::post('/get_frame_name', 'PrescriptionController@getFrameName');

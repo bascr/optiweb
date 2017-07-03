@@ -9,7 +9,7 @@
             <table class="table table-striped">
                 <thead>
                 <th class="" style="text-align: center">Cod. venta</th>
-                <th class="" style="text-align: center">Articulo</th>
+                <th class="" style="text-align: left">Artículo</th>
                 <th class="" style="text-align: left">Hora</th>
                 <th class="" style="text-align: center">Precio</th>
                 <th class="" style="text-align: center">Cantidad</th>

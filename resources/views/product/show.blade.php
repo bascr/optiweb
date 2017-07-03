@@ -13,15 +13,15 @@
                                     <th>Producto</th>
                                     <th>Marca</th>
                                     <th>Proveedor</th>
-                                    <th>Stock actual</th>
-                                    <th>Editar características</th>
-                                    <th>Añadir stock</th>
+                                    <th style="text-align:center;">Stock actual</th>
+                                    <th style="text-align:center;">Editar características</th>
+                                    <th style="text-align:center;">Añadir stock</th>
                                 </tr>
                             @foreach($products as $product)
                                 <tr>
-                                    <td>{{ $product->productable->name }}</td>
-                                    <td>{{ $product->brand->name }}</td>
-                                    <td>{{ $product->supplier->name }}</td>
+                                    <td style="text-align:left;">{{ $product->productable->name }}</td>
+                                    <td style="text-align:left;">{{ $product->brand->name }}</td>
+                                    <td style="text-align:left;">{{ $product->supplier->name }}</td>
                                     <td>{{ $product->productable->stock }}</td>
                                     <td><a class="btn btn-primary" href="product/{{ $product->productable_id }}">Editar</a></td>
                                     <td><a class="btn btn-primary" href="product/stock/{{ $product->productable_id }}">Añadir</a></td>

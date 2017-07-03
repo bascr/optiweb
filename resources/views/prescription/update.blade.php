@@ -1,156 +1,160 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="box-header">
-    <div class="panel">
-        <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Modificación de recetas</div>
-            <div class="panel-body">
-<!-- Inicio formulario -->
-                {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@updatePresc', 'onSubmit'=> 'return validaForm();' , 'class' => 'form-horizontal'])!!}
+    <div class="box-header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading" style="color: #fff;background-color: #3C8DBC;">Modificación de recetas</div>
+                        <div class="panel-body">
+            <!-- Inicio formulario -->
+                            {!! Form::open(['method'=>'POST', 'action'=>'PrescriptionController@updatePresc', 'onSubmit'=> 'return validaForm();' , 'class' => 'form-horizontal'])!!}
 
-                {!! Form::token() !!}
-<!-- inicio tabla -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <tr class="info">
-                                <td>{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
-                                <td colspan="7">
-                                    <div>
-                                        <label class="control-label text-capitalize" >{{ $name }}</label>
-                                        <input  name="client_run" class="hidden" id="client_run" value="{{ $run }}">
-                                        <input  name="presc_id" class="hidden" id="presc_id" value="{{ $presc->id }}">
-                                        <input  id="client_run" type="text" class="hidden" name="client_run" value="{{ $run }}">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th style="text-align: center;">Ojo</th>
-                                <th colspan="6" style="text-align: center;">Dioptría</th>
-                            </tr>
-                            <tr class="info" style="text-align: center;">
-                                <td  style="width: 100px;"></td>
-                                <td style="width: 100px;"></td>
-                                <td style="width: 100px;">Esférico</td>
-                                <td style="width: 100px;">Cilíndrico</td>
-                                <td style="width: 100px;">Eje</td>
-                                <td style="width: 100px;">Prisma</td>
-                                <td style="width: 100px;">Base</td>
-                                <td style="width: 100px;">D.P</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2" style="text-align: center; vertical-align: middle">Lejos</td>
-                                <td>Derecho</td>
-                                <td><input id="far_right_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_sphere" value="{{ $presc->far_right_eye_sphere }}"></td>
-                                <td><input id="far_right_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_cyl" value="{{ $presc->far_right_eye_cyl }}"></td>
-                                <td><input id="far_right_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_axis" value="{{ $presc->far_right_eye_axis }}"></td>
-                                <td><input id="far_right_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_prism" value="{{ $presc->far_right_eye_prism }}"></td>
-                                <td><input id="far_right_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_base" value="{{ $presc->far_right_eye_base }}"></td>
-                                <td><input id="far_right_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_pd" value="{{ $presc->far_right_eye_pd }}"></td>
-                            </tr>
-                            <tr>
-                                <td>Izquierdo</td>
-                                <td><input id="far_left_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_sphere" value="{{$presc->far_left_eye_sphere }}"></td>
-                                <td><input id="far_left_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_cyl" value="{{ $presc->far_left_eye_cyl }}"></td>
-                                <td><input id="far_left_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_axis" value="{{ $presc->far_left_eye_axis }}"></td>
-                                <td><input id="far_left_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_prism" value="{{ $presc->far_left_eye_prism }}"></td>
-                                <td><input id="far_left_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_base" value="{{ $presc->far_left_eye_base }}"></td>
-                                <td><input id="far_left_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_pd" value="{{ $presc->far_left_eye_pd }}"></td>
-                            </tr>
-                            <tr class="info" style="text-align: center;">
-                                <td  style="width: 100px;"></td>
-                                <td  style="width: 100px;"></td>
-                                <td  style="width: 100px;">Esférico</td>
-                                <td  style="width: 100px;">Cilíndrico</td>
-                                <td  style="width: 100px;">Eje</td>
-                                <td  style="width: 100px;">Prisma</td>
-                                <td  style="width: 100px;">Base</td>
-                                <td  style="width: 100px;">D.P</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="2" style="text-align: center; vertical-align: middle">Cerca</td>
-                                <td>Derecho</td>
-                                <td><input id="near_right_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_sphere" value="{{ $presc->near_right_eye_sphere }}"></td>
-                                <td><input id="near_right_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_cyl" value="{{ $presc->near_right_eye_cyl }}"></td>
-                                <td><input id="near_right_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_axis" value="{{ $presc->near_right_eye_axis }}"></td>
-                                <td><input id="near_right_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_prism" value="{{ $presc->near_right_eye_prism }}"></td>
-                                <td><input id="near_right_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_base" value="{{ $presc->near_right_eye_base }}"></td>
-                                <td><input id="near_right_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_pd" value="{{ $presc->near_right_eye_pd }}"></td>
-                            </tr>
-                            <tr>
-                                <td>Izquierdo</td>
-                                <td><input id="near_left_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_sphere" value="{{ $presc->near_left_eye_sphere }}"></td>
-                                <td><input id="near_left_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_cyl" value="{{ $presc->near_left_eye_cyl }}"></td>
-                                <td><input id="near_left_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_axis" value="{{ $presc->near_left_eye_axis }}"></td>
-                                <td><input id="near_left_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_prism" value="{{ $presc->near_left_eye_prism }}"></td>
-                                <td><input id="near_left_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_base" value="{{ $presc->near_left_eye_base }}"></td>
-                                <td><input id="near_left_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_pd" value="{{ $presc->near_left_eye_pd }}"></td>
-                            </tr>
-                            <tr>
-                                <td> {!! Form::label('doctor_name', 'Médico', [ 'class' => 'col-md-1 control-label']) !!}</td>
-                                <td colspan="7">
-                                    <div>
-                                        {!! Form::text('doctor_name', $presc->doctor_name, [ 'class' => 'form-control']) !!}
-                                        @if ($errors->has('doctor_name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('doctor_name') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                            {{--<tr>--}}
-                                {{--<td>{!! Form::label('frame', 'Armazón', [ 'class' => 'col-md-2 control-label']) !!}</td>--}}
-                                {{--<td colspan="7">--}}
-                                    {{--<div>--}}
-                                        {{--{!! Form::text('frame', old('frame'), [ 'class' => 'form-control']) !!}--}}
-                                        {{--@if ($errors->has('frame'))--}}
-                                            {{--<span class="help-block">--}}
-                                                {{--<strong>{{ $errors->first('frame') }}</strong>--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
-                                    {{--</div>--}}
-                                {{--</td>--}}
-                            {{--</tr>--}}
-                            {{--<tr>--}}
-                                {{--<td>{!! Form::label('crystal', 'Cristales', [ 'class' => 'col-md-3 control-label']) !!}</td>--}}
-                                {{--<td colspan="7">--}}
-                                    {{--<div>--}}
-                                        {{--{!! Form::text('crystal', old('crystal'), [ 'class' => 'form-control']) !!}--}}
-                                        {{--@if ($errors->has('crystal'))--}}
-                                            {{--<span class="help-block">--}}
-                                                {{--<strong>{{ $errors->first('crystal') }}</strong>--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
-                                    {{--</div>--}}
-                                {{--</td>--}}
-                            {{--</tr>--}}
-                            <tr>
-                                <td>{!! Form::label('observation', 'Observaciones', [ 'class' => 'col-md-2 control-label']) !!}</td>
-                                <td colspan="7">
-                                    <div>
-                                        {!! Form::text('observation', $presc->observation, [ 'class' => 'form-control']) !!}
-                                        @if ($errors->has('observation'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('observation') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                            {!! Form::token() !!}
+            <!-- inicio tabla -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr style="background-color: #F2F2F2;">
+                                            <td>{!! Form::label('name', 'Nombre:', [ 'class' => 'col-md-1 control-label']) !!}</td>
+                                            <td colspan="7">
+                                                <div>
+                                                    <label class="control-label text-capitalize" >{{ $name }}</label>
+                                                    <input  name="client_run" class="hidden" id="client_run" value="{{ $run }}">
+                                                    <input  name="presc_id" class="hidden" id="presc_id" value="{{ $presc->id }}">
+                                                    <input  id="client_run" type="text" class="hidden" name="client_run" value="{{ $run }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th style="text-align: center;">Ojo</th>
+                                            <th colspan="6" style="text-align: center;">Dioptría</th>
+                                        </tr>
+                                        <tr style="text-align: center; background-color: #F2F2F2;">
+                                            <td  style="width: 100px;"></td>
+                                            <td style="width: 100px;"></td>
+                                            <td style="width: 100px;">Esférico</td>
+                                            <td style="width: 100px;">Cilíndrico</td>
+                                            <td style="width: 100px;">Eje</td>
+                                            <td style="width: 100px;">Prisma</td>
+                                            <td style="width: 100px;">Base</td>
+                                            <td style="width: 100px;">D.P</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2" style="text-align: center; vertical-align: middle">Lejos</td>
+                                            <td>Derecho</td>
+                                            <td><input id="far_right_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_sphere" value="{{ $presc->far_right_eye_sphere }}"></td>
+                                            <td><input id="far_right_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_eye_cyl" value="{{ $presc->far_right_eye_cyl }}"></td>
+                                            <td><input id="far_right_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_axis" value="{{ $presc->far_right_eye_axis }}"></td>
+                                            <td><input id="far_right_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_prism" value="{{ $presc->far_right_eye_prism }}"></td>
+                                            <td><input id="far_right_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_base" value="{{ $presc->far_right_eye_base }}"></td>
+                                            <td><input id="far_right_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_right_pd" value="{{ $presc->far_right_eye_pd }}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Izquierdo</td>
+                                            <td><input id="far_left_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_sphere" value="{{$presc->far_left_eye_sphere }}"></td>
+                                            <td><input id="far_left_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_eye_cyl" value="{{ $presc->far_left_eye_cyl }}"></td>
+                                            <td><input id="far_left_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_axis" value="{{ $presc->far_left_eye_axis }}"></td>
+                                            <td><input id="far_left_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_prism" value="{{ $presc->far_left_eye_prism }}"></td>
+                                            <td><input id="far_left_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_base" value="{{ $presc->far_left_eye_base }}"></td>
+                                            <td><input id="far_left_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="far_left_pd" value="{{ $presc->far_left_eye_pd }}"></td>
+                                        </tr>
+                                        <tr style="background-color: #F2F2F2; text-align: center;">
+                                            <td  style="width: 100px;"></td>
+                                            <td  style="width: 100px;"></td>
+                                            <td  style="width: 100px;">Esférico</td>
+                                            <td  style="width: 100px;">Cilíndrico</td>
+                                            <td  style="width: 100px;">Eje</td>
+                                            <td  style="width: 100px;">Prisma</td>
+                                            <td  style="width: 100px;">Base</td>
+                                            <td  style="width: 100px;">D.P</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2" style="text-align: center; vertical-align: middle">Cerca</td>
+                                            <td>Derecho</td>
+                                            <td><input id="near_right_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_sphere" value="{{ $presc->near_right_eye_sphere }}"></td>
+                                            <td><input id="near_right_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_eye_cyl" value="{{ $presc->near_right_eye_cyl }}"></td>
+                                            <td><input id="near_right_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_axis" value="{{ $presc->near_right_eye_axis }}"></td>
+                                            <td><input id="near_right_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_prism" value="{{ $presc->near_right_eye_prism }}"></td>
+                                            <td><input id="near_right_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_base" value="{{ $presc->near_right_eye_base }}"></td>
+                                            <td><input id="near_right_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_right_pd" value="{{ $presc->near_right_eye_pd }}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Izquierdo</td>
+                                            <td><input id="near_left_eye_sphere" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_sphere" value="{{ $presc->near_left_eye_sphere }}"></td>
+                                            <td><input id="near_left_eye_cyl" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_eye_cyl" value="{{ $presc->near_left_eye_cyl }}"></td>
+                                            <td><input id="near_left_axis" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_axis" value="{{ $presc->near_left_eye_axis }}"></td>
+                                            <td><input id="near_left_prism" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_prism" value="{{ $presc->near_left_eye_prism }}"></td>
+                                            <td><input id="near_left_base" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_base" value="{{ $presc->near_left_eye_base }}"></td>
+                                            <td><input id="near_left_pd" type="text" class="form-control text-center" maxlength="4" onKeyPress="return soloNumeros(event)" name="near_left_pd" value="{{ $presc->near_left_eye_pd }}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td> {!! Form::label('doctor_name', 'Médico', [ 'class' => 'col-md-1 control-label']) !!}</td>
+                                            <td colspan="7">
+                                                <div>
+                                                    {!! Form::text('doctor_name', $presc->doctor_name, [ 'class' => 'form-control']) !!}
+                                                    @if ($errors->has('doctor_name'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('doctor_name') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{--<tr>--}}
+                                            {{--<td>{!! Form::label('frame', 'Armazón', [ 'class' => 'col-md-2 control-label']) !!}</td>--}}
+                                            {{--<td colspan="7">--}}
+                                                {{--<div>--}}
+                                                    {{--{!! Form::text('frame', old('frame'), [ 'class' => 'form-control']) !!}--}}
+                                                    {{--@if ($errors->has('frame'))--}}
+                                                        {{--<span class="help-block">--}}
+                                                            {{--<strong>{{ $errors->first('frame') }}</strong>--}}
+                                                        {{--</span>--}}
+                                                    {{--@endif--}}
+                                                {{--</div>--}}
+                                            {{--</td>--}}
+                                        {{--</tr>--}}
+                                        {{--<tr>--}}
+                                            {{--<td>{!! Form::label('crystal', 'Cristales', [ 'class' => 'col-md-3 control-label']) !!}</td>--}}
+                                            {{--<td colspan="7">--}}
+                                                {{--<div>--}}
+                                                    {{--{!! Form::text('crystal', old('crystal'), [ 'class' => 'form-control']) !!}--}}
+                                                    {{--@if ($errors->has('crystal'))--}}
+                                                        {{--<span class="help-block">--}}
+                                                            {{--<strong>{{ $errors->first('crystal') }}</strong>--}}
+                                                        {{--</span>--}}
+                                                    {{--@endif--}}
+                                                {{--</div>--}}
+                                            {{--</td>--}}
+                                        {{--</tr>--}}
+                                        <tr>
+                                            <td>{!! Form::label('observation', 'Observaciones', [ 'class' => 'col-md-2 control-label']) !!}</td>
+                                            <td colspan="7">
+                                                <div>
+                                                    {!! Form::text('observation', $presc->observation, [ 'class' => 'form-control']) !!}
+                                                    @if ($errors->has('observation'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('observation') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+            <!-- inicio tabla -->
+                                <div class="modal-footer">
+                                    {!! Form::submit('Modificar', [ 'class' => 'btn btn-primary' ]) !!}
+                                    <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+                                </div>
+            <!-- cierre formulario -->
+                            {!! Form::close() !!}
+                        </div>
                     </div>
-<!-- inicio tabla -->
-                    <div class="modal-footer">
-                        {!! Form::submit('Modificar', [ 'class' => 'btn btn-primary' ]) !!}
-                        <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
-                    </div>
-<!-- cierre formulario -->
-                {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>
-</body>
 @endsection
 
 <script>

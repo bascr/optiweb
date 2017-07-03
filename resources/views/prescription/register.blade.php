@@ -144,7 +144,6 @@
                                         <button id="defaultOpen" type="button" class="tablinks" onclick="openCity(event, 'Mineral')">Mineral</button>
                                         <button type="button" class="tablinks" onclick="openCity(event, 'Organico')">Orgánico</button>
                                         <button type="button" class="tablinks" onclick="openCity(event, 'Policarbonato')">Policarbonato</button>
-                                        <button type="button" class="tablinks" onclick="openCity(event, 'Contacto')">Contacto</button>
                                     </div>
 
                                     <div id="Mineral" class="tabcontent">
@@ -219,34 +218,6 @@
                                                 </tr>
                                                 @foreach($crystals as $crystal)
                                                     @if($crystal->material->name == 'Policarbonato')
-                                                        <tr>
-                                                            <td style="text-align: center;"><input type="radio" name="crystals" value="{{ $crystal->id }}"></td>
-                                                            <td>{{ $crystal->diopterRange->range }}</td>
-                                                            <td>{{ $crystal->material->name }}</td>
-                                                            <td>{{ $crystal->crystalTreatment->name }}</td>
-                                                            <td>{{ $crystal->focus->name }}</td>
-                                                            <td>{{ $crystal->crystalType->name }}</td>
-                                                            <td>{{ $crystal->price }}</td>
-                                                        </tr>
-                                                    @endif
-                                                @endforeach
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div id="Contacto" class="tabcontent">
-                                        <div class="table-responsive" style="overflow-y:auto; max-height:300px;">
-                                            <table class="table table-bordered crystalTable">
-                                                <tr>
-                                                    <th>Seleccionar</th>
-                                                    <th>Rango dioptría</th>
-                                                    <th>Tipo</th>
-                                                    <th>Tratamiento</th>
-                                                    <th>Foco</th>
-                                                    <th>Lente</th>
-                                                    <th style="min-width: 80px;">Valor</th>
-                                                </tr>
-                                                @foreach($crystals as $crystal)
-                                                    @if($crystal->material->name == 'Contacto')
                                                         <tr>
                                                             <td style="text-align: center;"><input type="radio" name="crystals" value="{{ $crystal->id }}"></td>
                                                             <td>{{ $crystal->diopterRange->range }}</td>

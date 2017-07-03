@@ -36,7 +36,15 @@
                         <div class="form-group">
                             {!! Form::label('crystal', 'Cristal', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('crystal', $crystal->material->name.' '.$crystal->crystalTreatment->name, [ 'class' => 'form-control', 'readonly' => 'true', 'style'=>'background-color:#fff;']) !!}
+                                @php
+                                    $crystalValue = "";
+                                    if($crystal->crystalType->id == 1) {
+                                        $crystalValue = $crystal->material->name.' '.$crystal->crystalTreatment->name;
+                                    } else {
+                                        $crystalValue = $crystal->crystalType->name;
+                                    }
+                                @endphp
+                                {!! Form::text('crystal', $crystalValue, [ 'class' => 'form-control', 'readonly' => 'true', 'style'=>'background-color:#fff;']) !!}
                             </div>
                         </div>
 <!-- Campo precio cristal -->
@@ -50,15 +58,27 @@
                         <div class="form-group">
                             {!! Form::label('frame', 'Armazón', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('frame', $frame->name, [ 'class' => 'form-control', 'readonly' => 'true', 'style'=>'background-color:#fff;']) !!}
-                                <input name="frame_id" type="hidden" value="{{ $frame->id }}" />
+                                @php
+                                    $frameValue = '';
+                                    $priceValue = 0;
+                                    $frameId = '---';
+                                    if($frame->id != 0) {
+                                        $frameValue = $frame->name;
+                                        $priceValue = $frame->price;
+                                        $frameId = $frame->id;
+                                    } else {
+                                        $frameValue = 'N/A';
+                                    }
+                                @endphp
+                                {!! Form::text('frame', $frameValue, [ 'class' => 'form-control', 'readonly' => 'true', 'style'=>'background-color:#fff;']) !!}
+                                <input name="frame_id" type="hidden" value="{{ $frameId }}" />
                             </div>
                         </div>
 <!-- Campo precio armazón -->
                         <div class="form-group">
                             {!! Form::label('frame_price', 'Precio armazón', [ 'class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('frame_price', $frame->price, [ 'class' => 'form-control', 'readonly' => 'true', 'style'=>'background-color:#fff; max-width: 100px;']) !!}
+                                {!! Form::text('frame_price', $priceValue, [ 'class' => 'form-control', 'readonly' => 'true', 'style'=>'background-color:#fff; max-width: 100px;']) !!}
                             </div>
                         </div>
 <!-- Campo total -->

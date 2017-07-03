@@ -30,12 +30,12 @@
                                             </tr>
                                             <tr>
                                                 <th><h6>S/C</h6></th>
-                                                <th><h6>Cristal {{ $crystal }}</h6></th>
+                                                <th><h6>Cristal: {{ $crystal }}</h6></th>
                                                 <th><h6>{{ $crystal_price }}</h6></th>
                                             </tr>
                                             <tr>
                                                 <th><h6>{{ $frame_id }}</h6></th>
-                                                <th><h6>{{ $frame }}</h6></th>
+                                                <th><h6>Marco: {{ $frame }}</h6></th>
                                                 <th><h6>{{ $frame_price }}</h6></th>
                                             </tr>
                                         </table>

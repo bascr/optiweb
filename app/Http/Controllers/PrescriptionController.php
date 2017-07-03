@@ -26,6 +26,10 @@ class PrescriptionController extends Controller
         return view('prescription.find');
     }
 
+    public function indexCrystalContact() {
+        return view('prescription.findCrystalContact');
+    }
+
 
     public function find() {
 
@@ -41,6 +45,26 @@ class PrescriptionController extends Controller
             $crystals = Crystal::all();
 
             return view('prescription.register', compact('client', 'crystals'));
+
+        }catch (Exception $e) {
+
+        }
+    }
+
+    public function findCrystalContact() {
+
+        $run = Input::get('run');
+
+        try {
+            $client = Client::where('run', $run)->get()->first();
+
+            if($client == null) {
+                return view('prescription.clientnotfoundmessage');
+            }
+
+            $crystals = Crystal::all();
+
+            return view('prescription.registerOnlyCrystalContact', compact('client', 'crystals'));
 
         }catch (Exception $e) {
 
@@ -149,6 +173,81 @@ class PrescriptionController extends Controller
 
     }
 
+    public function createCrystalContact(Request $request) {
+
+        try {
+
+            // add sale
+            $sale = new Sale();
+            $sale->user_username = Auth::user()->username;
+            $sale->client_run = $request->client_run;
+            $sale->created_at = Carbon::now('America/Santiago');
+            $sale->sale_promotion_id = 1;        // sin promoción
+            $sale->pay = $request->pay;
+            $sale->sale_state = 1;               //1. pendiente, 2. en local 3. realizada 4. devolución
+            $sale->sale_type_id = 2;             // 1. articulo, 2. receta, 3.reparacion interna, 4. reparacion externa
+            $sale->save();
+
+            // getting the last sale id inserted
+            $sale_id = Sale::all()->last()->id;
+
+            // add prescription
+            $prescription = new Prescription();
+            $prescription->client_run = $request['client_run'];
+            $prescription->far_right_eye_sphere = $request->far_right_eye_sphere;
+            $prescription->far_right_eye_cyl = $request->far_right_eye_cyl;
+            $prescription->far_right_eye_axis = $request->far_right_axis;
+            $prescription->far_right_eye_prism = $request->far_right_prism;
+            $prescription->far_right_eye_base = $request->far_right_base;
+            $prescription->far_right_eye_pd = $request->far_right_pd;
+            $prescription->far_left_eye_sphere = $request->far_left_eye_sphere;
+            $prescription->far_left_eye_cyl = $request->far_left_eye_cyl;
+            $prescription->far_left_eye_axis = $request->far_left_axis;
+            $prescription->far_left_eye_prism = $request->far_left_prism;
+            $prescription->far_left_eye_base = $request->far_left_base;
+            $prescription->far_left_eye_pd = $request->far_left_pd;
+            $prescription->near_right_eye_sphere = $request->near_right_eye_sphere;
+            $prescription->near_right_eye_cyl = $request->near_right_eye_cyl;
+            $prescription->near_right_eye_axis = $request->near_right_axis;
+            $prescription->near_right_eye_prism = $request->near_right_prism;
+            $prescription->near_right_eye_base = $request->near_right_base;
+            $prescription->near_right_eye_pd = $request->near_right_pd;
+            $prescription->near_left_eye_sphere = $request->near_left_eye_sphere;
+            $prescription->near_left_eye_cyl = $request->near_left_eye_cyl;
+            $prescription->near_left_eye_axis = $request->near_left_axis;
+            $prescription->near_left_eye_prism = $request->near_left_prism;
+            $prescription->near_left_eye_base = $request->near_left_base;
+            $prescription->near_left_eye_pd = $request->near_left_pd;
+            $prescription->doctor_name = $request->doctor_name;
+            $prescription->created_at = Carbon::now('America/Santiago')->format('Y/m/d');
+            $prescription->observation = $request->observation;
+            $prescription->sale_id = $sale_id;
+            $prescription->save();
+
+            // add crystal to product_sale
+            $product_sale = new ProductSale();
+            $product_sale->sale_id = $sale_id;
+            $product_sale->product_productable_id = (int) Input::get('crystals');
+            $product_sale->quantity = 1; // un par
+            $product_sale->save();
+
+            $message = [
+                'content' => 'La receta se ha ingresado exitosamente.',
+                'messageNumber' => 1,
+            ];
+
+            return view('prescription.messages', compact('message'));
+
+        }catch (Exception $e){
+            $message = [
+                'content' => 'Error al ingresar la receta.' . $e->getMessage(),
+                'messageNumber' => 2,
+            ];
+
+            return view('prescription.messages', compact('message'));
+        }
+    }
+
     public function findPrescription() {
 
         return view('prescription.findPrescription');
@@ -187,8 +286,8 @@ class PrescriptionController extends Controller
 
     public function seePrescription($id){
 
-        $presc = Prescription::where('id', $id)->first();
-        $client = Client::where('run', $presc->client_run)->first();
+        $presc = Prescription::where('id', $id)->get()->first();
+        $client = Client::where('run', $presc->client_run)->get()->first();
         $name = $client->name . ' ' . $client->last_name . ' ' . $client->second_last_name;
         $run = $presc->client_run;
 
@@ -296,6 +395,28 @@ class PrescriptionController extends Controller
         }else{
             return view('/home');
         }
+    }
+
+    public function listToDayRetiredPrescription() {
+
+        $today = (string) Carbon::now('America/Santiago')->format('Y/m/d');
+
+        $confirmed_sales = Sale::where('sale_type_id', 2)->where('sale_state', 3)->whereDate('updated_at', '=', $today)->get();
+        $products_sales = array();
+        $products = array();
+
+        foreach ($confirmed_sales as $confirmed_sale) {
+            $productsSales = ProductSale::where('sale_id', $confirmed_sale->id)->get();
+
+            foreach($productsSales as $product_sale) {
+                $product = new Product();
+                $product = Product::where('productable_id', $product_sale->product_productable_id)->get()->first();
+                array_push($products, $product);
+            }
+            array_push($products_sales, $productsSales);
+        }
+
+        return view('prescription.listToDayRetiredPrescription', compact('confirmed_sales', 'products_sales', 'products'));
     }
 
     public function getFrameName(Request $request) {
@@ -418,6 +539,7 @@ class PrescriptionController extends Controller
         $total = $request->total;
 
         $sale->sale_state = 3;
+        $sale->updated_at = $date;
         $sale->save();
 
         return view('prescription.ticket', compact('user', 'date', 'sale_id', 'frame', 'frame_id', 'crystal', 'frame_price', 'crystal_price', 'pay', 'toPay', 'total' ));

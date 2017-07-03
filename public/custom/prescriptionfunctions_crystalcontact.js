@@ -1,66 +1,24 @@
 /**
- * Created by bascr on 29-05-2017.
+ * Created by bascr on 02-07-2017.
  */
 $(document).ready(function() {
 
-    $('#price').val(0);
     $('#total').val(0);
     $('#pay').val(0);
     // calculate the total
     $('.crystalTable').on('click', ':radio', function() {
-        var frame_price = $('#price').val();
-        total(frame_price);
+        total();
     });
 
 });
 
-
-$(document).ready(function() {
-
-    $('body').on('input', '#frame', function() {
-
-        var input = $(this);
-
-        var values = {
-            'id' : input.val()
-        };
-
-        $.ajax({
-            method: 'POST',
-            url: '../get_frame_name',
-            data: values,
-            dataType: 'json',
-            encode: true,
-            success: function(data) {
-                $('#frameName').val(data.name);
-
-                if(data.price !== 0) {
-                    $('#price').val(data.price);
-                } else {
-                    $('#price').val(0);
-                }
-            },
-            complete: function (data) {
-                var frame_price = $('#price').val();
-                total(frame_price);
-            },
-            error: function () {
-
-            }
-        });
-
-    });
-
-});
-
-function total(frame_price) {
+function total() {
 
     var checkedRadioButton = $('input:radio[name="crystals"]:checked');
     var currentRow = checkedRadioButton.closest('tr');
     var crystalPrice = parseInt(currentRow.find('td:eq(6)').text());
-    var framePrice = parseInt(frame_price);
 
-    var total = crystalPrice + framePrice;
+    var total = crystalPrice;
 
     $('#total').val(total);
 
@@ -344,16 +302,6 @@ function validaForm(){
         return false;
     }
 
-    var frame = document.getElementById("frame").value;
-    if(frame == "") {
-        swal("Verifique en la receta", "Ingrese código de armazón", "warning");
-        return false;
-    }
-    if(!frame.match(/^\d+/)) {
-        swal("Verifique en la receta", "Ingrese un código válido de armazón", "warning");
-        return false;
-    }
-
     var pay = document.getElementById("pay").value;
     var total = document.getElementById("total").value;
 
@@ -371,4 +319,3 @@ function validaForm(){
     }
 
 }
-

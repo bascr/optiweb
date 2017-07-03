@@ -96,7 +96,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="{{ url('/prescription') }}"><i class="glyphicon glyphicon-file"></i> Ingresar receta</a></li>
+                                    <li><a href="{{ url('/prescription') }}"><i class="glyphicon glyphicon-file"></i> Ingresar receta completa</a></li>
+                                    <li><a href="{{ url('/prescription/crystal_contact') }}"><i class="glyphicon glyphicon-file"></i> Solo cristales o contactos</a></li>
                                     <li><a href="{{ url('/prescription/findPrescription') }}"><i class="glyphicon glyphicon-search"></i> Buscar receta</a></li>
                                     <li><a href="{{ url('/prescription/state') }}"><i class="fa fa-check-square-o"></i> Estado recetas</a></li>
                                 </ul>

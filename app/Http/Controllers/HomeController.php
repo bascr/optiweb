@@ -34,6 +34,8 @@ class HomeController extends Controller
 
         $cantidad = Prescription::where('created_at', '=' , $today)->count();
 
+        $retired_prescriptions = Sale::where('sale_type_id', 2)->where('sale_state', 3)->whereDate('updated_at', '=', $today)->count();
+
         $client = Client::whereDate('created_at', '=' ,$today)->count();
 
         $sales = Sale::whereDate('created_at', '=' ,$today)->where('sale_state', '3')->count();
@@ -48,7 +50,7 @@ class HomeController extends Controller
             }
         }
 
-        return view('home', compact('cantidad', 'client', 'sales','mensaje'));
+        return view('home', compact('cantidad', 'retired_prescriptions','client', 'sales','mensaje'));
     }
 
     public function mail() {

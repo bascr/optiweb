@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table id="prescriptionTable" class="table table-bordered">
-                                <tr class="info">
+                                <tr style="background-color: #F2F2F2;">
                                     <td style="min-width: 70px;">Nombre</td>
                                     <td colspan="7" class="text-capitalize">{{ $name }}</td>
                                 </tr>
@@ -18,7 +18,7 @@
                                     <th style="min-width:70px; text-align: center;">Ojo</th>
                                     <th colspan="6" style="text-align: center;">Dioptría</th>
                                 </tr>
-                                <tr class="info" style="text-align: center;">
+                                <tr style="background-color: #F2F2F2; text-align: center;">
                                     <td style="min-width: 70px;"></td>
                                     <td style="min-width: 70px;"></td>
                                     <td style="min-width: 70px;">Esférico</td>
@@ -47,7 +47,7 @@
                                     <td style="min-width: 70px;" class="text-center">{{ $presc->far_left_eye_base}}</td>
                                     <td style="min-width: 70px;" class="text-center">{{ $presc->far_left_eye_pd}}</td>
                                 </tr>
-                                <tr class="info" style="text-align: center;">
+                                <tr style="background-color: #F2F2F2; text-align: center;">
                                     <td style="min-width: 70px;"></td>
                                     <td style="min-width: 70px;"></td>
                                     <td style="min-width: 70px;">Esférico</td>
@@ -82,11 +82,11 @@
                                 </tr>
                                 <tr>
                                     <td style="min-width: 70px;">Armazón</td>
-                                    <td style="min-width: 70px;" colspan="7">{{ $frame->name . ' ' . $frame->model->name . ' ' . $frame->color->name }}</td>
+                                    <td style="min-width: 70px;" colspan="7">@php if($frame->id != 0) {echo $frame->name . ' ' . $frame->model->name . ' ' . $frame->color->name;} else {echo 'N/A';}@endphp</td>
                                 </tr>
                                 <tr>
                                     <td style="min-width: 70px;">Cristales</td>
-                                    <td style="min-width: 70px;" colspan="7">{{ $crystal->material->name . ' ' . $crystal->crystalTreatment->name }}</td>
+                                    <td style="min-width: 70px;" colspan="7">@php if($crystal->crystalType->id == 1) { echo $crystal->material->name . ' ' . $crystal->crystalTreatment->name; } else { echo $crystal->crystalType->name;}@endphp</td>
                                 </tr>
                                 <tr>
                                     <td style="min-width: 70px;">Observaciones</td>
