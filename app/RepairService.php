@@ -19,4 +19,9 @@ class RepairService extends Eloquent
 
         return $this->belongsTo('App\Client', 'client_run', 'run');
     }
+
+    public function articleRepairService() {
+
+        return $this->hasMany('App\ArticleRepairService');
+    }
 }

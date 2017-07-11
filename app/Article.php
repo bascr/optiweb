@@ -22,4 +22,9 @@ class Article extends Eloquent
         return $this->morphMany('App\Product', 'productable');
     }
 
+    public function articleRepairService() {
+
+        return $this->hasMany('App\ArticleRepairService');
+    }
+
 }

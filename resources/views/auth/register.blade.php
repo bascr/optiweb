@@ -291,7 +291,7 @@
     function soloDigito(e){
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = " k023456789";
+        letras = " k0123456789";
         especiales = "8";
 
         tecla_especial = false
