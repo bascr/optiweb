@@ -14,7 +14,7 @@ class ArticleRepairService extends Eloquent
         return $this->belongsTo('App\RepairService');
     }
 
-    public function Article() {
+    public function article() {
         return $this->belongsTo('App\Article');
     }
 }

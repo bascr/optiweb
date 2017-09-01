@@ -202,7 +202,7 @@
                                 <label for="base_wage" class="col-md-4 control-label">Sueldo base</label>
 
                                 <div class="col-md-6">
-                                    <input id="base_wage" type="text" class="form-control" name="base_wage" value="{{ old('base_wage') }}">
+                                    <input id="base_wage" type="number" min="0" class="form-control" name="base_wage" value="{{ old('base_wage') }}">
 
                                     @if ($errors->has('base_wage'))
                                         <span class="help-block">
@@ -216,7 +216,7 @@
                                 <label for="overtime_value" class="col-md-4 control-label">Valor hora extra</label>
 
                                 <div class="col-md-6">
-                                    <input id="overtime_value" type="text" class="form-control" name="overtime_value" value="{{ old('overtime_value') }}">
+                                    <input id="overtime_value" type="number" min="0" class="form-control" name="overtime_value" value="{{ old('overtime_value') }}">
 
                                     @if ($errors->has('overtime_value'))
                                         <span class="help-block">

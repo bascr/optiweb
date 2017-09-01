@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->integer('category_id');
             $table->string('description', 500);
             $table->integer('stock');
+            $table->integer('cost_price');
             $table->integer('price');
         });
     }

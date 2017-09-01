@@ -15,4 +15,14 @@ class SalePromotion extends Eloquent
 
         return $this->hasMany('App\Sale');
     }
+
+    public function salePromotionType() {
+
+        return $this->belongsTo('App\SalePromotionType');
+    }
+
+    public function productSalePromotion() {
+
+        return $this->hasMany('App\ProductSalePromotion');
+    }
 }

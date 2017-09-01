@@ -6,11 +6,11 @@ class Factory
 {
     const DEFAULT_LOCALE = 'en_US';
 
-    protected static $defaultProviders = array('Address', 'Barcode', 'Biased', 'Color', 'Company', 'DateTime', 'File', 'Image', 'Internet', 'Lorem', 'Miscellaneous', 'Payment', 'Person', 'PhoneNumber', 'Text', 'UserAgent', 'Uuid');
+    protected static $defaultProviders = array('Address', 'Barcode', 'Biased', 'Color', 'Company', 'DateTime', 'File', 'HtmlLorem', 'Image', 'Internet', 'Lorem', 'Miscellaneous', 'Payment', 'Person', 'PhoneNumber', 'Text', 'UserAgent', 'Uuid');
 
     /**
      * Create a new generator
-     * 
+     *
      * @param string $locale
      * @return Generator
      */
@@ -43,7 +43,7 @@ class Factory
         if ($providerClass = self::findProviderClassname($provider)) {
             return $providerClass;
         }
-        throw new \InvalidArgumentException(sprintf('Unable to find supplier "%s" with locale "%s"', $provider, $locale));
+        throw new \InvalidArgumentException(sprintf('Unable to find provider "%s" with locale "%s"', $provider, $locale));
     }
 
     /**

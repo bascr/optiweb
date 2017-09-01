@@ -237,5 +237,61 @@ Route::post('/get_article_name', 'SaleController@getArticleName');
 Route::get('/article_sale/list_today', 'SaleController@listToday');
 
 
+/*
+|--------------------------------------------------------------------------
+|   Repair
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/repair/find', 'RepairController@index');
+
+Route::post('/repair/find', 'RepairController@find');
+
+Route::post('/repair/repairservice', 'RepairController@createinternal');
+
+Route::get('/repair/repairstate', 'RepairController@stateRepair');
+
+Route::get('/repair/repairstatedate', 'RepairController@stateDate');
+
+Route::get('/repair/repairstate/change/{id}', 'RepairController@confirmInLocal');
+
+Route::get('/repair/confirm/{id}', 'RepairController@confirmRepair');
+
+Route::post('/repair/confirmSaleRepair', 'RepairController@repairSale');
+
+Route::get('/repair/register', 'RepairController@indexRegister');
+
+Route::post('/repair/register', 'RepairController@createWorkshop');
+
+Route::get('/repair/list', 'RepairController@listWorkshop');
+
+Route::get('/repair/editform/{id}', 'RepairController@edit');
+
+Route::post('/repair/editform', 'RepairController@update');
+
+// Ajax request to get article name
+Route::post('/get_article_name', 'RepairController@getArticleName');
+
+
+/*
+|--------------------------------------------------------------------------
+|   Report
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/report/client_list', 'ReportController@clientList');
+
+Route::get('/report/client_list/export', 'ReportController@clientListExport');
+
+Route::get('/report/month_sales', 'ReportController@monthSales');
+
+Route::get('/report/month_sales/export', 'ReportController@monthSalesExport');
+
+Route::get('/report/annual_sales', 'ReportController@annualSales');
+
+Route::get('/report/annual_sales/export', 'ReportController@annualSalesExport');
+
+Route::get('/report/month_access_control', 'ReportController@monthAccessControl');
+
+Route::get('/report/month_access_control/export', 'ReportController@monthAccessControlExport');
 

@@ -9,6 +9,7 @@ class RepairService extends Eloquent
     //
     protected $primaryKey = 'id';
     protected $table = 'repair_services';
+    public $timestamps = false;
 
     public function workshop() {
 
@@ -23,5 +24,10 @@ class RepairService extends Eloquent
     public function articleRepairService() {
 
         return $this->hasMany('App\ArticleRepairService');
+    }
+
+    public function user() {
+
+        return $this->belongsTo('App\User', 'user_username', 'username');
     }
 }

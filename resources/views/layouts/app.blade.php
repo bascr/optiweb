@@ -122,11 +122,10 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación interna</a></li>
-                                    <li><a href="#"><i class="fa fa-sign-in"></i> Ingresar reparación externa</a></li>
-                                    <li><a href="#"><i class="fa fa-check-square-o"></i> Estado reparaciones</a></li>
-                                    <li><a href="#"><i class="fa fa-plus"></i> Ingresar taller</a></li>
-                                    <li><a href="#"><i class="glyphicon glyphicon-search"></i> Listar talleres</a></li>
+                                    <li><a href="{{ url('/repair/find') }}"><i class="fa fa-sign-in"></i> Ingresar reparación</a></li>
+                                    <li><a href="{{ url('/repair/repairstate') }}"><i class="fa fa-check-square-o"></i> Estado reparaciones</a></li>
+                                    <li><a href="{{ url('/repair/register') }}"><i class="fa fa-plus"></i> Ingresar taller</a></li>
+                                    <li><a href="{{ url('/repair/list') }}"><i class="glyphicon glyphicon-search"></i> Listar talleres</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -194,6 +193,20 @@
                                     <li><a href="{{ url('/user/find') }}"><i class="fa fa-unlock-alt"></i>Activar/Desactivar cuenta</a></li>
                                 </ul>
                             </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-file-text-o"></i> <span>Reportes</span>
+                                        <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{ url('/report/client_list') }}"><i class="fa fa-file-excel-o"></i>Cartera de clientes</a></li>
+                                        <li><a href="{{ url('/report/month_sales') }}"><i class="fa fa-file-excel-o"></i>Ventas del mes</a></li>
+                                        <li><a href="{{ url('/report/annual_sales') }}"><i class="fa fa-file-excel-o"></i>Venta anual</a></li>
+                                        <li><a href="{{ url('/report/month_access_control') }}"><i class="fa fa-file-excel-o"></i>Control de acceso del mes</a></li>
+                                    </ul>
+                                </li>
                         @endif
                         <li>
                                 <a href="{{ url('/mail') }}">

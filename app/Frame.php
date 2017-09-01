@@ -27,4 +27,15 @@ class Frame extends Eloquent
         return $this->morphMany('App\Product', 'productable');
     }
 
+    public function forType() {
+
+        return $this->belongsTo('App\ForType');
+    }
+
+    public function ageType() {
+
+        return $this->belongsTo('App\AgeType');
+    }
+
+
 }

@@ -33,7 +33,8 @@ class SaleController extends Controller
 
             $data = [
                 'nameArticle' => $article->name,
-                'price' => $article->price
+                'price' => $article->price,
+                'stock' => $article->stock
             ];
 
         } else {
@@ -82,6 +83,15 @@ class SaleController extends Controller
                 $product_sale->product_productable_id = $cods_article[$i];
                 $product_sale->quantity = $quantities[$i];
                 $product_sale->save();
+            }
+
+            // discounting stock
+            for($i = 0; $i < count($cods_article); $i++) {
+                $article = Article::where('id', $cods_article[$i])->get()->first();
+                if($article != null) {
+                    $article->stock -= $quantities[$i];
+                    $article->save();
+                }
             }
 
 

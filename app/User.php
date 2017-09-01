@@ -73,4 +73,9 @@ class User extends Authenticatable
 
         return $this->hasMany('App\Sale', 'user_username', 'username');
     }
+
+    public function  RepairServices() {
+
+        return $this->hasMany('App\RepairService', 'user_username', 'username');
+    }
 }

@@ -9,14 +9,14 @@ class ServiceProvider extends IlluminateServiceProvider
 {
 
     /**
-     * Indicates if loading of the supplier is deferred.
+     * Indicates if loading of the provider is deferred.
      *
      * @var bool
      */
     protected $defer = false;
 
     /**
-     * Register the service supplier.
+     * Register the service provider.
      *
      * @throws \Exception
      * @return void
@@ -78,7 +78,7 @@ class ServiceProvider extends IlluminateServiceProvider
     }
 
     /**
-     * Get the services provided by the supplier.
+     * Get the services provided by the provider.
      *
      * @return array
      */

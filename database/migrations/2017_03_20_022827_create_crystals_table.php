@@ -19,6 +19,7 @@ class CreateCrystalsTable extends Migration
             $table->integer('focus_id');
             $table->integer('crystal_treatment_id');
             $table->integer('crystal_type_id');
+            $table->integer('cost_price');
             $table->integer('price');
 
         });

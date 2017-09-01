@@ -11,7 +11,6 @@
 <!-- Inicio formulario -->
                 {!! Form::open(['method'=>'POST', 'action'=>'SaleController@createArticleSale','class' => 'form-horizontal']) !!}
 
-                {!! Form::token() !!}
 <!-- Campo codigo articulo, cantidad -->
                     <div id="articles">
                         <div class="">

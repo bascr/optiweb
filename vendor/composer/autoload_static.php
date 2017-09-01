@@ -32,6 +32,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         array (
             'Webmozart\\Assert\\' => 17,
         ),
+        'T' => 
+        array (
+            'TijsVerkoyen\\CssToInlineStyles\\' => 31,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Util\\' => 22,
@@ -57,7 +61,6 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
-            'Pelago\\' => 7,
         ),
         'M' => 
         array (
@@ -66,6 +69,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'L' => 
         array (
             'League\\Flysystem\\' => 17,
+        ),
+        'K' => 
+        array (
+            'Khill\\Lavacharts\\' => 17,
         ),
         'I' => 
         array (
@@ -81,6 +88,7 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
             'Dotenv\\' => 7,
             'Dompdf\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Inflector\\' => 26,
         ),
         'C' => 
         array (
@@ -113,6 +121,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'TijsVerkoyen\\CssToInlineStyles\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
         ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
@@ -194,10 +206,6 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'Pelago\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pelago/emogrifier/Classes',
-        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -205,6 +213,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'Khill\\Lavacharts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/khill/lavacharts/src',
         ),
         'Illuminate\\' => 
         array (
@@ -229,6 +241,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Doctrine\\Common\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
         'Cron\\' => 
         array (
@@ -274,6 +290,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
         ),
         'M' => 
         array (
@@ -284,6 +304,10 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
             'Milon\\Barcode' => 
             array (
                 0 => __DIR__ . '/..' . '/milon/barcode/src',
+            ),
+            'Maatwebsite\\Excel\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/maatwebsite/excel/src',
             ),
         ),
         'J' => 
@@ -297,17 +321,11 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Inflector\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
-            ),
-        ),
     );
 
     public static $classMap = array (
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
+        'CreateAgeTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_190044_create_age_types_table.php',
         'CreateArticleRepairServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_11_164253_create_article_repair_service_table.php',
         'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_023834_create_articles_table.php',
         'CreateBranchOfficesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_002226_create_branch_offices_table.php',
@@ -322,6 +340,7 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'CreateDiopterRangesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_213925_create_diopter_ranges_table.php',
         'CreateDistrictsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_002021_create_districts_table.php',
         'CreateFocusesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_021408_create_focuses_table.php',
+        'CreateForTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_185958_create_for_types_table.php',
         'CreateFramesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_015719_create_frames_table.php',
         'CreateInventoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_024331_create_inventories_table.php',
         'CreateLogEntriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_001122_create_log_entries_table.php',
@@ -330,9 +349,11 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'CreateModelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_015325_create_models_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePrescriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_003033_create_prescriptions_table.php',
+        'CreateProductSalePromotionTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_204120_create_product_sale_promotion_table.php',
         'CreateProductSaleTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_013745_create_product_sale_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_014937_create_products_table.php',
         'CreateRepairServicesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_010602_create_repair_services_table.php',
+        'CreateSalePromotionTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_09_01_203257_create_sale_promotion_types_table.php',
         'CreateSalePromotionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_004457_create_sale_promotions_table.php',
         'CreateSaleTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_011818_create_sale_types_table.php',
         'CreateSalesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_20_004959_create_sales_table.php',
@@ -419,10 +440,41 @@ class ComposerStaticInit5d2701bda3c4c6e1a72f44fe23903636
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'Maatwebsite\\Excel\\Classes\\Cache' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/Cache.php',
+        'Maatwebsite\\Excel\\Classes\\FormatIdentifier' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/FormatIdentifier.php',
+        'Maatwebsite\\Excel\\Classes\\LaravelExcelWorksheet' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/LaravelExcelWorksheet.php',
+        'Maatwebsite\\Excel\\Classes\\PHPExcel' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Classes/PHPExcel.php',
+        'Maatwebsite\\Excel\\Collections\\CellCollection' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Collections/CellCollection.php',
+        'Maatwebsite\\Excel\\Collections\\ExcelCollection' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Collections/ExcelCollection.php',
+        'Maatwebsite\\Excel\\Collections\\RowCollection' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Collections/RowCollection.php',
+        'Maatwebsite\\Excel\\Collections\\SheetCollection' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Collections/SheetCollection.php',
+        'Maatwebsite\\Excel\\Excel' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Excel.php',
+        'Maatwebsite\\Excel\\ExcelServiceProvider' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/ExcelServiceProvider.php',
+        'Maatwebsite\\Excel\\Exceptions\\LaravelExcelException' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Exceptions/LaravelExcelException.php',
+        'Maatwebsite\\Excel\\Facades\\Excel' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Facades/Excel.php',
+        'Maatwebsite\\Excel\\Files\\ExcelFile' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Files/ExcelFile.php',
+        'Maatwebsite\\Excel\\Files\\ExportHandler' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Files/ExportHandler.php',
+        'Maatwebsite\\Excel\\Files\\File' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Files/File.php',
+        'Maatwebsite\\Excel\\Files\\ImportHandler' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Files/ImportHandler.php',
+        'Maatwebsite\\Excel\\Files\\NewExcelFile' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Files/NewExcelFile.php',
+        'Maatwebsite\\Excel\\Filters\\ChunkReadFilter' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Filters/ChunkReadFilter.php',
+        'Maatwebsite\\Excel\\Parsers\\CssParser' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/CssParser.php',
+        'Maatwebsite\\Excel\\Parsers\\ExcelParser' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/ExcelParser.php',
+        'Maatwebsite\\Excel\\Parsers\\ViewParser' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/ViewParser.php',
+        'Maatwebsite\\Excel\\Readers\\Batch' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Readers/Batch.php',
+        'Maatwebsite\\Excel\\Readers\\ChunkedReadJob' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Readers/ChunkedReadJob.php',
+        'Maatwebsite\\Excel\\Readers\\ConfigReader' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Readers/ConfigReader.php',
+        'Maatwebsite\\Excel\\Readers\\Html' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Readers/HtmlReader.php',
+        'Maatwebsite\\Excel\\Readers\\LaravelExcelReader' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Readers/LaravelExcelReader.php',
+        'Maatwebsite\\Excel\\Writers\\CellWriter' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Writers/CellWriter.php',
+        'Maatwebsite\\Excel\\Writers\\LaravelExcelWriter' => __DIR__ . '/..' . '/maatwebsite/excel/src/Maatwebsite/Excel/Writers/LaravelExcelWriter.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
+        'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
+        'PHPUnit\\Framework\\Test' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Test.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
         'PHPUnit\\Framework\\TestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestListener.php',
+        'PHPUnit\\Framework\\TestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestSuite.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',

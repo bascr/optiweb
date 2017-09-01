@@ -9,6 +9,7 @@ class Workshop extends Eloquent
     //
     protected $primaryKey = 'id';
     protected $table = 'workshops';
+    public $timestamps = false;
 
     protected $fillable = [
         'name', 'address',

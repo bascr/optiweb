@@ -36,8 +36,8 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'required|digits_between:9,10|numeric',
             'contract_state' => 'required',
-            'base_wage' => 'required|numeric',
-            'overtime_value' => 'required|numeric',
+            'base_wage' => 'required',
+            'overtime_value' => 'required',
             'user_type' => 'required|not_in:0',
 
         ]);

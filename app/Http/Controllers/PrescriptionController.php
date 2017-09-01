@@ -402,26 +402,40 @@ class PrescriptionController extends Controller
         $today = (string) Carbon::now('America/Santiago')->format('Y/m/d');
 
         $confirmed_sales = Sale::where('sale_type_id', 2)->where('sale_state', 3)->whereDate('updated_at', '=', $today)->get();
-        $products_sales = array();
-        $products = array();
+        $confirmed_sales_array = [];
+        $sales_row = [];
 
-        foreach ($confirmed_sales as $confirmed_sale) {
-            $productsSales = ProductSale::where('sale_id', $confirmed_sale->id)->get();
+        for($i = 0; $i < count($confirmed_sales); $i++) {
 
-            foreach($productsSales as $product_sale) {
-                $product = new Product();
-                $product = Product::where('productable_id', $product_sale->product_productable_id)->get()->first();
-                array_push($products, $product);
+            $sales_row[0] = $confirmed_sales[$i]->client->run . ' ' . $confirmed_sales[$i]->client->digit;
+            $sales_row[1] = $confirmed_sales[$i]->client->name . ' ' . $confirmed_sales[$i]->client->last_name . ' ' . $confirmed_sales[$i]->client->second_last_name;
+            $sales_row[2] = "N/A";
+            $sales_row[3] = "N/A";
+            $sales_row[4] = 0; // total
+            for($j = 0; $j < count($confirmed_sales[$i]->productSale); $j++) {
+
+                $product = Product::where('productable_id', $confirmed_sales[$i]->productSale[$j]->product_productable_id)->get()->first();
+
+                if($product->productable_type == 'App\Frame') {
+                    $sales_row[2] = $product->productable->name . ' ' . $product->productable->model->name;
+                    $sales_row[4] += ($product->productable->price * $confirmed_sales[$i]->productSale[$j]->quantity);
+                }
+                if($product->productable_type == 'App\Crystal') {
+                    $sales_row[3] = $product->productable->material->name . ' ' . $product->productable->crystalTreatment->name;
+                    $sales_row[4] += ($product->productable->price * $confirmed_sales[$i]->productSale[$j]->quantity);
+                }
             }
-            array_push($products_sales, $productsSales);
+
+            array_push($confirmed_sales_array, $sales_row);
         }
 
-        return view('prescription.listToDayRetiredPrescription', compact('confirmed_sales', 'products_sales', 'products'));
+
+        return view('prescription.listToDayRetiredPrescription', compact('confirmed_sales_array'));
     }
 
     public function getFrameName(Request $request) {
 
-        $frame = Frame::where('id', $request['id'])->get()->first();
+        $frame = Frame::where('id', $request['id'])->where('stock', '>', 0)->get()->first();
 
         $data = array();
 
@@ -509,10 +523,10 @@ class PrescriptionController extends Controller
 
             $product = Product::where('productable_id', $productable_id)->get()->first();
 
-            if($product->productable_type == 'App\\Frame') {
+            if($product->productable_type == 'App\Frame') {
                 $frame = $product->productable;
             }
-            if($product->productable_type == 'App\\Crystal') {
+            if($product->productable_type == 'App\Crystal') {
                 $crystal = $product->productable;
             }
         }

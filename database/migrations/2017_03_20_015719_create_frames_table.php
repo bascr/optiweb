@@ -17,7 +17,10 @@ class CreateFramesTable extends Migration
             $table->string('name', 45);
             $table->integer('model_id');
             $table->integer('color_id');
+            $table->integer('for_type_id');
+            $table->integer('age_type_id');
             $table->integer('stock');
+            $table->integer('cost_price');
             $table->integer('price');
         });
     }

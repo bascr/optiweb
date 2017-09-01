@@ -10,7 +10,7 @@ class Person extends \Faker\Provider\Person
     );
 
     /**
-     * This supplier uses wikipedia's 250 top russian last names
+     * This provider uses wikipedia's 250 top russian last names
      * That list of MALE last names could be safely extended to FEMALE list just by adding 'a' letter at the end
      */
     protected static $femaleNameFormats = array(
@@ -131,5 +131,27 @@ class Person extends \Faker\Provider\Person
     public function middleNameFemale()
     {
         return static::randomElement(static::$middleNameFemale);
+    }
+
+    /**
+     * Return middle name for the specified gender.
+     *
+     * @access public
+     * @param string|null $gender A gender the middle name should be generated
+     *     for. If the argument is skipped a random gender will be used.
+     * @return string Middle name
+     */
+    public function middleName($gender = null)
+    {
+        if ($gender === static::GENDER_MALE) {
+            return $this->middleNameMale();
+        } elseif ($gender === static::GENDER_FEMALE) {
+            return $this->middleNameFemale();
+        }
+
+        return $this->middleName(static::randomElement(array(
+            static::GENDER_MALE,
+            static::GENDER_FEMALE,
+        )));
     }
 }

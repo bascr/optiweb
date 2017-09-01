@@ -37,4 +37,9 @@ class Product extends Eloquent
 
         return $this->morphTo();
     }
+
+    public function productSalePromotion() {
+
+        return $this->hasMany('App\ProductSalePromotion');
+    }
 }
